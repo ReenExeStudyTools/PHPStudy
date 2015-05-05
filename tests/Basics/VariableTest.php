@@ -4,6 +4,10 @@ class VariableTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidName()
     {
+        /**
+         * Variable can start only from letters or _, and contains digit
+         */
+
         $a = 1;
         $this->assertEquals($a, 1);
 
@@ -22,6 +26,9 @@ class VariableTest extends \PHPUnit_Framework_TestCase
 
         ${'123'} = 5;
         $this->assertEquals(${'123'}, 5);
+
+        $variable123 = 123;
+        $this->assertEquals(${'123'}, $$variable123);
 
         ${' with space '} = 6;
         $this->assertEquals(${' with space '}, 6);
