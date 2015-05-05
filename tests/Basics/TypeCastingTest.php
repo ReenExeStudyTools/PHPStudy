@@ -19,4 +19,11 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(boolval('OK') === true);
         $this->assertTrue(floatval('1') === 1.0);
     }
+
+    public function testSetType()
+    {
+        $value = '1';
+        settype($value, 'integer');
+        $this->assertTrue($value === 1);
+    }
 }
