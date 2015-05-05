@@ -29,4 +29,10 @@ class NumericTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(1e1 === 1E1);
         $this->assertTrue(1.1e0 === 1.1);
     }
+
+    public function testConverted()
+    {
+        $result = (0.1 + 0.7) * 10;
+        $this->assertTrue((7 < $result) && ($result < 8));
+    }
 }
