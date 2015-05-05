@@ -26,4 +26,30 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         settype($value, 'integer');
         $this->assertTrue($value === 1);
     }
+
+    public function testIs()
+    {
+        $this->assertTrue(is_int(1));
+        $this->assertFalse(is_int(1.0));
+        $this->assertFalse(is_int('1'));
+        $this->assertFalse(is_int(true));
+
+        $this->assertTrue(is_float(1.0));
+        $this->assertFalse(is_float(1));
+
+        $this->assertTrue(is_string(''));
+        $this->assertFalse(is_string(1));
+
+        $this->assertTrue(is_bool(true));
+        $this->assertFalse(is_bool(1));
+
+        $this->assertTrue(is_null(null));
+        $this->assertFalse(is_null(false));
+
+        $this->assertTrue(is_array([]));
+
+        $object = new \stdClass();
+        $this->assertTrue(is_object($object));
+        $this->assertFalse(is_object([]));
+    }
 }
