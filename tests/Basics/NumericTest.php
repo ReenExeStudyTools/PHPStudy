@@ -17,4 +17,15 @@ class NumericTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(0b1 === 0B1);
         $this->assertTrue(0xA === 0XA);
     }
+
+    public function testFloat()
+    {
+        $this->assertTrue(0.1 === .1);
+        $this->assertTrue(-0.1 === -.1);
+    }
+
+    public function testExponential()
+    {
+        $this->assertTrue(1e1 === 1E1);
+    }
 }
