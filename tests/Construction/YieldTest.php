@@ -19,28 +19,29 @@ class YieldTest extends \PHPUnit_Framework_TestCase
          * Такое запрещено делать
          * Результат:
          *  `Fatal error: Generators cannot return values using "return"`
-         */
 
-        /**
             1.
                 $both = function() {
                     yield 1;
-                    return [$generatorBehavior];
+                    return [1];
                 };
 
-                foreach ($both() as $value) {}
-         */
-
-        /**
             2.
+                $both = function() {
+                    return [1];
+                    yield 1;
+                };
+
+            3.
                 $both = function($generatorBehavior = true) {
                     if ($generatorBehavior) {
                         yield 1;
                     } else {
-                        return [$generatorBehavior];
+                        return [1];
                     }
                 };
 
+            Action:
                 foreach ($both() as $value) {}
          */
     }
