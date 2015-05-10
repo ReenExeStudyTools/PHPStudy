@@ -16,6 +16,18 @@ class FinallyTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \LogicException
      */
+    public function testReturnPriority()
+    {
+        try {
+            return;
+        } finally {
+            throw new \LogicException();
+        }
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
     public function testEmptyCatching()
     {
         try {
