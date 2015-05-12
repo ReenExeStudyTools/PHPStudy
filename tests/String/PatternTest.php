@@ -7,8 +7,7 @@ class PatternTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatch($pattern, array $map)
     {
-        foreach ($map as $value) {
-            list($subject, $result) = $value;
+        foreach ($map as list($subject, $result)) {
             $this->assertTrue(preg_match($pattern, $subject) === $result);
         }
     }
