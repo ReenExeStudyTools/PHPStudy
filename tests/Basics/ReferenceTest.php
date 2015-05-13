@@ -29,5 +29,24 @@ class ReferenceTest extends \PHPUnit_Framework_TestCase
         /**
          * Але результати дивують
          */
+
+        /**
+         * Друг підказав
+         */
+        list($a, $b, $c) = [8, 9, &$a];
+        $this->assertSame($a, 8);
+        $this->assertSame($b, 8);
+        $this->assertSame($c, 8);
+        /**
+         * Співпало
+         */
+
+        list($a, $b, $c) = [&$a, 9, &$a];
+        $this->assertSame($a, 9);
+        $this->assertSame($b, 9);
+        $this->assertSame($c, 9);
+        /**
+         * Дивно, згоден
+         */
     }
 }
