@@ -49,4 +49,34 @@ class ReferenceTest extends \PHPUnit_Framework_TestCase
          * Дивно, згоден
          */
     }
+
+    public function testOperation()
+    {
+        $a = 1;
+        $b = &$a + 1;
+
+        $this->assertSame($a, 1);
+        $this->assertSame($b, 1);
+
+        $c = 3;
+        $d = &$c * 2;
+        $this->assertSame($c, 3);
+        $this->assertSame($d, 3);
+    }
+
+    public function testIncrement()
+    {
+        /*
+            Parse error: syntax error, unexpected '++'
+                1.
+                    $a = 1;
+                    $b = &$a++;
+                2.
+                    $a = 1;
+                    $b = ++&$a;
+                3.
+                    $a = 1;
+                    $b = &++$a;
+         */
+    }
 }
