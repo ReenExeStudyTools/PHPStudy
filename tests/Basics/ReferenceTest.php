@@ -50,6 +50,40 @@ class ReferenceTest extends \PHPUnit_Framework_TestCase
          */
     }
 
+    public function testList()
+    {
+        $a = 1;
+        $b = 2;
+        $c = 3;
+
+        list($d, $e, $f) = [&$a, &$b, &$c];
+
+        $d = 5;
+        $e = 6;
+        $f = 7;
+
+        /**
+         * Допускав, що будуть 5, 6, 7 - але...
+         */
+        $this->assertSame($a, 1);
+        $this->assertSame($b, 2);
+        $this->assertSame($c, 3);
+
+        /**
+         * Спробуємо інакше:
+         */
+        $i = 25;
+        $j = [&$i];
+
+        $this->assertSame($j, [25]);
+
+        $i = 35;
+        $this->assertSame($j, [35]);
+        /**
+         * Хоч, тут співпало
+         */
+    }
+
     public function testOperation()
     {
         $a = 1;
