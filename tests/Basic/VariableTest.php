@@ -32,6 +32,25 @@ class VariableTest extends \PHPUnit_Framework_TestCase
 
         ${' with space '} = 6;
         $this->assertEquals(${' with space '}, 6);
+
+        ${1} = 7;
+        $this->assertEquals(${1}, 7);
+        $this->assertEquals(${'1'}, 7);
+
+        ${1e3} = 8;
+        $this->assertEquals(${1e3}, 8);
+
+        ${1e-3} = 9;
+        $this->assertEquals(${1e-3}, 9);
+        $this->assertEquals(${0.001}, 9);
+
+        ${011} = 11;
+        $this->assertEquals(${011}, 11);
+        $this->assertEquals(${9}, 11);
+
+        ${0xAA} = 0xC;
+        $this->assertEquals(${0xAA}, 0xC);
+        $this->assertEquals(${170}, 0xC);
     }
 
     public function testInvalidName()
