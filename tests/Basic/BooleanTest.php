@@ -13,8 +13,10 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
     public function trueChoose()
     {
         return [
+            [true],
             [.1],
             [-1],
+            [[1]],
             ['1'],
             // and
             ['-0']
@@ -38,6 +40,9 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
             [-0],
             [''],
             ['0'],
+            [[]],
+            [null],
+            [false],
         ];
     }
 }
