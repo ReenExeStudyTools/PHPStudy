@@ -17,6 +17,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
     public function sortProvider()
     {
         return [
+            [[], [], []],
             [
                 [3, 1, 2], [1, 2, 3], [3, 2, 1]
             ],
@@ -69,5 +70,15 @@ class SortTest extends \PHPUnit_Framework_TestCase
 
             ],
         ];
+    }
+
+    public function testSortResult()
+    {
+        $array = ['x' => 'y', 'i' => 'j'];
+
+        $this->assertTrue(sort($array));
+        $this->assertTrue(rsort($array));
+        $this->assertTrue(asort($array));
+        $this->assertTrue(arsort($array));
     }
 }
