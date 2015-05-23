@@ -72,7 +72,7 @@ class SortTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testSortResult()
+    public function testSortSuccess()
     {
         $array = ['x' => 'y', 'i' => 'j'];
 
@@ -80,5 +80,26 @@ class SortTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(rsort($array));
         $this->assertTrue(asort($array));
         $this->assertTrue(arsort($array));
+    }
+
+    /**
+     * @dataProvider scalarDataProvider
+     */
+    public function testSortFail($data)
+    {
+        $this->assertFalse(@sort($data));
+        $this->assertFalse(@rsort($data));
+        $this->assertFalse(@asort($data));
+        $this->assertFalse(@arsort($data));
+    }
+
+    public function scalarDataProvider()
+    {
+        return [
+            ['value'],
+            [77],
+            [false],
+            [null],
+        ];
     }
 }
