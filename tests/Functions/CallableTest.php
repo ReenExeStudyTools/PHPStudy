@@ -18,6 +18,24 @@ class CallableTest extends \PHPUnit_Framework_TestCase
          */
     }
 
+    public function testVariable()
+    {
+        $callback = function() {};
+
+        $this->assertCallable($callback);
+    }
+
+    public function testClosure()
+    {
+        $variable = 5;
+
+        $callable = function() use ($variable){
+            return $variable;
+        };
+
+        $this->assertEquals($callable(), $variable);
+    }
+
     public function standardList()
     {
         return [
