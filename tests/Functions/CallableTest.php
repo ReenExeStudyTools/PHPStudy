@@ -36,6 +36,21 @@ class CallableTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($callable(), $variable);
     }
 
+    public function testClosureReference()
+    {
+        $variable = 5;
+        $square = function() use (&$variable) {
+            $variable *= $variable;
+        };
+        $square();
+        $this->assertEquals($variable, 25);
+    }
+
+    public function testClosureRecursive()
+    {
+
+    }
+
     public function standardList()
     {
         return [
