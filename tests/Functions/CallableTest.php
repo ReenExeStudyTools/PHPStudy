@@ -69,11 +69,28 @@ class CallableTest extends \PHPUnit_Framework_TestCase
 
     public function testCallUserFunction()
     {
-        $this->assertSame(call_user_func('boolval', 1), true);
-        $this->assertSame(call_user_func_array('boolval', [1]), true);
+        $this->assertEquals(call_user_func('boolval', 1), true);
+        $this->assertEquals(call_user_func_array('boolval', [1]), true);
 
-        $this->assertSame(call_user_func('max', 1, 7), 7);
-        $this->assertSame(call_user_func_array('max', [1, 7]), 7);
+        $this->assertEquals(call_user_func('max', 1, 7), 7);
+        $this->assertEquals(call_user_func_array('max', [1, 7]), 7);
+    }
+
+    public function testJustForFun()
+    {
+        /**
+         * Segmentation fault (core dumped)
+
+            $this->assertEquals(
+                call_user_func('call_user_func', 'max', 1, 1),
+                1
+            );
+
+            $this->assertEquals(
+                call_user_func_array('call_user_func_array', ['max', 1, 1]),
+                1
+            );
+         */
     }
 
     public function standardList()
@@ -84,6 +101,8 @@ class CallableTest extends \PHPUnit_Framework_TestCase
             ['intval'],
             ['is_callable'],
             ['get_class'],
+            ['call_user_func'],
+            ['call_user_func_array'],
             ['\ReenExe\Study\CallableFunction::staticFunction'],
             ['\\ReenExe\\Study\\CallableFunction::staticFunction'],
         ];
