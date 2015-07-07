@@ -21,6 +21,8 @@ class StrReplaceTest extends \PHPUnit_Framework_TestCase
             ['aa', 'z', 'aa', 'z', 1],
             ['a', 'z', 'aa', 'zz', 2],
             [['a'], ['z'], 'aa', 'zz', 2],
+            // some magics
+            [['a', 'p'], ['apple', 'pear'], 'a p', 'apearpearle pear', 4],
         ];
     }
 }
