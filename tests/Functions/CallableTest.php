@@ -48,7 +48,23 @@ class CallableTest extends \PHPUnit_Framework_TestCase
 
     public function testClosureRecursive()
     {
+        $factorial = function($value) use(&$factorial) {
+            static $cache = [];
 
+            if (isset($cache[$value])) {
+                return $cache[$value];
+            }
+
+            if ($value > 1) {
+                return $cache[$value] = $value * $factorial($value - 1);
+            }
+
+            return 1;
+        };
+
+        $this->assertEquals($factorial(3), 1 * 2 * 3);
+        $this->assertEquals($factorial(2), 1 * 2);
+        $this->assertEquals($factorial(1), 1);
     }
 
     public function standardList()
