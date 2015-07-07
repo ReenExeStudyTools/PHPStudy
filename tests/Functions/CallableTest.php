@@ -36,6 +36,7 @@ class CallableTest extends \PHPUnit_Framework_TestCase
         $object = new \ReenExe\Study\CallableFunction();
 
         $this->assertCallable([$object, 'method']);
+        $this->assertCallable([$object, 'staticFunction']);
     }
 
     private function assertCallable(callable $function)
