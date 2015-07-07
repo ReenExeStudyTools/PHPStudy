@@ -67,6 +67,15 @@ class CallableTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($factorial(1), 1);
     }
 
+    public function testCallUserFunction()
+    {
+        $this->assertSame(call_user_func('boolval', 1), true);
+        $this->assertSame(call_user_func_array('boolval', [1]), true);
+
+        $this->assertSame(call_user_func('max', 1, 7), 7);
+        $this->assertSame(call_user_func_array('max', [1, 7]), 7);
+    }
+
     public function standardList()
     {
         return [
