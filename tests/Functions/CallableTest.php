@@ -8,6 +8,14 @@ class CallableTest extends \PHPUnit_Framework_TestCase
     public function testStandard($name)
     {
         $this->assertTrue(is_callable($name));
+
+        $this->assertCallable($name);
+
+        /**
+         * But for this - have Parse error
+         *
+         * (callable) $name;
+         */
     }
 
     public function standardList()
@@ -18,8 +26,20 @@ class CallableTest extends \PHPUnit_Framework_TestCase
             ['intval'],
             ['is_callable'],
             ['get_class'],
-            ['\ReenExe\Study\CallableFunction::LittleFunction'],
-            ['\\ReenExe\\Study\\CallableFunction::LittleFunction'],
+            ['\ReenExe\Study\CallableFunction::staticFunction'],
+            ['\\ReenExe\\Study\\CallableFunction::staticFunction'],
         ];
+    }
+
+    public function testArrayFormat()
+    {
+        $object = new \ReenExe\Study\CallableFunction();
+
+        $this->assertCallable([$object, 'method']);
+    }
+
+    private function assertCallable(callable $function)
+    {
+        $this->assertTrue(true);
     }
 }

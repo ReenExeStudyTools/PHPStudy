@@ -4,8 +4,13 @@ namespace ReenExe\Study;
 
 class CallableFunction
 {
-    public static function LittleFunction()
+    public static function staticFunction()
     {
         /* NOP */
+    }
+
+    public function method()
+    {
+
     }
 }
