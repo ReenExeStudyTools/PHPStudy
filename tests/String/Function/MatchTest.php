@@ -13,7 +13,8 @@ class MatchTest extends \PHPUnit_Framework_TestCase
     public function sscanfProvider()
     {
         return [
-            ['3 7', '%d %d', [3, 7]]
+            ['3 7', '%d %d', [3, 7]],
+            ['123', '%1d%1d%1d', [1, 2, 3]],
         ];
     }
 }
