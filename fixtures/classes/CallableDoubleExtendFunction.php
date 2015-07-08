@@ -2,7 +2,7 @@
 
 namespace ReenExe\Study;
 
-class CallableExtendFunction extends CallableFunction
+class CallableDoubleExtendFunction extends CallableExtendFunction
 {
     public static function staticFunction()
     {
