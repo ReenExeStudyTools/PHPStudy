@@ -129,6 +129,9 @@ class CallableTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_callable(['\ReenExe\Study\CallableFunction', 'staticFunction']));
         $this->assertTrue(is_callable(['\ReenExe\Study\CallableExtendFunction', 'parent::staticFunction']));
 
+        $this->assertCallable(['\ReenExe\Study\CallableFunction', 'staticFunction']);
+        $this->assertCallable(['\ReenExe\Study\CallableExtendFunction', 'parent::staticFunction']);
+
         /**
          * but have error when
          * $this->assertCallable([$object, 'parent::parent::method']);
