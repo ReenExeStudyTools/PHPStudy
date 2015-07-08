@@ -7,9 +7,7 @@ class CallableTest extends \PHPUnit_Framework_TestCase
      */
     public function testStandard($name)
     {
-        $this->assertTrue(is_callable($name));
-
-        $this->assertCallable($name);
+        $this->assertDoubleCallable($name);
 
         /**
          * But for this - have Parse error
@@ -112,25 +110,19 @@ class CallableTest extends \PHPUnit_Framework_TestCase
     {
         $object = new \ReenExe\Study\CallableFunction();
 
-        $this->assertCallable([$object, 'method']);
-        $this->assertCallable([$object, 'staticFunction']);
+        $this->assertDoubleCallable([$object, 'method']);
+        $this->assertDoubleCallable([$object, 'staticFunction']);
+        $this->assertDoubleCallable(['\ReenExe\Study\CallableFunction', 'staticFunction']);
+        $this->assertDoubleCallable([get_class($object), 'staticFunction']);
+        $this->assertDoubleCallable([\ReenExe\Study\CallableFunction::class, 'staticFunction']);
     }
 
     public function testCallableParent()
     {
         $object = new \ReenExe\Study\CallableExtendFunction();
 
-        $this->assertCallable([$object, 'method']);
-        $this->assertCallable([$object, 'parent::method']);
-
-        $this->assertCallable([$object, 'staticFunction']);
-        $this->assertCallable([$object, 'parent::staticFunction']);
-
-        $this->assertTrue(is_callable(['\ReenExe\Study\CallableFunction', 'staticFunction']));
-        $this->assertTrue(is_callable(['\ReenExe\Study\CallableExtendFunction', 'parent::staticFunction']));
-
-        $this->assertCallable(['\ReenExe\Study\CallableFunction', 'staticFunction']);
-        $this->assertCallable(['\ReenExe\Study\CallableExtendFunction', 'parent::staticFunction']);
+        $this->assertDoubleCallable([$object, 'parent::staticFunction']);
+        $this->assertDoubleCallable(['\ReenExe\Study\CallableExtendFunction', 'parent::staticFunction']);
 
         /**
          * but have error when
@@ -145,6 +137,13 @@ class CallableTest extends \PHPUnit_Framework_TestCase
     {
         $callable = new \ReenExe\Study\CallableClass();
         $this->assertCallable($callable);
+    }
+
+    private function assertDoubleCallable($function)
+    {
+        $this->assertTrue(is_callable($function));
+
+        $this->assertCallable($function);
     }
 
     private function assertCallable(callable $function)
