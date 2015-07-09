@@ -13,6 +13,11 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($a == $b);
         $this->assertTrue($a !== $b);
 
+        $a->value = new \stdClass();
+        $b->value = new \stdClass();
+        $this->assertTrue($a == $b);
+        $this->assertTrue($a !== $b);
+
         $a->value = 1;
         $b->value = 2;
         $this->assertTrue($a != $b);
