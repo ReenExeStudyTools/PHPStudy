@@ -16,7 +16,7 @@ class CallableCollectorTest extends \PHPUnit_Framework_TestCase
 
         /**
          * Parse error:
-         * 
+         *
          * $collector(1)(2)(3);
          */
     }
