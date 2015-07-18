@@ -12,5 +12,8 @@ class AliasTypeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue((float) '1' === 1.0);
         $this->assertTrue((double) '1' === 1.0);
+        $this->assertTrue((real) '1' === 1.0);
+
+        $this->assertTrue((unset) '1' === NULL);
     }
 }
