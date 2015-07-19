@@ -2,7 +2,7 @@
 
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
-    public function testAdd()
+    public function testPush()
     {
         $array = [];
 
@@ -23,5 +23,12 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->assertTrue($array === [1 => 'Two', 2 => 'Four']);
+    }
+
+    public function testAdd()
+    {
+        $this->assertTrue([1 => 1] + [2 => 2] === [1 => 1, 2 => 2]);
+
+        $this->assertTrue([1 => 1] + [1 => 2] === [1 => 1]);
     }
 }
