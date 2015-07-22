@@ -16,6 +16,15 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             [
                 [], []
             ],
+            [
+                [1, true, 'value'], [1, true, 'value']
+            ],
+            [
+                [false, 0, null, '', '0', []], []
+            ],
+            [
+                [false, 1 => 1], [1 => 1]
+            ],
         ];
     }
 }
