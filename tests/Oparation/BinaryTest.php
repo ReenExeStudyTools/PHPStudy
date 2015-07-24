@@ -10,6 +10,8 @@ class BinaryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue((1 | 0) === 1);
         $this->assertTrue((0b1 | 0b0) === 0b1);
+        $this->assertTrue((070 | 007) === 077);
+        $this->assertTrue((0xA0 | 0x0A) === 0xAA);
 
         $this->assertTrue((1 | 2) === 3);
         $this->assertTrue((0b1 | 0b10) === 0b11);
@@ -29,6 +31,8 @@ class BinaryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue((1 & 0) === 0);
         $this->assertTrue((0b1 & 0b0) === 0b0);
+        $this->assertTrue((070 & 007) === 00);
+        $this->assertTrue((0x70 & 0x07) === 0x0);
 
         $this->assertTrue((1 & 2) === 0);
         $this->assertTrue((0b1 & 0b10) === 0b0);
@@ -58,6 +62,8 @@ class BinaryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue((1 ^ 0) === 1);
         $this->assertTrue((0b1 ^ 0b0) === 0b1);
+        $this->assertTrue((01 ^ 00) === 01);
+        $this->assertTrue((0x1 ^ 0x0) === 0x1);
 
         $this->assertTrue((1 ^ 2) === 3);
         $this->assertTrue((0b1 ^ 0b10) === 0b11);
