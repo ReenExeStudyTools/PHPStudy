@@ -27,8 +27,12 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     public function testAdd()
     {
+        // full
         $this->assertTrue([1 => 1] + [2 => 2] === [1 => 1, 2 => 2]);
 
+        // priority
         $this->assertTrue([1 => 1] + [1 => 2] === [1 => 1]);
+
+        $this->assertTrue([1 => 2] + [1 => 3] + [1 => 1] === [1 => 2]);
     }
 }
