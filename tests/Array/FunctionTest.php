@@ -16,5 +16,10 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             array_merge([1 => 'a'], [2 => 'b'], [3 => 'c']) === ['a', 'b', 'c']
         );
+
+        // on double key - use last pair key-value
+        $this->assertTrue(
+            array_merge(['a' => 1], ['a' => 3], ['a' => 2]) === ['a' => 2]
+        );
     }
 }
