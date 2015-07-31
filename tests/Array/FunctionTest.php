@@ -21,5 +21,10 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             array_merge(['a' => 1], ['a' => 3], ['a' => 2]) === ['a' => 2]
         );
+
+        // stay first key sequence
+        $this->assertTrue(
+            array_merge([1, 2, 3, 'a' => 4], [5, 6, 7, 'b' => 8], ['a' => 'x', 'b' => 'y']) === [1, 2, 3, 'a' => 'x', 5, 6, 7, 'b' => 'y']
+        );
     }
 }
