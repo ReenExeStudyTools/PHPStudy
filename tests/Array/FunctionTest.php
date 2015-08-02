@@ -46,4 +46,31 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     {
         array_flip(['a' => array()]);
     }
+
+    public function testCombine()
+    {
+        // simple
+        $this->assertTrue(array_combine([1, 2, 3], ['a', 'b', 'c']) === [1 => 'a', 2 => 'b', 3 => 'c']);
+
+        // on key double use last value
+        $this->assertTrue(array_combine([1, 1, 1], ['a', 'b', 'c']) === [1 => 'c']);
+
+        // for fun
+        $this->assertTrue(array_combine([], []) === []);
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage Both parameters should have an equal number of elements
+     */
+    public function testCombineWithDifferentLength()
+    {
+        array_combine([1, 2], [3]);
+    }
+
+    public function testCombineWithDifferentLengthResult()
+    {
+        // for fun
+        $this->assertTrue(@array_combine([1, 2], [3]) === false);
+    }
 }
