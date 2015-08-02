@@ -57,6 +57,28 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         // for fun
         $this->assertTrue(array_combine([], []) === []);
+
+        $array = [
+            'a' => 1,
+            'b' => 8,
+            'c' => 27,
+        ];
+
+        $this->assertTrue(
+            array_combine(array_keys($array), array_values($array)) === $array
+        );
+
+        $this->assertTrue(
+            array_combine(array_keys($array), $array) === $array
+        );
+
+        $this->assertTrue(
+            array_combine(array_values($array), array_keys($array)) === array_flip($array)
+        );
+
+        $this->assertTrue(
+            array_combine($array, array_keys($array)) === array_flip($array)
+        );
     }
 
     /**
@@ -72,5 +94,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     {
         // for fun
         $this->assertTrue(@array_combine([1, 2], [3]) === false);
+
+        $this->assertTrue(@array_combine([1, 1], [3]) === false);
     }
 }
