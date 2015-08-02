@@ -27,4 +27,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             array_merge([1, 2, 3, 'a' => 4], [5, 6, 7, 'b' => 8], ['a' => 'x', 'b' => 'y']) === [1, 2, 3, 'a' => 'x', 5, 6, 7, 'b' => 'y']
         );
     }
+
+    public function testFlip()
+    {
+        $this->assertTrue(array_flip([1]) === [1 => 0]);
+        $this->assertTrue(array_flip([1 => 'a']) === ['a' => 1]);
+
+        // use last key
+        $this->assertTrue(array_flip([1, 1]) === [1 => 1]);
+        $this->assertTrue(array_flip(['a' => 1, 'b' => 1]) === [1 => 'b']);
+    }
 }
