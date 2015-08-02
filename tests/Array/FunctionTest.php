@@ -82,7 +82,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException PHPUnit_Framework_Error_Warning
+     * @expectedException \PHPUnit_Framework_Error_Warning
      * @expectedExceptionMessage Both parameters should have an equal number of elements
      */
     public function testCombineWithDifferentLength()
@@ -98,7 +98,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(@array_combine([1, 1], [3]) === false);
     }
 
-    public function testArrayCountValue()
+    public function testArrayCountValues()
     {
         $this->assertTrue(
             array_count_values([]) === []
@@ -110,6 +110,22 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(
             array_count_values(['a', 'b', 'a', 'c']) === ['a' => 2, 'b' => 1, 'c' => 1]
+        );
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage array_count_values(): Can only count STRING and INTEGER values!
+     */
+    public function testArrayCountValuesIncorrect()
+    {
+        array_count_values([ 'key' => [] ]);
+    }
+
+    public function testArrayCountValuesIncorrectResult()
+    {
+        $this->assertTrue(
+            @array_count_values([['this is array'], 'b', 'a']) === ['b' => 1, 'a' => 1]
         );
     }
 }
