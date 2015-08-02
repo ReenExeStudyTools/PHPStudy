@@ -2,6 +2,25 @@
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
 {
+    public function testValues()
+    {
+        $this->assertTrue(array_values([]) === []);
+        $this->assertTrue(array_values(['key' => 'value']) === ['value']);
+    }
+
+    public function testKeys()
+    {
+        $this->assertTrue(array_keys([]) === []);
+        $this->assertTrue(array_keys(['a' => 1, 'b' => 2]) === ['a', 'b']);
+    }
+
+    public function testArrayKeyExist()
+    {
+        $array = ['key' => null];
+        $this->assertTrue(array_key_exists('key', $array));
+        $this->assertFalse(isset($array['key']));
+    }
+
     public function testMerge()
     {
         // can merge one params
