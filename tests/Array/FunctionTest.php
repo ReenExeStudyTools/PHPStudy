@@ -14,6 +14,13 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_keys(['a' => 1, 'b' => 2]) === ['a', 'b']);
     }
 
+    public function testInArray()
+    {
+        $this->assertTrue(in_array(1, [1]));
+        $this->assertTrue(in_array(1, [1], $strict = true));
+        $this->assertFalse(in_array(1, ['1'], $strict = true));
+    }
+
     public function testArrayKeyExist()
     {
         $array = ['key' => null];
