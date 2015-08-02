@@ -97,4 +97,19 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(@array_combine([1, 1], [3]) === false);
     }
+
+    public function testArrayCountValue()
+    {
+        $this->assertTrue(
+            array_count_values([]) === []
+        );
+
+        $this->assertTrue(
+            array_count_values(['a', 'b']) === ['a' => 1, 'b' => 1]
+        );
+
+        $this->assertTrue(
+            array_count_values(['a', 'b', 'a', 'c']) === ['a' => 2, 'b' => 1, 'c' => 1]
+        );
+    }
 }
