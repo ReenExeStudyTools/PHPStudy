@@ -37,4 +37,13 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_flip([1, 1]) === [1 => 1]);
         $this->assertTrue(array_flip(['a' => 1, 'b' => 1]) === [1 => 'b']);
     }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage array_flip(): Can only flip STRING and INTEGER values!
+     */
+    public function testFlipIncorrectValueArrayAsKey()
+    {
+        array_flip(['a' => array()]);
+    }
 }
