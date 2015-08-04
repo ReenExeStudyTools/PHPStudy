@@ -46,10 +46,17 @@ class SetTest extends \PHPUnit_Framework_TestCase
                 ['1']
             ],
 
-            // why?
             [
                 [0, false, null, ''],
                 [0, false]
+            ],
+            [
+                [0, '', false, null],
+                [0, '']
+            ],
+            [
+                [0, null, '', false],
+                [0, null]
             ],
 
             [

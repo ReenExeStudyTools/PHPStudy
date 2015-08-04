@@ -7,6 +7,8 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue((int) '1' === 1);
         $this->assertTrue((int) true === 1);
         $this->assertTrue((string) 1 === '1');
+        $this->assertTrue((string) true === '1');
+        $this->assertTrue((string) false === '');
         $this->assertTrue((bool) 'OK' === true);
         $this->assertTrue((float) '1' === 1.0);
     }
