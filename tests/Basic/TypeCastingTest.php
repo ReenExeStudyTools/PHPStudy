@@ -6,11 +6,45 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue((int) '1' === 1);
         $this->assertTrue((int) true === 1);
+        $this->assertTrue((int) [] === 0);
+        $this->assertTrue((int) [1] === 1);
+        $this->assertTrue((int) [2] === 1);
+        $this->assertTrue((int) [1, 2] === 1);
+
         $this->assertTrue((string) 1 === '1');
         $this->assertTrue((string) true === '1');
         $this->assertTrue((string) false === '');
+
         $this->assertTrue((bool) 'OK' === true);
+
         $this->assertTrue((float) '1' === 1.0);
+        $this->assertTrue((float) '1' === 1.0);
+        $this->assertTrue((float) [] === 0.0);
+        $this->assertTrue((float) [1] === 1.0);
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error
+     * @expectedExceptionMessage Object of class stdClass could not be converted to string
+     */
+    public function testObjectToStringConvert()
+    {
+        $object = (object) 'value';
+
+        $this->assertTrue($object->scalar === 'value');
+
+        (string) $object;
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error
+     * @expectedExceptionMessage Array to string conversion
+     */
+    public function testArrayToStringConvert()
+    {
+        $array = ['value'];
+
+        (string) $array;
     }
 
     public function testFunction()

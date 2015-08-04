@@ -35,4 +35,33 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue([1 => 2] + [1 => 3] + [1 => 1] === [1 => 2]);
     }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage Illegal offset type
+     */
+    public function testKeyScalarObject()
+    {
+        $object = (object) 'value';
+
+        $this->assertTrue($object->scalar === 'value');
+
+        [$object => 1];
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage Illegal offset type
+     */
+    public function testKeyStringObject()
+    {
+        $stringObject = new \ReenExe\Study\StringClass('value');
+
+        $this->assertFalse($stringObject === 'value');
+        $this->assertTrue((string) $stringObject === 'value');
+        $this->assertTrue($stringObject == 'value');
+
+        // exception
+        [$stringObject => 1];
+    }
 }
