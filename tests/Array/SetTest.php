@@ -106,4 +106,10 @@ class SetTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * TODO: SORT_REGULAR
+     * TODO: array_intersect
+     * TODO: array_diff
+     */
 }
