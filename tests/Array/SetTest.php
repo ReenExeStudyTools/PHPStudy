@@ -16,6 +16,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [[1, 1, 1], [1]],
+
             [[1, true, '1'], [1]],
             [[true, '1'], [true]],
             [['1', 1], ['1']],
@@ -24,6 +25,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
             [[0, false, null], [0, false]],
 
             [[false, null], [false]],
+            [[null, false], [null]],
         ];
     }
 }
