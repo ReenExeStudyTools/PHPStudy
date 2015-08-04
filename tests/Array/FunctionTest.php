@@ -9,6 +9,7 @@
  * array_combine
  * array_count_values
  * array_slice
+ * array_chunk
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -209,5 +210,16 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_slice($hybrid, 2, 2, true) === ['c' => 5, 1 => 6]);
         $this->assertTrue(array_slice($hybrid, 2, 3) === ['c' => 5, 6, 9]);
         $this->assertTrue(array_slice($hybrid, 2, 3, true) === ['c' => 5, 1 => 6, 8 => 9]);
+    }
+
+    public function testChunk()
+    {
+        $hybrid = ['a' => 1, 'b' => 2, 'c' => 3, 5, 6];
+
+        $this->assertTrue(array_chunk($hybrid, 1) === [[1], [2], [3], [5], [6]]);
+        $this->assertTrue(array_chunk($hybrid, 2) === [[1, 2], [3, 5], [6]]);
+
+        $this->assertTrue(array_chunk($hybrid, 1, true) === [['a' => 1], ['b' => 2], ['c' => 3], [5], [1 => 6]]);
+        $this->assertTrue(array_chunk($hybrid, 2, true) === [['a' => 1, 'b' => 2], ['c' => 3, 5], [1 => 6]]);
     }
 }
