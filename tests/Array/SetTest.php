@@ -15,7 +15,15 @@ class SetTest extends \PHPUnit_Framework_TestCase
     public function uniqueProvider()
     {
         return [
-            [[1, 1, 1], [1]]
+            [[1, 1, 1], [1]],
+            [[1, true, '1'], [1]],
+            [[true, '1'], [true]],
+            [['1', 1], ['1']],
+
+            // why?
+            [[0, false, null], [0, false]],
+
+            [[false, null], [false]],
         ];
     }
 }
