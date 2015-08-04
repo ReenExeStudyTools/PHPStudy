@@ -10,6 +10,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
     public function testUnique(array $source, array $expected)
     {
         $this->assertTrue(array_unique($source) === $expected);
+        $this->assertTrue(array_unique($source, SORT_STRING) === $expected);
     }
 
     public function uniqueProvider()
