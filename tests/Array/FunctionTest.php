@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * array_values
+ * array_keys
+ * in_array
+ * array_merge
+ * array_flip
+ * array_combine
+ * array_count_values
+ * array_slice
+ */
+
 class FunctionTest extends \PHPUnit_Framework_TestCase
 {
     public function testValues()
@@ -50,7 +61,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         // stay first key sequence
         $this->assertTrue(
-            array_merge([1, 2, 3, 'a' => 4], [5, 6, 7, 'b' => 8], ['a' => 'x', 'b' => 'y']) === [1, 2, 3, 'a' => 'x', 5, 6, 7, 'b' => 'y']
+            array_merge([1, 2, 3, 'a' => 4], [1, 2, 7, 'b' => 8], ['a' => 'x', 'b' => 'y']) === [1, 2, 3, 'a' => 'x', 1, 2, 7, 'b' => 'y']
         );
     }
 
@@ -153,5 +164,50 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             @array_count_values([['this is array'], 'b', 'a']) === ['b' => 1, 'a' => 1]
         );
+    }
+
+    public function testSlice()
+    {
+        $assoc = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertTrue(array_slice($assoc, 0) === $assoc);
+        $this->assertTrue(array_slice($assoc, 0, 1) === ['a' => 1]);
+        $this->assertTrue(array_slice($assoc, 1) === ['b' => 2, 'c' => 3]);
+        // more than exists
+        $this->assertTrue(array_slice($assoc, 1, 100) === ['b' => 2, 'c' => 3]);
+
+        $this->assertTrue(array_slice($assoc, 1, 1) === ['b' => 2]);
+
+        $array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        $this->assertTrue(array_slice($array, 0) === $array);
+        $this->assertTrue(array_slice($array, 0, 8, true) === $array);
+
+        // more than exists
+        $this->assertTrue(array_slice($array, 0, 100, true) === $array);
+
+        $this->assertTrue(array_slice($array, 1, 1) === [2]);
+
+        // falsy
+        $this->assertTrue(array_slice($array, 1, 1, 0) === [2]);
+        $this->assertTrue(array_slice($array, 1, 1, false) === [2]);
+        $this->assertTrue(array_slice($array, 1, 1, '') === [2]);
+
+        // truthy
+        $this->assertTrue(array_slice($array, 1, 1, true) === [1 => 2]);
+        $this->assertTrue(array_slice($array, 1, 1, 1) === [1 => 2]);
+        $this->assertTrue(array_slice($array, 1, 1, -1) === [1 => 2]);
+        $this->assertTrue(array_slice($array, 1, 1, 'value') === [1 => 2]);
+
+        $this->assertTrue(array_slice($array, 1, 2, true) === [1 => 2, 2 => 3]);
+
+        $hybrid = ['a' => 2, 1, 'c' => 5, 6, 8 => 9];
+        $this->assertTrue(array_slice($hybrid, 0, 2) === ['a' => 2, 1]);
+        $this->assertTrue(array_slice($hybrid, 0, 2, true) === ['a' => 2, 1]);
+
+        $this->assertTrue(array_slice($hybrid, 2, 2) === ['c' => 5, 6]);
+        $this->assertTrue(array_slice($hybrid, 2, 2, true) === ['c' => 5, 1 => 6]);
+        $this->assertTrue(array_slice($hybrid, 2, 3) === ['c' => 5, 6, 9]);
+        $this->assertTrue(array_slice($hybrid, 2, 3, true) === ['c' => 5, 1 => 6, 8 => 9]);
     }
 }
