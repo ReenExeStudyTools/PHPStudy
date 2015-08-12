@@ -16,6 +16,24 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($array[8], 'next');
     }
 
+    public function testStack()
+    {
+        $array = [];
+
+        array_push($array, 1, 2, 3);
+
+        $this->assertTrue($array === [1, 2, 3]);
+
+        $this->assertTrue(array_pop($array) === 3);
+        $this->assertTrue($array === [1, 2]);
+
+        array_unshift($array, 7, 8, 9);
+        $this->assertTrue($array === [7, 8, 9, 1, 2]);
+
+        $this->assertTrue(array_shift($array) === 7);
+        $this->assertTrue($array === [8, 9, 1, 2]);
+    }
+
     public function testNumeration()
     {
         $array = [
