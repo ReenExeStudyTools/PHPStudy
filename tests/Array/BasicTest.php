@@ -34,6 +34,29 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($array === [8, 9, 1, 2]);
     }
 
+    public function testAssocStack()
+    {
+        $assoc = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertTrue(array_push($assoc, 'x', 'y', 'z') === count($assoc));
+
+        $this->assertTrue($assoc === ['a' => 1, 'b' => 2, 'c' => 3, 'x', 'y','z']);
+
+        $assoc = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        $this->assertTrue(array_pop($assoc) === 3);
+        $this->assertTrue($assoc === ['a' => 1, 'b' => 2]);
+
+        array_unshift($assoc, 'x', 'y', 'z');
+        $this->assertTrue($assoc === ['x', 'y', 'z', 'a' => 1, 'b' => 2]);
+
+        $hybrid = ['start' => 'begin', 1 => 'a', 2 => 'b', 3 => 'c', 'finish' => 'end'];
+        $this->assertTrue(array_shift($hybrid) === 'begin');
+
+        // reset number keys
+        $this->assertTrue($hybrid === ['a', 'b', 'c', 'finish' => 'end']);
+    }
+
     public function testNumeration()
     {
         $array = [
