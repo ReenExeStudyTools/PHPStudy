@@ -107,6 +107,14 @@ class SetTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    public function testDiff()
+    {
+        $this->assertTrue(array_diff([], []) === []);
+        $this->assertTrue(array_diff([1], []) === [1]);
+        $this->assertTrue(array_diff(['a' => 1], []) === ['a' => 1]);
+        $this->assertTrue(array_diff([1 => 1], []) === [1 => 1]);
+        $this->assertTrue(array_diff([1, 2, 3], []) === [1, 2, 3]);
+    }
     /**
      * TODO: SORT_REGULAR
      * TODO: array_intersect
