@@ -149,4 +149,14 @@ class SetTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_intersect(['a' => 1], ['b' => 1], ['c' => 1]) === ['a' => 1]);
         $this->assertTrue(array_intersect(['a' => true], ['b' => 1], ['c' => 1]) === ['a' => true]);
     }
+
+    public function testIntersectAssoc()
+    {
+        $this->assertTrue(array_intersect_assoc([], []) === []);
+
+        $this->assertTrue(array_intersect_assoc(['1'], [1], [true]) === ['1']);
+        $this->assertTrue(array_intersect_assoc(['a' => 1], ['b' => 1], ['c' => 1]) === []);
+
+        $this->assertTrue(array_intersect_assoc([1 => 'a', 2 => 'b'], [1 => 'a', 3 => 'b']) === [1 => 'a']);
+    }
 }
