@@ -132,9 +132,21 @@ class SetTest extends \PHPUnit_Framework_TestCase
             array_diff([0, null, '', false, '0'], [0]) === [1 => null, 2 => '', 3 => false]
         );
     }
-    /**
-     * TODO: SORT_REGULAR
-     * TODO: array_intersect
-     * TODO: array_diff
-     */
+
+    public function testIntersect()
+    {
+        /**
+         * Note: Two elements are considered equal
+         * if and only if (string) $elem1 === (string) $elem2.
+         * In words: when the string representation is the same.
+         */
+
+        $this->assertTrue(array_intersect([], []) === []);
+        $this->assertTrue(array_intersect([1], []) === []);
+        $this->assertTrue(array_intersect([1, 2, 3], [5, 7, 8])  === []);
+        $this->assertTrue(array_intersect([1], [1]) === [1]);
+        $this->assertTrue(array_intersect(['a', 'b', 'c'], ['b', 'c', 'd']) === [1 => 'b', 2 => 'c']);
+        $this->assertTrue(array_intersect(['a' => 1], ['b' => 1], ['c' => 1]) === ['a' => 1]);
+        $this->assertTrue(array_intersect(['a' => true], ['b' => 1], ['c' => 1]) === ['a' => true]);
+    }
 }
