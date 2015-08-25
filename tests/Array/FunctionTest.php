@@ -4,12 +4,14 @@
  * array_values
  * array_keys
  * in_array
+ * array_search
  * array_merge
  * array_flip
  * array_combine
  * array_count_values
  * array_slice
  * array_chunk
+ * array_fill
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -30,7 +32,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(in_array(1, [1]));
         $this->assertTrue(in_array(1, [1], $strict = true));
-        $this->assertFalse(in_array(1, ['1'], $strict = true));
+        $this->assertTrue(in_array(1, ['1'], $strict = true) === false);
+    }
+
+    public function testSearch()
+    {
+        $this->assertTrue(array_search(1, ['1']) === 0);
+        $this->assertTrue(array_search(1, ['key' => '1']) === 'key');
+        $this->assertTrue(array_search(1, ['1'], $strict = true) === false);
     }
 
     public function testArrayKeyExist()
