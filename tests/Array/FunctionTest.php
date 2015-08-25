@@ -222,4 +222,28 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_chunk($hybrid, 1, true) === [['a' => 1], ['b' => 2], ['c' => 3], [5], [1 => 6]]);
         $this->assertTrue(array_chunk($hybrid, 2, true) === [['a' => 1, 'b' => 2], ['c' => 3, 5], [1 => 6]]);
     }
+
+    public function testFill()
+    {
+        $this->assertTrue(array_fill(0, 3, 'value') === ['value', 'value', 'value']);
+        $this->assertTrue(array_fill(1, 2, []) === [1 => [], 2 => []]);
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage array_fill() expects parameter 1 to be long, string given
+     */
+    public function testFillFailStartIndex()
+    {
+        array_fill('fail', 1, 'value');
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage array_fill() expects parameter 2 to be long, string given
+     */
+    public function testFillFailNum()
+    {
+        array_fill(1, 'fail', 'value');
+    }
 }
