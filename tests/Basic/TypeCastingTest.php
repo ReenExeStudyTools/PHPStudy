@@ -5,6 +5,7 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
     public function testOperator()
     {
         $this->assertTrue((int) '1' === 1);
+        $this->assertTrue((int) ' 1 ' === 1);
         $this->assertTrue((int) true === 1);
         $this->assertTrue((int) [] === 0);
         $this->assertTrue((int) [1] === 1);
