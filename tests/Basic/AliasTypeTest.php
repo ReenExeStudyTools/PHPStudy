@@ -16,4 +16,13 @@ class AliasTypeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue((unset) '1' === NULL);
     }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Array to string conversion
+     */
+    public function testArrayToString()
+    {
+        (string) [];
+    }
 }
