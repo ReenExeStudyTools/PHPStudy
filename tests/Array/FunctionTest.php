@@ -264,5 +264,13 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_map('intval', ['1', '2']) === [1, 2]);
         $this->assertTrue(array_map('max', [5, 1], [3, 2]) === [5, 2]);
         $this->assertTrue(array_map('max', [5, 1, 3], [3, 2]) === [5, 2, 3]);
+        $this->assertTrue(array_map('max', [5, 1], [3, 2], [7, 1, 3]) === [7, 2, 3]);
+
+        $increment = function ($value) {
+            return ++$value;
+        };
+        $this->assertTrue(array_map($increment, [1, 2]) === [2, 3]);
+        $this->assertTrue(array_map($increment, [1 => 1, 2 => 2]) === [1 => 2, 2 => 3]);
+        $this->assertTrue(array_map($increment, ['a' => 1, 'b' => 2]) === ['a' => 2, 'b' => 3]);
     }
 }
