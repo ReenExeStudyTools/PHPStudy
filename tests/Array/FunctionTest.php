@@ -7,6 +7,7 @@
  * array_search
  * array_merge
  * array_flip
+ * array_map
  * array_combine
  * array_count_values
  * array_slice
@@ -256,5 +257,11 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     public function testFillFailNum()
     {
         array_fill(1, 'fail', 'value');
+    }
+
+    public function testMap()
+    {
+        $this->assertTrue(array_map('intval', ['1', '2']) === [1, 2]);
+        $this->assertTrue(array_map('max', [5, 1], [3, 2]) === [5, 2]);
     }
 }
