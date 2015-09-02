@@ -13,6 +13,7 @@
  * array_slice
  * array_chunk
  * array_fill
+ * array_fill_keys
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -257,6 +258,13 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     public function testFillFailNum()
     {
         array_fill(1, 'fail', 'value');
+    }
+
+    public function testFillKeys()
+    {
+        $this->assertTrue(array_fill_keys([], true) === []);
+        $this->assertTrue(array_fill_keys([1], true) === [1 => true]);
+        $this->assertTrue(array_fill_keys(['a', 'b'], [1]) === ['a' => [1], 'b' => [1]]);
     }
 
     public function testMap()
