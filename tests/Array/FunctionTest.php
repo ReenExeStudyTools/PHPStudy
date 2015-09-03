@@ -325,5 +325,22 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             'value',
             [9, 25]
         ];
+
+        // absent column
+        yield [
+            [
+                [
+                    'code' => 1,
+                ],
+                [
+
+                ],
+                [
+                    'code' => 5
+                ]
+            ],
+            'code',
+            [1, 5]
+        ];
     }
 }
