@@ -14,6 +14,7 @@
  * array_chunk
  * array_fill
  * array_fill_keys
+ * array_column
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -280,5 +281,49 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_map($increment, [1, 2]) === [2, 3]);
         $this->assertTrue(array_map($increment, [1 => 1, 2 => 2]) === [1 => 2, 2 => 3]);
         $this->assertTrue(array_map($increment, ['a' => 1, 'b' => 2]) === ['a' => 2, 'b' => 3]);
+    }
+
+    /**
+     * @dataProvider columnDataProvider
+     * @param array $source
+     * @param $column
+     * @param array $expected
+     */
+    public function testColumn(array $source, $column, array $expected)
+    {
+        $this->assertTrue(array_column($source, $column) === $expected);
+    }
+
+    public function columnDataProvider()
+    {
+        yield [
+            [],
+            'value',
+            []
+        ];
+
+        yield [
+            [
+                [
+                    'value' => 1
+                ]
+            ],
+            'value',
+            [1]
+        ];
+
+        // drop keys
+        yield [
+            [
+                3 => [
+                    'value' => 9
+                ],
+                5 => [
+                    'value' => 25
+                ],
+            ],
+            'value',
+            [9, 25]
+        ];
     }
 }
