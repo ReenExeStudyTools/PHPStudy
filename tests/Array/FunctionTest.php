@@ -327,20 +327,26 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         ];
 
         // absent column
-        yield [
+        $absentColumnArray = [
             [
-                [
-                    'code' => 1,
-                ],
-                [
-
-                ],
-                [
-                    'code' => 5
-                ]
+                'code' => 1,
             ],
+            [
+
+            ],
+            [
+                'code' => 5
+            ]
+        ];
+        yield [
+            $absentColumnArray,
             'code',
             [1, 5]
+        ];
+        yield [
+            $absentColumnArray,
+            'value',
+            []
         ];
     }
 }
