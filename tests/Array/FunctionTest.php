@@ -349,4 +349,45 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             []
         ];
     }
+
+    /**
+     * @dataProvider columnKeyValueDataProvider
+     * @param array $source
+     * @param $column
+     * @param $key
+     * @param array $expected
+     */
+    public function testColumnKeyValue(array $source, $column, $key, array $expected)
+    {
+        $this->assertTrue(array_column($source, $column, $key) === $expected);
+    }
+
+    public function columnKeyValueDataProvider()
+    {
+        yield [
+            [],
+            'value',
+            'key',
+            [],
+        ];
+
+        yield [
+            [
+                [
+                    'key' => 'k1',
+                    'value' => 'v1',
+                ],
+                [
+                    'key' => 'k2',
+                    'value' => 'v2',
+                ],
+            ],
+            'value',
+            'key',
+            [
+                'k1' => 'v1',
+                'k2' => 'v2',
+            ],
+        ];
+    }
 }
