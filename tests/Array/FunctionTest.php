@@ -389,5 +389,31 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
                 'k2' => 'v2',
             ],
         ];
+
+        // absent
+        yield [
+            [
+                [
+                    'key' => 'k1',
+                ],
+                [
+                    'value' => 'v2',
+                ],
+                [
+                    'value' => 'v3'
+                ],
+                [
+                    'key' => 'k5',
+                    'value' => 'v5',
+                ]
+            ],
+            'value',
+            'key',
+            [
+                'v2',
+                'v3',
+                'k5' => 'v5'
+            ],
+        ];
     }
 }
