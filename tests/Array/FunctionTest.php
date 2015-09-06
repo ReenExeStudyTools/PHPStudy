@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * array_key_exists
  * array_values
  * array_keys
  * in_array
