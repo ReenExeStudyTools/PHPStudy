@@ -7,6 +7,7 @@
  * in_array
  * array_search
  * array_merge
+ * array_merge_recursive
  * array_flip
  * array_map
  * array_combine
@@ -80,6 +81,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             array_merge([1, 2, 3, 'a' => 4], [1, 2, 7, 'b' => 8], ['a' => 'x', 'b' => 'y']) === [1, 2, 3, 'a' => 'x', 1, 2, 7, 'b' => 'y']
         );
+    }
+
+    public function testMergeRecursive()
+    {
+        $this->assertTrue(array_merge_recursive([]) === []);
+        $this->assertTrue(array_merge_recursive([1]) === [1]);
+        // flush numeric keys
+        $this->assertTrue(array_merge_recursive([1 => 1]) === [1]);
     }
 
     public function testFlip()
