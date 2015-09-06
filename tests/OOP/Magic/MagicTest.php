@@ -3,6 +3,7 @@
 use ReenExe\Study\OOP\Magic\MagicTrueGetter;
 use ReenExe\Study\OOP\Magic\MagicSetter;
 use ReenExe\Study\OOP\Magic\MagicStringGetter;
+use ReenExe\Study\OOP\Magic\MagicTrueCall;
 
 class MagicTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,5 +32,15 @@ class MagicTest extends \PHPUnit_Framework_TestCase
     {
         $magic = new MagicSetter();
         $this->assertSame($magic->id = 'value', 'value');
+        $this->assertSame($magic->code = 1, 1);
+    }
+
+    public function testCall()
+    {
+        $magic = new MagicTrueCall();
+        $this->assertTrue($magic->get());
+        $this->assertFalse(method_exists($magic, 'get'));
+        $this->assertTrue($magic->execute());
+        $this->assertFalse(method_exists($magic, 'execute'));
     }
 }
