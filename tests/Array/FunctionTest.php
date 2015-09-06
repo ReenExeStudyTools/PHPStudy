@@ -15,6 +15,7 @@
  * array_fill
  * array_fill_keys
  * array_column
+ * array_change_key_case
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -466,5 +467,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
                 ]
             ]
         ];
+    }
+
+    public function testChangeKeyCase()
+    {
+        $this->assertTrue(array_change_key_case(['a' => 1]) === ['a' => 1]);
+        $this->assertTrue(array_change_key_case(['a' => 1], CASE_LOWER) === ['a' => 1]);
+        $this->assertTrue(array_change_key_case(['A' => 1]) === ['a' => 1]);
+        $this->assertTrue(array_change_key_case(['A' => 1], CASE_LOWER) === ['a' => 1]);
+        $this->assertTrue(array_change_key_case(['a' => 1], CASE_UPPER) === ['A' => 1]);
     }
 }
