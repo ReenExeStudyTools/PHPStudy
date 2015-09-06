@@ -85,10 +85,18 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     public function testMergeRecursive()
     {
-        $this->assertTrue(array_merge_recursive([]) === []);
+        // can merge one params
         $this->assertTrue(array_merge_recursive([1]) === [1]);
         // flush numeric keys
         $this->assertTrue(array_merge_recursive([1 => 1]) === [1]);
+        // stay assoc keys
+        $this->assertTrue(array_merge_recursive(['k' => 'v']) === ['k' => 'v']);
+        $this->assertTrue(array_merge_recursive([1], [2]) === [1, 2]);
+        $this->assertTrue(array_merge_recursive(['x'], ['y'], ['z']) === ['x', 'y', 'z']);
+        // flush numeric keys
+        $this->assertTrue(
+            array_merge_recursive([1 => 'a'], [2 => 'b'], [3 => 'c']) === ['a', 'b', 'c']
+        );
     }
 
     public function testFlip()
