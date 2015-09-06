@@ -443,5 +443,28 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
                 ]
             ]
         ];
+
+        // absent
+        yield [
+            [
+                [
+                    'id' => 1,
+                    'name' => 'Alex'
+                ],
+                [
+                    'name' => 'Gringo'
+                ]
+            ],
+            'id',
+            [
+                1 => [
+                    'id' => 1,
+                    'name' => 'Alex'
+                ],
+                [
+                    'name' => 'Gringo'
+                ]
+            ]
+        ];
     }
 }
