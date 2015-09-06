@@ -10,21 +10,21 @@ class ConstantTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @depends testStrictCase
      * @expectedException \PHPUnit_Framework_Error_Warning
      */
     public function testFailStrictCase()
     {
-        define('SOME_UPPER_CASE_CONSTANT', 1);
-        constant('some_upper_case_constant');
+        constant('some_case_constant');
     }
 
     /**
+     * @depends testStrictCase
      * @expectedException \PHPUnit_Framework_Error_Notice
      */
     public function testFailStrictDefaultVariantCase()
     {
-        define('SOME_UPPER_DEFAULT_CASE_CONSTANT', 1);
-        some_upper_default_case_constant;
+        some_case_constant;
     }
 
     public function testMultiCase()
