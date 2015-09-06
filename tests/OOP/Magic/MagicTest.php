@@ -1,9 +1,10 @@
 <?php
 
 use ReenExe\Study\OOP\Magic\MagicTrueGetter;
+use ReenExe\Study\OOP\Magic\MagicSetter;
 use ReenExe\Study\OOP\Magic\MagicStringGetter;
 
-class GetterTest extends \PHPUnit_Framework_TestCase
+class MagicTest extends \PHPUnit_Framework_TestCase
 {
     public function testTrue()
     {
@@ -24,5 +25,11 @@ class GetterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($magic->value === 'value');
         $rand = (string) rand();
         $this->assertTrue($magic->{$rand} === $rand);
+    }
+
+    public function testTrueSetter()
+    {
+        $magic = new MagicSetter();
+        $this->assertSame($magic->id = 'value', 'value');
     }
 }

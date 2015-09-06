@@ -4,8 +4,8 @@ namespace ReenExe\Study\OOP\Magic;
 
 class MagicStringGetter
 {
-    public function __get($value)
+    public function __get($name)
     {
-        return $value;
+        return $name;
     }
 }

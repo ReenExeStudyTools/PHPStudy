@@ -4,7 +4,7 @@ namespace ReenExe\Study\OOP\Magic;
 
 class MagicTrueGetter
 {
-    public function __get($value)
+    public function __get($name)
     {
         return true;
     }
