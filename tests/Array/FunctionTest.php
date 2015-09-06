@@ -97,6 +97,12 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             array_merge_recursive([1 => 'a'], [2 => 'b'], [3 => 'c']) === ['a', 'b', 'c']
         );
+
+        // on double key - convert to array
+        $this->assertTrue(
+            array_merge_recursive(['a' => 1], ['a' => 3], ['a' => 2]) === ['a' => [1, 3, 2]]
+        );
+
     }
 
     public function testFlip()
