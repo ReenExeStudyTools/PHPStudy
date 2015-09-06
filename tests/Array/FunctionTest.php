@@ -416,4 +416,32 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @dataProvider columnRebuildDataProvider
+     * @param array $source
+     * @param $key
+     * @param array $expected
+     */
+    public function testColumnRebuild(array $source, $key, array $expected)
+    {
+        $this->assertTrue(array_column($source, null, $key) === $expected);
+    }
+
+    public function columnRebuildDataProvider()
+    {
+        yield [
+            [
+                [
+                    'id' => 1
+                ]
+            ],
+            'id',
+            [
+                1 => [
+                    'id' => 1
+                ]
+            ]
+        ];
+    }
 }
