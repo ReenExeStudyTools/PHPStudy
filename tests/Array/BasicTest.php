@@ -11,6 +11,23 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $array = [];
         $value = $array['key'];
     }
+    
+    public function testSetNested()
+    {
+        $array = [];
+        $this->assertTrue(empty($array['a']['b']['c']));
+        $this->assertTrue(empty($array['a']['b']));
+        $this->assertTrue(empty($array['a']));
+        
+        $array['a']['b']['c'] = true;
+        $this->assertTrue($array === [
+            'a' => [
+                'b' => [
+                    'c' => true
+                ]
+            ]    
+        ]);
+    }
 
     public function testPush()
     {
