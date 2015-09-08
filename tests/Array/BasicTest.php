@@ -2,6 +2,16 @@
 
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
+    
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Notice
+     */
+    public function testUndefinedKey()
+    {
+        $array = [];
+        $value = $array['key'];
+    }
+
     public function testPush()
     {
         $array = [];
