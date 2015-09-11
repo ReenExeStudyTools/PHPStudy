@@ -16,3 +16,5 @@ by book `Zend PHP 5.5 Certification Study Guide, Third Edition`
 *    Strings & Patterns
 *    Web Features
 *    I/O
+
+TODO: test urlencode, urldecode, http_build_query
