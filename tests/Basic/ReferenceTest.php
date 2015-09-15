@@ -23,9 +23,9 @@ class ReferenceTest extends \PHPUnit_Framework_TestCase
         /**
          * Припущення - що всі значення будуть однакові і рівні останньому, а саме 7
          */
-        $this->assertSame($a, 5);
-        $this->assertSame($b, 5);
-        $this->assertSame($c, 5);
+        $this->assertSame($a, 7);
+        $this->assertSame($b, 7);
+        $this->assertSame($c, 7);
         /**
          * Але результати дивують
          */
@@ -34,9 +34,9 @@ class ReferenceTest extends \PHPUnit_Framework_TestCase
          * Друг підказав
          */
         list($a, $b, $c) = [8, 9, &$a];
-        $this->assertSame($a, 8);
-        $this->assertSame($b, 8);
-        $this->assertSame($c, 8);
+        $this->assertSame($a, 9);
+        $this->assertSame($b, 9);
+        $this->assertSame($c, 9);
         /**
          * Співпало
          */

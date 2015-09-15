@@ -282,7 +282,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \PHPUnit_Framework_Error_Warning
-     * @expectedExceptionMessage array_fill() expects parameter 1 to be long, string given
+     * @expectedExceptionMessage array_fill() expects parameter 1 to be integer, string given
      */
     public function testFillFailStartIndex()
     {
@@ -291,7 +291,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \PHPUnit_Framework_Error_Warning
-     * @expectedExceptionMessage array_fill() expects parameter 2 to be long, string given
+     * @expectedExceptionMessage array_fill() expects parameter 2 to be integer, string given
      */
     public function testFillFailNum()
     {
