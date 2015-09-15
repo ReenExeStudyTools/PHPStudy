@@ -17,4 +17,4 @@ by book `Zend PHP 5.5 Certification Study Guide, Third Edition`
 *    Web Features
 *    I/O
 
-TODO: test urlencode, urldecode, http_build_query
+For use PHP 7 - https://github.com/rlerdorf/php7dev
