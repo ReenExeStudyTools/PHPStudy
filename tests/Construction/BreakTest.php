@@ -12,7 +12,7 @@ class BreakTest extends \PHPUnit_Framework_TestCase
         /**
          * Fatal error: Cannot 'break' 2 levels
             while (true) {
-                break;
+                break 2;
             }
          */
     }
