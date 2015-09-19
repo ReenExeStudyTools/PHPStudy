@@ -18,4 +18,26 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             ['California', 'for', 5, false],
         ];
     }
+
+    /**
+     * @dataProvider strtrDataProvider
+     * @param $str
+     * @param $from
+     * @param $to
+     * @param $expect
+     */
+    public function testStrtr($str, $from, $to, $expect)
+    {
+        $this->assertSame(strtr($str, $from, $to), $expect);
+    }
+
+    public function strtrDataProvider()
+    {
+        yield [
+            'a a',
+            'a',
+            'c',
+            'c c'
+        ];
+    }
 }
