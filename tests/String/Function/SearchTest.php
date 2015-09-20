@@ -40,4 +40,26 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             'c c'
         ];
     }
+
+    /**
+     * @dataProvider strtrPairsDataProvider
+     * @param $str
+     * @param array $pairs
+     * @param $expect
+     */
+    public function testStrtrPairs($str, array $pairs, $expect)
+    {
+        $this->assertSame(strtr($str, $pairs), $expect);
+    }
+
+    public function strtrPairsDataProvider()
+    {
+        yield [
+            'a a',
+            [
+                'a' => 'b'
+            ],
+            'b b'
+        ];
+    }
 }
