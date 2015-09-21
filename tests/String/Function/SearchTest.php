@@ -39,6 +39,13 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             'c',
             'c c'
         ];
+
+        yield [
+            'abc',
+            'abcd',
+            'abcde',
+            'abc'
+        ];
     }
 
     /**
@@ -60,6 +67,24 @@ class SearchTest extends \PHPUnit_Framework_TestCase
                 'a' => 'b'
             ],
             'b b'
+        ];
+
+        yield [
+            'a b',
+            [
+                'a' => 'b',
+                'b' => 'c',
+            ],
+            'b c'
+        ];
+
+        yield [
+            'abc',
+            [
+                'ab' => 'bc',
+                'bc' => 'cd',
+            ],
+            'bcc'
         ];
     }
 }
