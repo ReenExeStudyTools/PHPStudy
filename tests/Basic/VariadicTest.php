@@ -10,6 +10,27 @@ class VariadicTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($array, ['a', 'b', 'c']);
     }
 
+    public function testPushDouble()
+    {
+        /**
+         * just for fun
+         */
+        $array = [
+            [],
+            'a', 'b', 'c'
+        ];
+
+        array_push(...$array);
+
+        $this->assertSame(
+            $array,
+            [
+                ['a', 'b', 'c'],
+                'a', 'b', 'c'
+            ]
+        );
+    }
+
     public function testMerge()
     {
         $array = [
