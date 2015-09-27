@@ -312,6 +312,8 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_map('max', [5, 1, 3], [3, 2]) === [5, 2, 3]);
         $this->assertTrue(array_map('max', [5, 1], [3, 2], [7, 1, 3]) === [7, 2, 3]);
 
+        $this->assertTrue(array_map(NULL, ['key' => 'value']) === ['key' => 'value']);
+
         $increment = function ($value) {
             return ++$value;
         };
