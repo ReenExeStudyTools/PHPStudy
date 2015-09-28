@@ -85,11 +85,21 @@ class PatternTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
+        foreach (['/a*/', '/a?/'] as $pattern) {
+            yield [
+                $pattern, [
+                    ['a', 1],
+                    ['aaaaa', 1],
+                    ['', 1],
+                ]
+            ];
+        }
+
         yield [
-            '/a*/', [
+            '/a+/', [
                 ['a', 1],
                 ['aaaaa', 1],
-                ['', 1],
+                ['', 0],
             ]
         ];
     }
