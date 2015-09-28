@@ -26,13 +26,16 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `__callStatic`
 
 ### Arrays functions
+##### Stack
 * `array_push`
 * `array_pop`
 * `array_unshift`
 * `array_shift`
 
+##### Filter
 * `array_filter`
 
+##### Common
 * `array_key_exists`
 * `array_values`
 * `array_keys`
@@ -51,11 +54,13 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_column`
 * `array_change_key_case`
 
+##### Sets
 * `array_unique`
 * `array_diff`
 * `array_intersect`
 * `array_intersect_assoc`
 
+##### Sort
 * `sort`
 * `asort`
 * `arsort`
