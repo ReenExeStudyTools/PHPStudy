@@ -5,6 +5,7 @@ use ReenExe\Study\OOP\Magic\MagicSetter;
 use ReenExe\Study\OOP\Magic\MagicStringGetter;
 use ReenExe\Study\OOP\Magic\MagicTrueCall;
 use ReenExe\Study\OOP\Magic\IssetUnsetInstance;
+use ReenExe\Study\OOP\Magic\CloneInstance;
 
 class MagicTest extends \PHPUnit_Framework_TestCase
 {
@@ -68,5 +69,15 @@ class MagicTest extends \PHPUnit_Framework_TestCase
 
             $this->assertFalse(isset($instance->$property));
         }
+    }
+
+    public function testClone()
+    {
+        $instance = new CloneInstance();
+        $this->assertSame($instance->getWhoIAm(), 'original');
+
+        $clone = clone $instance;
+        $this->assertSame($instance->getWhoIAm(), 'original');
+        $this->assertSame($clone->getWhoIAm(), 'clone');
     }
 }

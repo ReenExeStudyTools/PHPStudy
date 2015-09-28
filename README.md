@@ -33,6 +33,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `__get`
 * `__call`
 * `__callStatic`
+* `__clone`
 
 ### Arrays functions
 ##### Stack
