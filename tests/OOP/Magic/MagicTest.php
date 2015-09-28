@@ -92,8 +92,12 @@ class MagicTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($instance->isSleep());
 
-        serialize($instance);
-
+        $serialize = serialize($instance);
         $this->assertTrue($instance->isSleep());
+
+        /* @var $copy SleepInstance */
+        $copy = unserialize($serialize);
+        $this->assertFalse($copy->isSleep());
+        $this->assertSame($copy->getData(), $data);
     }
 }

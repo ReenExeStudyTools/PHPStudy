@@ -20,8 +20,18 @@ class SleepInstance
         return ['data'];
     }
 
+    public function __wakeup()
+    {
+        $this->sleep = false;
+    }
+
     public function isSleep()
     {
         return $this->sleep;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 }
