@@ -112,14 +112,16 @@ class PatternTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        yield [
-            '/^\d{5}-\d{3}/',
-            [
-                ['12345-678', 1],
-                ['123-678', 0],
-                ['3-6', 0],
-            ]
-        ];
+        foreach (['/^\d{5}-\d{3}/', '/^\d\d\d\d\d-\d\d\d/'] as $pattern) {
+            yield [
+                '/^\d{5}-\d{3}/',
+                [
+                    ['12345-678', 1],
+                    ['123-678', 0],
+                    ['3-6', 0],
+                ]
+            ];
+        }
 
         yield [
             '/(hot)? ?coffee/',
