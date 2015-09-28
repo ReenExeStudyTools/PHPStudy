@@ -46,5 +46,43 @@ class PatternTest extends \PHPUnit_Framework_TestCase
                 ['c', 0],
             ]];
         }
+
+        yield [
+            '/\d/', [
+                [1, 1],
+                ['exp > 2', 1],
+            ]
+        ];
+
+        yield [
+            '/\w/', [
+                [1, 1],
+                ['exp > 2', 1],
+            ]
+        ];
+
+        yield [
+            '/^a/', [
+                ['a', 1],
+                ['amber', 1],
+                ['brute', 0],
+            ]
+        ];
+
+        yield [
+            '/a$/', [
+                ['a', 1],
+                ['gloria', 1],
+                ['bone', 0],
+            ]
+        ];
+
+        yield [
+            '/^a$/', [
+                ['a', 1],
+                ['aaa', 0],
+                ['c', 0],
+            ]
+        ];
     }
 }
