@@ -124,6 +124,15 @@ class PatternTest extends \PHPUnit_Framework_TestCase
         }
 
         yield [
+            '/^(\d{5}|\d{3})$/',
+            [
+                ['12345', 1],
+                ['123', 1],
+                ['5555', 0],
+            ]
+        ];
+
+        yield [
             '/(hot)? ?coffee/',
             [
                 ['coffee', 1],
