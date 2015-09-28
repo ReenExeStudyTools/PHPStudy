@@ -8,27 +8,43 @@ class PatternTest extends \PHPUnit_Framework_TestCase
     public function testMatch($pattern, array $map)
     {
         foreach ($map as list($subject, $result)) {
-            $this->assertTrue(preg_match($pattern, $subject) === $result);
+            $this->assertSame(preg_match($pattern, $subject), $result);
         }
     }
 
     public function matchProvider()
     {
-        return [
-            ['/[a-z]/', [
-                ['abc', 1],
-                ['xyz', 1],
-                ['o', 1],
-                ['L', 0],
-                ['XL', 0],
-                ['7', 0],
-                ['1', 0],
-                ['', 0],
-            ]],
-            ['/[a-z]/i', [
-                ['x', 1],
-                ['X', 1],
-            ]],
-        ];
+        yield ['/[a-z]/', [
+            ['abc', 1],
+            ['xyz', 1],
+            ['o', 1],
+            ['L', 0],
+            ['XL', 0],
+            ['7', 0],
+            ['1', 0],
+            ['', 0],
+        ]];
+
+        yield ['/[a-z]/i', [
+            ['x', 1],
+            ['X', 1],
+        ]];
+
+        yield ['/./', [
+            ['a', 1],
+            ['b', 1],
+            ['', 0],
+        ]];
+
+        foreach (['/a|b/', '/(a|b)/', '/((a|b))/', '/(a)|(b)/'] as $pattern) {
+            yield [$pattern, [
+                ['a', 1],
+                ['aa', 1],
+                ['b', 1],
+                ['bb', 1],
+                ['ab', 1],
+                ['c', 0],
+            ]];
+        }
     }
 }
