@@ -19,6 +19,12 @@ by book `Zend PHP 5.5 Certification Study Guide, Third Edition`
 
 For use PHP 7 - https://github.com/rlerdorf/php7dev
 
+### Construction
+* `finally`
+* `yield`
+* `continue`
+* `break`
+
 ### OOP Magic
 * `__call`
 * `__get`
