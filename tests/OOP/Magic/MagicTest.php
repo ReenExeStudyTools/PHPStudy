@@ -43,4 +43,12 @@ class MagicTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($magic->execute());
         $this->assertFalse(method_exists($magic, 'execute'));
     }
+
+    public function testCallStatic()
+    {
+        $this->assertSame(MagicTrueCall::call(), null);
+        $this->assertSame(MagicTrueCall::call('end', [1, 2, 3]), 3);
+        $this->assertSame(MagicTrueCall::call('current', [1, 2, 3]), 1);
+        $this->assertSame(MagicTrueCall::call('max', 1, 2, 3), 3);
+    }
 }

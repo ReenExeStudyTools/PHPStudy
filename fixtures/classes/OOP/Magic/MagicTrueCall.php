@@ -8,4 +8,12 @@ class MagicTrueCall
     {
         return true;
     }
+
+    public static function __callStatic($name, array $args)
+    {
+        $callable = array_shift($args);
+        if (is_callable($callable)) {
+            return $callable(...$args);
+        }
+    }
 }
