@@ -4,6 +4,7 @@ use ReenExe\Study\OOP\Magic\MagicTrueGetter;
 use ReenExe\Study\OOP\Magic\MagicSetter;
 use ReenExe\Study\OOP\Magic\MagicStringGetter;
 use ReenExe\Study\OOP\Magic\MagicTrueCall;
+use ReenExe\Study\OOP\Magic\IssetUnsetInstance;
 
 class MagicTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,5 +51,22 @@ class MagicTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(MagicTrueCall::call('end', [1, 2, 3]), 3);
         $this->assertSame(MagicTrueCall::call('current', [1, 2, 3]), 1);
         $this->assertSame(MagicTrueCall::call('max', 1, 2, 3), 3);
+    }
+
+    public function testIssetUnset()
+    {
+        $instance = new IssetUnsetInstance([]);
+
+        foreach (['value', 'id', 'name', 'parent.gender.id'] as $property) {
+            $this->assertFalse(isset($instance->date));
+
+            $instance->$property = 'some-value';
+
+            $this->assertTrue(isset($instance->$property));
+
+            unset($instance->$property);
+
+            $this->assertFalse(isset($instance->$property));
+        }
     }
 }

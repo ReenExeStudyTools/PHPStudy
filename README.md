@@ -27,6 +27,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### OOP Magic
 * `__call`
+* `__set`
+* `__isset`
+* `__unset`
 * `__get`
 * `__call`
 * `__callStatic`
