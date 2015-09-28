@@ -71,3 +71,14 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `asort`
 * `arsort`
 * `rsort`
+
+### Type alias
+* `int`
+* `integer`
+
+* `bool`
+* `boolean`
+
+* `float`
+* `double`
+* `real`
