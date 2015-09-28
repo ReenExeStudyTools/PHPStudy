@@ -34,6 +34,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `__call`
 * `__callStatic`
 * `__clone`
+* `__sleep`
 
 ### Arrays functions
 ##### Stack

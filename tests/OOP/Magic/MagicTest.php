@@ -6,6 +6,7 @@ use ReenExe\Study\OOP\Magic\MagicStringGetter;
 use ReenExe\Study\OOP\Magic\MagicTrueCall;
 use ReenExe\Study\OOP\Magic\IssetUnsetInstance;
 use ReenExe\Study\OOP\Magic\CloneInstance;
+use ReenExe\Study\OOP\Magic\SleepInstance;
 
 class MagicTest extends \PHPUnit_Framework_TestCase
 {
@@ -79,5 +80,20 @@ class MagicTest extends \PHPUnit_Framework_TestCase
         $clone = clone $instance;
         $this->assertSame($instance->getWhoIAm(), 'original');
         $this->assertSame($clone->getWhoIAm(), 'clone');
+    }
+
+    public function testSleep()
+    {
+        $data = [
+            'key' => 'value'
+        ];
+
+        $instance = new SleepInstance($data);
+
+        $this->assertFalse($instance->isSleep());
+
+        serialize($instance);
+
+        $this->assertTrue($instance->isSleep());
     }
 }
