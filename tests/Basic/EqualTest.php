@@ -10,6 +10,7 @@ class EqualTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(1 == '01');
         $this->assertTrue('01' == '001');
         $this->assertTrue('01e3' == '001e3');
+        $this->assertTrue('01e3' == 1000);
         $this->assertTrue(1 == '1');
         $this->assertTrue(true == '1');
         $this->assertTrue(true == 1);
