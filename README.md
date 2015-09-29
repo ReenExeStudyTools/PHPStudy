@@ -25,6 +25,20 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `continue`
 * `break`
 
+### String
+##### Functions
+* `str_replace`
+* `sscanf`
+* `strpos`
+* `strtr`
+* `urlencode`
+* `urldecode`
+* `http_build_query`
+##### Patterns
+* `preg_match`
+* `implode`
+* `join` alias of `implode`
+
 ### OOP Magic
 * `__call`
 * `__set`
