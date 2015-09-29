@@ -28,6 +28,14 @@ class ImplodeExplodeTest extends \PHPUnit_Framework_TestCase
             yield [
                 $glue, [], ''
             ];
+
+            yield [
+                $glue, [''], ''
+            ];
+
+            yield [
+                $glue, ['', ''], $glue
+            ];
         }
 
         yield [
@@ -37,5 +45,29 @@ class ImplodeExplodeTest extends \PHPUnit_Framework_TestCase
         yield [
             '', ['a', 'b', 'c'], 'abc'
         ];
+    }
+
+    /**
+     * @dataProvider explodeProvider
+     * @param $delimeter
+     * @param $string
+     * @param array $expected
+     */
+    public function testExplode($delimeter, $string, array $expected)
+    {
+        $this->assertSame(explode($delimeter, $string), $expected);
+    }
+
+    public function explodeProvider()
+    {
+        foreach ([',', ':'] as $glue) {
+            yield [
+                $glue, '', ['']
+            ];
+
+            yield [
+                $glue, $glue, ['', '']
+            ];
+        }
     }
 }

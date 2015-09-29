@@ -38,6 +38,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `preg_match`
 * `implode`
 * `join` alias of `implode`
+* `explode`
 
 ### OOP Magic
 * `__call`
