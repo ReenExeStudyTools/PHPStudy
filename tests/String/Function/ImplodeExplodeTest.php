@@ -49,13 +49,13 @@ class ImplodeExplodeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider explodeProvider
-     * @param $delimeter
+     * @param $delimiter
      * @param $string
      * @param array $expected
      */
-    public function testExplode($delimeter, $string, array $expected)
+    public function testExplode($delimiter, $string, array $expected)
     {
-        $this->assertSame(explode($delimeter, $string), $expected);
+        $this->assertSame(explode($delimiter, $string), $expected);
     }
 
     public function explodeProvider()
@@ -69,5 +69,22 @@ class ImplodeExplodeTest extends \PHPUnit_Framework_TestCase
                 $glue, $glue, ['', '']
             ];
         }
+    }
+
+    /**
+     * @dataProvider emptyExplodeProvider
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage explode(): Empty delimiter
+     */
+    public function testEmptyExplode($delimiter)
+    {
+        explode($delimiter, '');
+    }
+
+    public function emptyExplodeProvider()
+    {
+        yield [''];
+        yield [false];
+        yield [null];
     }
 }
