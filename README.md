@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ReenExe/PHP-Certification-Study.svg)](https://travis-ci.org/ReenExe/PHP-Certification-Study)
 
 by book `Zend PHP 5.5 Certification Study Guide, Third Edition`
+will be good to see: <https://github.com/php/php-langspec>
 
 
 *    PHP Basics
