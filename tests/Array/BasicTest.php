@@ -5,11 +5,12 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @expectedException \PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Undefined index: description
      */
     public function testUndefinedKey()
     {
         $array = [];
-        $value = $array['key'];
+        $value = $array['description'];
     }
     
     public function testSetNested()
