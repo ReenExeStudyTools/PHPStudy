@@ -6,10 +6,13 @@ class PropertyInstanceTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        try {
-            new PropertyInstanceClass();
-        } catch (\Throwable $e) {
+        /**
+         * need wait: https://wiki.php.net/rfc/engine_exceptions_for_php7
+            try {
+                new PropertyInstanceClass();
+            } catch (\Throwable $e) {
 
-        }
+            }
+         */
     }
 }
