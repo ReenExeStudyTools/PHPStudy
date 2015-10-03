@@ -30,6 +30,13 @@ class NumericTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(1.1e0 === 1.1);
     }
 
+    public function testExceptionConverted()
+    {
+        $this->assertSame((int) NAN, 0);
+        $this->assertSame((int) INF, 0);
+        $this->assertSame((int) -INF, 0);
+    }
+
     public function testConverted()
     {
         $result = (0.1 + 0.7) * 10;
