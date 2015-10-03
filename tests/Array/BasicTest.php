@@ -12,7 +12,14 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $array = [];
         $value = $array['description'];
     }
-    
+
+    public function testExpresion()
+    {
+        $this->assertSame([1 + 2 => 8], [3 => 8]);
+        $this->assertSame([1 * 2 => 3], [2 => 3]);
+        $this->assertSame([1 . 5 => 3], ['15' => 3]);
+    }
+
     public function testSetNested()
     {
         $array = [];
