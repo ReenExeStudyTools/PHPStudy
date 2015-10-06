@@ -14,6 +14,8 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['California', 'for', null, 4],
+            ['California', 'Calif', null, 0],
+            ['California', 'calif', null, false],
             ['California', 'while', null, false],
             ['California', 'for', 5, false],
         ];
