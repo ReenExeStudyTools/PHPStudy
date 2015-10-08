@@ -57,13 +57,6 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(floatval('1') === 1.0);
     }
 
-    public function testSetType()
-    {
-        $value = '1';
-        settype($value, 'integer');
-        $this->assertTrue($value === 1);
-    }
-
     public function testIs()
     {
         $this->assertTrue(is_int(1));
@@ -88,5 +81,19 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $object = new \stdClass();
         $this->assertTrue(is_object($object));
         $this->assertFalse(is_object([]));
+    }
+
+    /**
+     * @dataProvider setTypeProvider
+     */
+    public function testSetType($value, $type, $expect)
+    {
+        settype($value, $type);
+        $this->assertTrue($value === $expect);
+    }
+
+    public function setTypeProvider()
+    {
+        yield ['1', 'integer', 1];
     }
 }
