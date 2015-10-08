@@ -59,6 +59,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ##### Anonymous Class
 
+##### Design Pattern
+* Decorator
+
 ### Arrays functions
 ##### Stack
 * `array_push`
