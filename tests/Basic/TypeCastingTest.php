@@ -95,5 +95,22 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
     public function setTypeProvider()
     {
         yield ['1', 'integer', 1];
+        yield [' 1 ', 'integer', 1];
+        yield ['1', 'int', 1];
+        yield [1, 'int', 1];
+
+        yield [1, 'float', 1.0];
+        yield [' 1 ', 'float', 1.0];
+
+        yield [1, 'string', '1'];
+
+        yield [1, 'array', [1]];
+        yield [1, 'array', [1]];
+        yield [[1], 'array', [1]];
+        yield [[], 'array', []];
+
+        yield [[], 'null', null];
+        yield [1, 'null', null];
+        yield ['text', 'null', null];
     }
 }
