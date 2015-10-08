@@ -60,7 +60,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ##### Anonymous Class
 
 ##### Design Pattern
-* Decorator
+* Decorator (from `Head First`)
 
 ### Arrays functions
 ##### Stack
