@@ -35,13 +35,17 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `urlencode`
 * `urldecode`
 * `http_build_query`
+
+* `settype`
+* `gettype`
 ##### Patterns
 * `preg_match`
 * `implode`
 * `join` alias of `implode`
 * `explode`
 
-### OOP Magic
+### OOP
+##### Magic
 * `__call`
 * `__set`
 * `__isset`
@@ -52,6 +56,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `__clone`
 * `__sleep`
 * `__wakeup`
+
+##### Anonymous Class
 
 ### Arrays functions
 ##### Stack
