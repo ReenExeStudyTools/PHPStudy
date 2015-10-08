@@ -38,12 +38,24 @@ class AnonymousClassTest extends \PHPUnit_Framework_TestCase
         yield [true];
     }
 
-    public function test()
+    public function testExtend()
     {
         $class = new StringClass('source');
         $this->assertSame((string) $class, 'source');
 
         $anonymousClass = new class('anonymous') extends StringClass{};
         $this->assertSame((string) $anonymousClass, 'anonymous');
+    }
+
+    public function testClassCreateCall()
+    {
+        $value = (new class {
+            public function execute()
+            {
+                return 'some-value';
+            }
+        })->execute();
+
+        $this->assertSame($value, 'some-value');
     }
 }
