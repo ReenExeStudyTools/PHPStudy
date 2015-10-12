@@ -4,6 +4,7 @@ use ReenExe\Study\OOP\TraitSpace\SimpleClass;
 use ReenExe\Study\OOP\TraitSpace\SimpleTrait;
 use ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass;
 use ReenExe\Study\OOP\TraitSpace\TraitTypeArgument;
+use ReenExe\Study\OOP\TraitSpace\AbstractTraitClass;
 
 class TraitTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,6 +33,14 @@ class TraitTest extends \PHPUnit_Framework_TestCase
          *      instance of ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass given
             $instance = new TraitTypeArgumentClass();
             $instance->replace($instance);
+         */
+    }
+
+    public function testAbstractTrait()
+    {
+        /**
+         * Parse error: syntax error
+            new AbstractTraitClass();
          */
     }
 }
