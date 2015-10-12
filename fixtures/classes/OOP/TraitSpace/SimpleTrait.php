@@ -4,15 +4,15 @@ namespace ReenExe\Study\OOP\TraitSpace;
 
 trait SimpleTrait
 {
-    private $traitValue;
+    private $value;
 
-    public function getTraitValue()
+    public function getValue()
     {
-        return $this->traitValue;
+        return $this->value;
     }
 
-    public function setTraitValue($value)
+    public function setValue($value)
     {
-        $this->traitValue = $value;
+        $this->value = $value;
     }
 }
