@@ -6,6 +6,7 @@ use ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass;
 use ReenExe\Study\OOP\TraitSpace\TraitTypeArgument;
 use ReenExe\Study\OOP\TraitSpace\AbstractTraitClass;
 use ReenExe\Study\OOP\TraitSpace\TraitImplementCountableClass;
+use ReenExe\Study\OOP\TraitSpace\PrivatePropertyAccessClass;
 
 class TraitTest extends \PHPUnit_Framework_TestCase
 {
@@ -55,5 +56,12 @@ class TraitTest extends \PHPUnit_Framework_TestCase
 
         $instance->add('b', 'c');
         $this->assertSame(count($instance), 3);
+    }
+
+    public function testPrivatePropertyAccess()
+    {
+        $instance = new PrivatePropertyAccessClass();
+
+        $this->assertSame($instance->getTraitPrivateValue(), 'this is trait private value');
     }
 }
