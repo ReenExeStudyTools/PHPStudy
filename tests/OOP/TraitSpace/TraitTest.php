@@ -62,6 +62,6 @@ class TraitTest extends \PHPUnit_Framework_TestCase
     {
         $instance = new PrivatePropertyAccessClass();
 
-        $this->assertSame($instance->getTraitPrivateValue(), 'this is trait private value');
+        $this->assertSame($instance->getTraitPrivateValue(), 'this is trait private propery');
     }
 }
