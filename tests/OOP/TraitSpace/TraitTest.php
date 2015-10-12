@@ -5,6 +5,7 @@ use ReenExe\Study\OOP\TraitSpace\SimpleTrait;
 use ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass;
 use ReenExe\Study\OOP\TraitSpace\TraitTypeArgument;
 use ReenExe\Study\OOP\TraitSpace\AbstractTraitClass;
+use ReenExe\Study\OOP\TraitSpace\TraitImplementCountableClass;
 
 class TraitTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,5 +43,17 @@ class TraitTest extends \PHPUnit_Framework_TestCase
          * Parse error: syntax error
             new AbstractTraitClass();
          */
+    }
+
+    public function testTraitImplementInterface()
+    {
+        $instance = new TraitImplementCountableClass();
+        $this->assertSame(count($instance), 0);
+
+        $instance->add('a');
+        $this->assertSame(count($instance), 1);
+
+        $instance->add('b', 'c');
+        $this->assertSame(count($instance), 3);
     }
 }
