@@ -30,6 +30,7 @@ class ReflectionFunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($varParam->isOptional());
         $this->assertFalse($varParam->allowsNull());
         $this->assertTrue($varParam->canBePassedByValue());
+        $this->assertCannotDetermineDefaultValue($varParam);
 
         /* @var $baseParam ReflectionParameter */
         $baseParam = $parameters[1];
@@ -38,5 +39,16 @@ class ReflectionFunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($baseParam->isOptional());
         $this->assertFalse($baseParam->allowsNull());
         $this->assertTrue($baseParam->canBePassedByValue());
+        $this->assertCannotDetermineDefaultValue($baseParam);
+    }
+
+    private function assertCannotDetermineDefaultValue(ReflectionParameter $parameter)
+    {
+        try {
+            $parameter->getDefaultValue();
+            $this->fail();
+        } catch (\ReflectionException $e) {
+            $this->assertSame($e->getMessage(), 'Cannot determine default value for internal functions');
+        }
     }
 }
