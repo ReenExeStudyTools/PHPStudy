@@ -7,6 +7,8 @@ use ReenExe\Study\OOP\TraitSpace\TraitTypeArgument;
 use ReenExe\Study\OOP\TraitSpace\AbstractTraitClass;
 use ReenExe\Study\OOP\TraitSpace\TraitImplementCountableClass;
 use ReenExe\Study\OOP\TraitSpace\PrivatePropertyAccessClass;
+use ReenExe\Study\OOP\TraitSpace\TraitUseTraitClass;
+use ReenExe\Study\OOP\TraitSpace\TraitUseTraitPrivatePropertyClass;
 
 class TraitTest extends \PHPUnit_Framework_TestCase
 {
@@ -63,5 +65,23 @@ class TraitTest extends \PHPUnit_Framework_TestCase
         $instance = new PrivatePropertyAccessClass();
 
         $this->assertSame($instance->getTraitPrivateValue(), 'this is trait private propery');
+    }
+
+    public function testTraitUseTrait()
+    {
+        $instance = new TraitUseTraitClass();
+
+        $instance->setValue('some');
+
+        $this->assertSame($instance->getValue(), 'some');
+    }
+
+    public function testGetParentTraitPrivateProperty()
+    {
+        $instance = new TraitUseTraitPrivatePropertyClass();
+
+        $instance->setValue('some');
+
+        $this->assertSame($instance->getParentTraitPrivateProperty(), 'some');
     }
 }
