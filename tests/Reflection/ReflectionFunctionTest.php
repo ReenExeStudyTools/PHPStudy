@@ -26,11 +26,17 @@ class ReflectionFunctionTest extends \PHPUnit_Framework_TestCase
         /* @var $varParam ReflectionParameter */
         $varParam = $parameters[0];
         $this->assertSame($varParam->getName(), 'var');
+        $this->assertSame($varParam->name, 'var');
         $this->assertFalse($varParam->isOptional());
+        $this->assertFalse($varParam->allowsNull());
+        $this->assertTrue($varParam->canBePassedByValue());
 
         /* @var $baseParam ReflectionParameter */
         $baseParam = $parameters[1];
         $this->assertSame($baseParam->getName(), 'base');
+        $this->assertSame($baseParam->name, 'base');
         $this->assertTrue($baseParam->isOptional());
+        $this->assertFalse($baseParam->allowsNull());
+        $this->assertTrue($baseParam->canBePassedByValue());
     }
 }

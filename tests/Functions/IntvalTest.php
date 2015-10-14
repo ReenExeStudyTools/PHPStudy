@@ -18,5 +18,7 @@ class IntvalTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(intval('Z', 36), 35);
 
         $this->assertSame(intval('HELLO', 36), 29234652);
+
+        $this->assertSame(intval(null), 0);
     }
 }
