@@ -4,9 +4,7 @@ namespace ReenExe\Study\OOP\TraitSpace;
 
 trait TraitTypeArgument
 {
-    use SimpleTrait;
-
-    public function replace(SimpleTrait $object)
+    public function replace(TraitTypeArgument $object)
     {
         // NOP
     }

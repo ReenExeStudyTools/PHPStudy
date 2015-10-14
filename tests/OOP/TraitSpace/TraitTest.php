@@ -31,7 +31,7 @@ class TraitTest extends \PHPUnit_Framework_TestCase
         /**
          * Fatal error:
          *  Uncaught TypeException:
-         *      Argument 1 passed to ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass::replace() must be an instance of ReenExe\Study\OOP\TraitSpace\SimpleTrait,
+         *      Argument 1 passed to ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass::replace() must be an instance of ReenExe\Study\OOP\TraitSpace\TraitTypeArgument,
          *      instance of ReenExe\Study\OOP\TraitSpace\TraitTypeArgumentClass given
             $instance = new TraitTypeArgumentClass();
             $instance->replace($instance);
