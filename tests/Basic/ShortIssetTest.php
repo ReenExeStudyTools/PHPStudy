@@ -4,6 +4,7 @@ class ShortIssetTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
+        // Null Coalesce Operator ??
         $array = [];
 
         $this->assertSame($array['value'] ?? 'other', 'other');

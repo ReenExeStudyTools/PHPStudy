@@ -4,6 +4,7 @@ class ComparationTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
+        // three-way comparison operator
         $this->assertSame(1 <=> 8, -1);
         $this->assertSame('1' <=> '8', -1);
         $this->assertSame(3 <=> 1, 1);
