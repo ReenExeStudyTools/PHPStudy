@@ -142,4 +142,35 @@ class PatternTest extends \PHPUnit_Framework_TestCase
             ]
         ];
     }
+
+    /**
+     * @dataProvider replaceDataProvider
+     * @param $pattern
+     * @param $replacement
+     * @param $subject
+     * @param $expect
+     */
+    public function testReplace($pattern, $replacement, $subject, $expect)
+    {
+        $this->assertSame(preg_replace($pattern, $replacement, $subject), $expect);
+    }
+
+    public function replaceDataProvider()
+    {
+        $onlyLetters = [
+            '11' => '11',
+            '-1-1-' => '11',
+            'w-1-1-' => 'w11',
+            'w-1/s' => 'w1s',
+        ];
+
+        foreach ($onlyLetters as $from => $to) {
+            yield [
+                '/[^\w\d]/',
+                '',
+                $from,
+                $to
+            ];
+        }
+    }
 }

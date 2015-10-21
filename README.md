@@ -40,6 +40,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `gettype`
 ##### Patterns
 * `preg_match`
+* `preg_replace`
 * `implode`
 * `join` alias of `implode`
 * `explode`
