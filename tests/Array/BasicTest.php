@@ -13,7 +13,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $value = $array['description'];
     }
 
-    public function testExpresion()
+    public function testExpression()
     {
         $this->assertSame([1 + 2 => 8], [3 => 8]);
         $this->assertSame([1 * 2 => 3], [2 => 3]);
@@ -99,6 +99,14 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->assertTrue($array === [1 => 'Two', 2 => 'Four']);
+    }
+
+    public function testFloat()
+    {
+        $this->assertSame((string) 12.5, '12.5');
+        $this->assertSame([12.05 => 'value'], [12 => 'value']);
+        $this->assertSame([12.5 => 'value'], [12 => 'value']);
+        $this->assertSame([12.50 => 'value'], [12 => 'value']);
     }
 
     public function testAdd()
