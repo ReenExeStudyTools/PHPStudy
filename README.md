@@ -36,6 +36,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `urldecode`
 * `http_build_query`
 
+* `levenshtein`
+
 * `settype`
 * `gettype`
 ##### Patterns
