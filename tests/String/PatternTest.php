@@ -172,5 +172,26 @@ class PatternTest extends \PHPUnit_Framework_TestCase
                 $to
             ];
         }
+
+        $format = [
+            'AB00010002' => 'AB-0001-0002',
+            'AC00010003' => 'AC-0001-0003',
+        ];
+
+        foreach ($format as $from => $to) {
+            yield [
+                '/([A-Z]{2})(\d{4})(\d{4})/',
+                '$1-$2-$3',
+                $from,
+                $to
+            ];
+        }
+
+        yield [
+            '/([A-Z]{2})(\d{4})(\d{4})/',
+            '$1-$2-$3',
+            array_keys($format),
+            array_values($format)
+        ];
     }
 }
