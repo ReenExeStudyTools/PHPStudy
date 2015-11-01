@@ -11,5 +11,10 @@ class ReflectionClassTest extends \PHPUnit_Framework_TestCase
             'IS_FINAL' => ReflectionClass::IS_FINAL,
         ];
         $this->assertSame($constants, $self->getConstants());
+
+        $method = $self->getMethod('getMethod');
+        $this->assertSame('ReflectionClass', $method->class);
+        $this->assertSame('getMethod', $method->name);
+        $this->assertSame(ReflectionMethod::IS_PUBLIC, $method->getModifiers());
     }
 }
