@@ -11,4 +11,31 @@ class ListTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($d === 4);
         $this->assertTrue($e === 5);
     }
+
+    public function testEmpty()
+    {
+        /**
+         * Fatal error: Cannot use empty list
+
+            list() = [];
+
+         */
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Undefined offset: 0
+     */
+    public function testEmptyArray()
+    {
+        list($a) = [];
+    }
+
+    public function testResult()
+    {
+        $source = [[1]];
+        $result = list(list($one)) = $source;
+
+        $this->assertSame($result, $source);
+    }
 }
