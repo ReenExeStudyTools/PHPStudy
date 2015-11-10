@@ -120,6 +120,51 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(array_merge_recursive([[[1]]]), [[[1]]]);
     }
 
+    public function testDefaultAndRecursiveMerge()
+    {
+        $a = [
+            1,
+            2,
+            'a' => [
+                'b' => 3
+            ]
+        ];
+
+        $b = [
+            3,
+            4,
+            'a' => [
+                'b' => 5,
+                'c' => 7,
+            ]
+        ];
+
+        $result = [
+            1,
+            2,
+            'a' => [
+                'b' => 5,
+                'c' => 7,
+            ],
+            3,
+            4,
+        ];
+
+        $recursive = [
+            1,
+            2,
+            'a' => [
+                'b' => [3, 5],
+                'c' => 7,
+            ],
+            3,
+            4,
+        ];
+
+        $this->assertSame(array_merge($a, $b), $result);
+        $this->assertSame(array_merge_recursive($a, $b), $recursive);
+    }
+
     public function testFlip()
     {
         $this->assertTrue(array_flip([1]) === [1 => 0]);
