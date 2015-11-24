@@ -124,3 +124,6 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `float`
 * `double`
 * `real`
+
+### Link2
+* http://php-guide.evercodelab.com/
