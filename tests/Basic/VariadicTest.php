@@ -12,6 +12,18 @@ class VariadicTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($array, ['a', 'b', 'c']);
     }
 
+    public function testShufflePush()
+    {
+        /**
+         * Fatal error: Cannot use positional argument after argument unpacking
+
+            $array = ['a'];
+            array_push($array, ... ['b', 'c'], 'd', 'e', ... ['f', 'g']);
+            $this->assertSame($array, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+
+         */
+    }
+
     public function testPushDouble()
     {
         /**
