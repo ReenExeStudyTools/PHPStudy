@@ -41,4 +41,13 @@ class VariadicTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array_merge(...$array), [1, 2, 3]);
     }
+
+    public function testIntConvert()
+    {
+        $intConvert = function (int ... $var) {
+            return $var;
+        };
+
+        $this->assertSame($intConvert('1', '2', '3'), [1, 2, 3]);
+    }
 }
