@@ -61,6 +61,10 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `__sleep`
 * `__wakeup`
 
+### Static
+* when property
+* when method variable
+
 ##### Anonymous Class
 
 ##### Trait
