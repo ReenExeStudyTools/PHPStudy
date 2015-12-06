@@ -1,5 +1,7 @@
 <?php
 
+use ReenExe\Study\EntityClass;
+
 class VariadicTest extends \PHPUnit_Framework_TestCase
 {
     public function testPush()
@@ -49,5 +51,17 @@ class VariadicTest extends \PHPUnit_Framework_TestCase
         };
 
         $this->assertSame($intConvert('1', '2', '3'), [1, 2, 3]);
+    }
+
+    public function testClass()
+    {
+        $callback = function (EntityClass ... $var) {
+            return $var;
+        };
+
+        $a = new EntityClass();
+        $b = new EntityClass();
+
+        $this->assertSame($callback($a, $b), [$a, $b]);
     }
 }
