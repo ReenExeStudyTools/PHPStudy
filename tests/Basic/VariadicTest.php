@@ -4,12 +4,29 @@ use ReenExe\Study\EntityClass;
 
 class VariadicTest extends \PHPUnit_Framework_TestCase
 {
-    public function testPush()
+    public function test()
     {
         $array = ['a'];
         $push = ['b', 'c'];
         array_push($array, ... $push);
         $this->assertSame($array, ['a', 'b', 'c']);
+    }
+
+    public function testUpPush()
+    {
+        $array = ['a'];
+        $push = ['d', 'e'];
+        array_push($array, 'b', 'c', ... $push);
+        $this->assertSame($array, ['a', 'b', 'c', 'd', 'e']);
+    }
+
+    public function testDouble()
+    {
+        $array = ['a'];
+        $push = ['b', 'c'];
+        $double = ['d', 'e'];
+        array_push($array, ... $push, ... $double);
+        $this->assertSame($array, ['a', 'b', 'c', 'd', 'e']);
     }
 
     public function testShufflePush()
@@ -24,7 +41,7 @@ class VariadicTest extends \PHPUnit_Framework_TestCase
          */
     }
 
-    public function testPushDouble()
+    public function testReference()
     {
         /**
          * just for fun
