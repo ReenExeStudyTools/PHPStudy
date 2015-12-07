@@ -14,10 +14,8 @@ class CallableCollectorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($collector->getResult(), 21);
 
-        /**
-         * Parse error:
-         *
-         * $collector(1)(2)(3);
-         */
+        $collector(1)(2)(3);
+
+        $this->assertEquals($collector->getResult(), 27);
     }
 }
