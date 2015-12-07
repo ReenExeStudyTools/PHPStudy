@@ -42,4 +42,15 @@ class NumericTest extends \PHPUnit_Framework_TestCase
         $result = (0.1 + 0.7) * 10;
         $this->assertTrue((7 < $result) && ($result < 8));
     }
+
+    public function testFloatDifferent()
+    {
+        $source = 2326.97;
+
+        $value = 100 * $source;
+
+        $this->assertSame((int)$value, 232696);
+        $this->assertSame((string)$value, '232697');
+        $this->assertSame((int)(string)$value, 232697);
+    }
 }
