@@ -130,5 +130,6 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `double`
 * `real`
 
-### Link2
+### Link
 * http://php-guide.evercodelab.com/
+* http://www.quizful.net/ (need see new for tests)
