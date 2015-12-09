@@ -39,4 +39,20 @@ class YieldTest extends \PHPUnit_Framework_TestCase
         foreach ($both() as $value) {
         }
     }
+
+    public function testFrom()
+    {
+        $from = function () {
+            yield from [1, 2, 3];
+            yield from [4, 5, 6];
+            yield from [7, 8, 9];
+        };
+
+        $accumulator = [];
+        foreach ($from() as $value) {
+            $accumulator[] = $value;
+        }
+
+        $this->assertSame($accumulator, range(1, 9));
+    }
 }
