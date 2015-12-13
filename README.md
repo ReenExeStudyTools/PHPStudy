@@ -1,4 +1,4 @@
-# PHP-Certification-Study
+# PHP Certification Study (Zend)
 
 [![Build Status](https://travis-ci.org/ReenExeStudyTools/PHPStudy.svg)](https://travis-ci.org/ReenExeStudyTools/PHPStudy)
 
