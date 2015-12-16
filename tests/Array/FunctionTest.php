@@ -435,6 +435,22 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             'value',
             []
         ];
+
+        yield [
+            [
+                [
+                    16 => 'a'
+                ],
+                [
+
+                ],
+                [
+                    16 => 'b'
+                ]
+            ],
+            16,
+            ['a', 'b']
+        ];
     }
 
     /**
