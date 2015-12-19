@@ -8,4 +8,9 @@ class OverrideResultFactory
     {
         return new ResponsibleEntity();
     }
+
+    public static function createEntity():ResponsibleEntity
+    {
+        return new Entity();
+    }
 }
