@@ -8,4 +8,9 @@ class SelfReturnType
     {
         return new self();
     }
+
+    public function getThis(): self
+    {
+        return $this;
+    }
 }
