@@ -9,6 +9,11 @@ class SelfReturnType
         return new self();
     }
 
+    public static function getStaticInstance(): self
+    {
+        return new static();
+    }
+
     public function getThis(): self
     {
         return $this;

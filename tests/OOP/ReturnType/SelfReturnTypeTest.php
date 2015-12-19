@@ -8,6 +8,7 @@ class SelfReturnTypeTest extends \PHPUnit_Framework_TestCase
     public function testStaticMethod()
     {
         $this->assertInstanceOf(SelfReturnType::class, SelfReturnType::getInstance());
+        $this->assertInstanceOf(SelfReturnType::class, SelfReturnType::getStaticInstance());
     }
 
     public function testInstanceMethod()
@@ -20,6 +21,7 @@ class SelfReturnTypeTest extends \PHPUnit_Framework_TestCase
     public function testExtendStaticMethod()
     {
         $this->assertInstanceOf(SelfReturnType::class, ExtendSelfReturnType::getInstance());
+        $this->assertInstanceOf(ExtendSelfReturnType::class, ExtendSelfReturnType::getStaticInstance());
     }
 
     public function testExtendInstanceMethod()
