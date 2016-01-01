@@ -15,12 +15,16 @@ class YieldTest extends \PHPUnit_Framework_TestCase
 
     public function testPriority()
     {
+        /* @var $generator Generator */
+
         $both = function () {
             yield 1;
             return [1];
         };
-        foreach ($both() as $value) {
+        $generator = $both();
+        foreach ($generator as $value) {
         }
+        $this->assertSame($generator->getReturn(), [1]);
 
         $both = function () {
             return [1];
@@ -36,8 +40,20 @@ class YieldTest extends \PHPUnit_Framework_TestCase
                 return [1];
             }
         };
-        foreach ($both() as $value) {
+
+        /* @var $generator Generator */
+        $generator = $both();
+        foreach ($generator as $value) {
         }
+
+        $this->assertSame($generator->getReturn(), null);
+
+        /* @var $generator Generator */
+        $generator = $both(false);
+        foreach ($generator as $value) {
+        }
+
+        $this->assertSame($generator->getReturn(), [1]);
     }
 
     public function testFrom()
