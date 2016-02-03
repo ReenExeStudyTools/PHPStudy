@@ -4,10 +4,11 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider trueChoose
+     * @param $choose
      */
     public function testTrue($choose)
     {
-        $this->assertTrue((bool) $choose);
+        $this->assertTrue((bool)$choose);
     }
 
     public function trueChoose()
@@ -17,6 +18,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
             [.1],
             [-1],
             [[1]],
+            [[[]]],
             ['1'],
             [1],
             // and
@@ -26,10 +28,11 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider falseChoose
+     * @param $choose
      */
     public function testFalse($choose)
     {
-        $this->assertFalse((bool) $choose);
+        $this->assertFalse((bool)$choose);
     }
 
     public function falseChoose()
@@ -42,6 +45,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
             [''],
             ['0'],
             [[]],
+            [array()],
             [null],
             [false],
         ];
