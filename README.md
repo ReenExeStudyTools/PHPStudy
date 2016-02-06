@@ -41,6 +41,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `settype`
 * `gettype`
+
+* `pack`
 ##### Patterns
 * `preg_match`
 * `preg_replace`
