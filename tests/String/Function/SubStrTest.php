@@ -57,5 +57,19 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             [2],
             'bc'
         ];
+
+        yield [
+            'abc',
+            1,
+            [3],
+            'bc'
+        ];
+
+        yield [
+            'abc',
+            3,
+            [],
+            false
+        ];
     }
 }
