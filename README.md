@@ -36,6 +36,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `sscanf`
 * `strpos`
 * `strtr`
+
+* `ucfirst`
+
 * `urlencode`
 * `urldecode`
 * `http_build_query`
