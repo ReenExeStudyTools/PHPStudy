@@ -611,9 +611,33 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         yield [
             ['some'],
+            3,
+            'value',
+            ['some', 'value', 'value',]
+        ];
+
+        yield [
+            ['some'],
             -2,
             'value',
             ['value', 'some']
         ];
+
+        yield [
+            ['a', 'b', 'c'],
+            -5,
+            'new',
+            ['new', 'new', 'a', 'b', 'c']
+        ];
+
+        // try size that exist or less
+        for ($size = -5; $size <= 5; ++$size) {
+            yield [
+                ['a', 'b', 'c', 'd', 'e'],
+                1,
+                $size,
+                ['a', 'b', 'c', 'd', 'e']
+            ];
+        }
     }
 }
