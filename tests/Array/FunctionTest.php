@@ -19,6 +19,7 @@
  * array_column
  * array_change_key_case
  * array_pad
+ * array_splice
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -617,10 +618,17 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         ];
 
         yield [
-            ['some'],
+            ['key' => 'some'],
+            3,
+            'value',
+            ['key' => 'some', 'value', 'value',]
+        ];
+
+        yield [
+            ['key' => 'some'],
             -2,
             'value',
-            ['value', 'some']
+            ['value', 'key' => 'some']
         ];
 
         yield [
@@ -639,5 +647,43 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
                 ['a', 'b', 'c', 'd', 'e']
             ];
         }
+    }
+
+    /**
+     * @dataProvider spliceDataProvider
+     * @param array $input
+     * @param $offset
+     * @param $args
+     * @param array $expect
+     */
+    public function testSplice(array $input, $offset, array $args, array $expect)
+    {
+        array_splice($input, $offset, ...$args);
+
+        $this->assertSame($input, $expect);
+    }
+
+    public function spliceDataProvider()
+    {
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [1],
+            ['a', 'c']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [2],
+            ['a']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [],
+            ['a']
+        ];
     }
 }
