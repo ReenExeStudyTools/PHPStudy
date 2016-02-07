@@ -42,6 +42,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `strtolower`
 * `strtoupper`
 
+* `trim`
+
 * `urlencode`
 * `urldecode`
 * `http_build_query`
