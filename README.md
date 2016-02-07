@@ -26,6 +26,11 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `continue`
 * `break`
 
+### Basic
+##### Functions
+* `log`
+* `log10`
+
 ### String
 ##### Functions
 * `substr`
