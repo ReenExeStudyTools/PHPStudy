@@ -101,14 +101,21 @@ class PackTest extends \PHPUnit_Framework_TestCase
     {
         $format = 'S4';
 
+        $args = [
+            32,
+            256,
+            1024,
+            15625,
+        ];
+
+        $packed = pack($format, ...$args);
+
         $unpacked = [
             1 => 32,
             2 => 256,
             3 => 1024,
             4 => 15625,
         ];
-
-        $packed = pack($format, ...$unpacked);
 
         $this->assertSame(unpack($format, $packed), $unpacked);
     }
