@@ -16,26 +16,14 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
 
     public function dataProvider()
     {
-        yield [
-            'word',
-            0,
-            [],
-            'word'
-        ];
-
-        yield [
-            'word',
-            0,
-            [4],
-            'word'
-        ];
-
-        yield [
-            'word',
-            0,
-            [5],
-            'word'
-        ];
+        foreach ([[], [4], [5]] as $length) {
+            yield [
+                'word',
+                0,
+                [],
+                'word'
+            ];
+        }
 
         yield [
             'abc',
