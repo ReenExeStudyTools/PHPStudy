@@ -43,6 +43,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `strtoupper`
 
 * `trim`
+* `rtrim`
+* `ltrim`
 
 * `urlencode`
 * `urldecode`
