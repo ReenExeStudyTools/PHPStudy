@@ -28,6 +28,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### String
 ##### Functions
+* `substr`
 * `str_replace`
 * `str_split`
 * `sscanf`
