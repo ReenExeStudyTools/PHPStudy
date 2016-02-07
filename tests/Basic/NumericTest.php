@@ -37,6 +37,11 @@ class NumericTest extends \PHPUnit_Framework_TestCase
         $this->assertSame((int) -INF, 0);
     }
 
+    public function testNAN()
+    {
+        $this->assertFalse(NAN === NAN);
+    }
+
     public function testConverted()
     {
         $result = (0.1 + 0.7) * 10;
