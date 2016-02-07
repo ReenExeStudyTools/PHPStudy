@@ -3,7 +3,7 @@
 class ChangeCaseTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider  ucfirstDataProvider
+     * @dataProvider ucfirstDataProvider
      * @param $string
      * @param $expect
      */
@@ -15,13 +15,46 @@ class ChangeCaseTest extends \PHPUnit_Framework_TestCase
     public function ucfirstDataProvider()
     {
         yield [
-            'why?',
-            'Why?'
+            'this',
+            'This'
         ];
 
         yield [
-            'Why?',
-            'Why?'
+            'This',
+            'This'
+        ];
+
+        yield [
+            'this is that',
+            'This is that'
+        ];
+    }
+
+    /**
+     * @dataProvider ucwordsDataProvider
+     * @param $string
+     * @param $expect
+     */
+    public function testUcwords($string, $expect)
+    {
+        $this->assertSame(ucwords($string), $expect);
+    }
+
+    public function ucwordsDataProvider()
+    {
+        yield [
+            'this',
+            'This'
+        ];
+
+        yield [
+            'This',
+            'This'
+        ];
+
+        yield [
+            'this is that',
+            'This Is That'
         ];
     }
 }
