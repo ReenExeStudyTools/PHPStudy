@@ -95,6 +95,15 @@ class PackTest extends \PHPUnit_Framework_TestCase
                 1 => 'ABC'
             ]
         ];
+
+        yield [
+            'A5a/A3b',
+            'ABC  DE ',
+            [
+                'a' => 'ABC',
+                'b' => 'DE',
+            ]
+        ];
     }
 
     public function testPackNumber()
