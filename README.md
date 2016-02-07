@@ -29,6 +29,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### String
 ##### Functions
 * `substr`
+* `strrev`
 * `substr_replace`
 * `str_replace`
 * `str_split`
