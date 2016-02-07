@@ -22,5 +22,19 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             [],
             'word'
         ];
+
+        yield [
+            'word',
+            0,
+            [4],
+            'word'
+        ];
+
+        yield [
+            'word',
+            0,
+            [5],
+            'word'
+        ];
     }
 }
