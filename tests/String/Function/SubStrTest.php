@@ -78,5 +78,26 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             [],
             'def'
         ];
+
+        yield [
+            'abcdef',
+            -6,
+            [],
+            'abcdef'
+        ];
+
+        yield [
+            'abcdef',
+            -6,
+            [-3],
+            'abc'
+        ];
+
+        yield [
+            'abcdef',
+            -3,
+            [-1],
+            'de'
+        ];
     }
 }
