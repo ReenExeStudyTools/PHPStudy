@@ -130,6 +130,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_fill_keys`
 * `array_column`
 * `array_change_key_case`
+* `array_pad`
 
 ##### Sets
 * `array_unique`
