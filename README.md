@@ -43,6 +43,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `gettype`
 
 * `pack`
+* `unpack`
 ##### Patterns
 * `preg_match`
 * `preg_replace`

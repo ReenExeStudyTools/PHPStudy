@@ -39,4 +39,26 @@ class PackTest extends \PHPUnit_Framework_TestCase
             '123    45   '
         ];
     }
+
+    /**
+     * @dataProvider unDataProvider
+     * @param $format
+     * @param $data
+     * @param array $expect
+     */
+    public function testUn($format, $data, array $expect)
+    {
+        $this->assertSame(unpack($format, $data), $expect);
+    }
+
+    public function unDataProvider()
+    {
+        yield [
+            'A3',
+            'ABC',
+            [
+                1 => 'ABC'
+            ]
+        ];
+    }
 }
