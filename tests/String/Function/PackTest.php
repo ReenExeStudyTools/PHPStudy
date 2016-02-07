@@ -26,5 +26,17 @@ class PackTest extends \PHPUnit_Framework_TestCase
             ['12345'],
             '12345 '
         ];
+
+        yield [
+            'A3A2',
+            ['123', '45'],
+            '12345'
+        ];
+
+        yield [
+            'A7A5',
+            ['123', '45'],
+            '123    45   '
+        ];
     }
 }
