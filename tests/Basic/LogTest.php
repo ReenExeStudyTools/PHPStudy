@@ -89,4 +89,9 @@ class LogTest extends \PHPUnit_Framework_TestCase
             2.0
         ];
     }
+
+    public function testMinus()
+    {
+        $this->assertTrue(is_nan(log(-1)));
+    }
 }

@@ -30,6 +30,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ##### Functions
 * `log`
 * `log10`
+* `is_nan`
 
 ### String
 ##### Functions

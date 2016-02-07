@@ -40,6 +40,8 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     public function testNAN()
     {
         $this->assertFalse(NAN === NAN);
+
+        $this->assertTrue(is_nan(NAN));
     }
 
     public function testConverted()
