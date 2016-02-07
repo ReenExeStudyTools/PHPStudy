@@ -54,5 +54,20 @@ class SubStrReplaceTest extends \PHPUnit_Framework_TestCase
             'There are many answers'
         ];
 
+        yield [
+            'There are many questions',
+            'Title: ',
+            0,
+            [0],
+            'Title: There are many questions'
+        ];
+
+        yield [
+            'There are many questions',
+            'Title: ',
+            0,
+            [],
+            'Title: '
+        ];
     }
 }
