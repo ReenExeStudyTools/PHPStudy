@@ -1,5 +1,7 @@
 <?php
 
+use ReenExe\Study\StringClass;
+
 class StrRevTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -16,6 +18,11 @@ class StrRevTest extends \PHPUnit_Framework_TestCase
     {
         yield [
             'abc',
+            'cba'
+        ];
+
+        yield [
+            new StringClass('abc'),
             'cba'
         ];
 
