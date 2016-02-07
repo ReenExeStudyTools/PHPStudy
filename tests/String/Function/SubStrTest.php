@@ -71,5 +71,12 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             [],
             false
         ];
+
+        yield [
+            'abcdef',
+            -3,
+            [],
+            'def'
+        ];
     }
 }
