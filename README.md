@@ -39,6 +39,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `ucfirst`
 * `ucwords`
+* `strtolower`
+* `strtoupper`
 
 * `urlencode`
 * `urldecode`

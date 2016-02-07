@@ -28,6 +28,11 @@ class ChangeCaseTest extends \PHPUnit_Framework_TestCase
             'this is that',
             'This is that'
         ];
+
+        yield [
+            123,
+            '123'
+        ];
     }
 
     /**
@@ -55,6 +60,51 @@ class ChangeCaseTest extends \PHPUnit_Framework_TestCase
         yield [
             'this is that',
             'This Is That'
+        ];
+    }
+
+    /**
+     * @dataProvider strToCaseDataProvider
+     * @param $string
+     * @param $lower
+     * @param $upper
+     */
+    public function testStrToCase($string, $lower, $upper)
+    {
+        $this->assertSame(strtolower($string), $lower);
+        $this->assertSame(strtoupper($string), $upper);
+    }
+
+    public function strToCaseDataProvider()
+    {
+        yield [
+            'abc',
+            'abc',
+            'ABC'
+        ];
+
+        yield [
+            'ABC',
+            'abc',
+            'ABC'
+        ];
+
+        yield [
+            'aBc',
+            'abc',
+            'ABC'
+        ];
+
+        yield [
+            '1A',
+            '1a',
+            '1A'
+        ];
+
+        yield [
+            123,
+            '123',
+            '123'
         ];
     }
 }
