@@ -10,6 +10,8 @@ class LoopTest extends \PHPUnit_Framework_TestCase
             $this->assertSame($key, 'x');
             $this->assertSame($value, 'y');
         }
+
+        $this->assertFalse(each($array));
     }
 
     public function testForeach()
