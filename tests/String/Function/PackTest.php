@@ -38,6 +38,41 @@ class PackTest extends \PHPUnit_Framework_TestCase
             ['123', '45'],
             '123    45   '
         ];
+
+        // wrong data
+        yield [
+            'A3',
+            ['12345'],
+            '123'
+        ];
+
+        yield [
+            'A3A2',
+            ['12345', '789'],
+            '12378'
+        ];
+    }
+
+    /**
+     * @dataProvider wrongArgumentsCountDataProvider
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage pack(): Type A: not enough arguments
+     * @param $format
+     * @param array $args
+     * @param $expect
+     */
+    public function testWrongArgumentsCount($format, array $args, $expect)
+    {
+        $this->assertSame(pack($format, ...$args), $expect);
+    }
+
+    public function wrongArgumentsCountDataProvider()
+    {
+        yield [
+            'A3A2',
+            ['12345'],
+            '123'
+        ];
     }
 
     /**
