@@ -67,4 +67,42 @@ class TrimTest extends \PHPUnit_Framework_TestCase
             "abc \n ",
         ];
     }
+
+    /**
+     * @dataProvider  rangeDataProvider
+     * @param $string
+     * @param $charList
+     * @param $expect
+     */
+    public function testRange($string, $charList, $expect)
+    {
+        $this->assertSame(trim($string, $charList), $expect);
+    }
+
+    public function rangeDataProvider()
+    {
+        yield [
+            '10 year',
+            '0..1',
+            ' year'
+        ];
+
+        yield [
+            '15 year',
+            '0..1',
+            '5 year'
+        ];
+
+        yield [
+            '15 year',
+            '0..9',
+            ' year'
+        ];
+
+        yield [
+            '15 more than 10',
+            '0..9',
+            ' more than '
+        ];
+    }
 }
