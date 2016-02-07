@@ -23,6 +23,11 @@ class LogTest extends \PHPUnit_Framework_TestCase
             10,
             2.3025850929940459
         ];
+
+        yield [
+            M_E,
+            1.0
+        ];
     }
 
     /**
