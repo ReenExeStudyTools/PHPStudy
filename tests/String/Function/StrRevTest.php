@@ -18,5 +18,10 @@ class StrRevTest extends \PHPUnit_Framework_TestCase
             'abc',
             'cba'
         ];
+
+        yield [
+            123,
+            '321'
+        ];
     }
 }
