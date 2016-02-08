@@ -4,6 +4,11 @@ class StrReplaceTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider dataProvider
+     * @param $search
+     * @param $replace
+     * @param $subject
+     * @param $expected
+     * @param $countExpected
      */
     public function test($search, $replace, $subject, $expected, $countExpected)
     {

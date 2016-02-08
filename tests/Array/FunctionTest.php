@@ -18,6 +18,8 @@
  * array_fill_keys
  * array_column
  * array_change_key_case
+ * array_pad
+ * array_splice
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -578,5 +580,117 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_change_key_case(['A' => 1]) === ['a' => 1]);
         $this->assertTrue(array_change_key_case(['A' => 1], CASE_LOWER) === ['a' => 1]);
         $this->assertTrue(array_change_key_case(['a' => 1], CASE_UPPER) === ['A' => 1]);
+    }
+
+    /**
+     * @dataProvider padDataProvider
+     * @param array $input
+     * @param $size
+     * @param $value
+     * @param array $expect
+     */
+    public function testPad(array $input, $size, $value, array $expect)
+    {
+        $this->assertSame(array_pad($input, $size, $value), $expect);
+    }
+
+    public function padDataProvider()
+    {
+        yield [
+            [],
+            1,
+            'value',
+            ['value']
+        ];
+
+        yield [
+            ['some'],
+            2,
+            'value',
+            ['some', 'value']
+        ];
+
+        yield [
+            ['some'],
+            3,
+            'value',
+            ['some', 'value', 'value',]
+        ];
+
+        yield [
+            ['key' => 'some'],
+            3,
+            'value',
+            ['key' => 'some', 'value', 'value',]
+        ];
+
+        yield [
+            ['key' => 'some'],
+            -2,
+            'value',
+            ['value', 'key' => 'some']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            -5,
+            'new',
+            ['new', 'new', 'a', 'b', 'c']
+        ];
+
+        // try size that exist or less
+        for ($size = -5; $size <= 5; ++$size) {
+            yield [
+                ['a', 'b', 'c', 'd', 'e'],
+                1,
+                $size,
+                ['a', 'b', 'c', 'd', 'e']
+            ];
+        }
+    }
+
+    /**
+     * @dataProvider spliceDataProvider
+     * @param array $input
+     * @param $offset
+     * @param $args
+     * @param array $expect
+     */
+    public function testSplice(array $input, $offset, array $args, array $expect)
+    {
+        array_splice($input, $offset, ...$args);
+
+        $this->assertSame($input, $expect);
+    }
+
+    public function spliceDataProvider()
+    {
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [1],
+            ['a', 'c']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [2],
+            ['a']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            -1,
+            [],
+            ['a', 'b']
+        ];
+
+        yield [
+            ['a', 'b', 'c'],
+            1,
+            [],
+            ['a']
+        ];
     }
 }

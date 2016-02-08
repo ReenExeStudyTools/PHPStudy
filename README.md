@@ -26,13 +26,34 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `continue`
 * `break`
 
+### Basic
+##### Functions
+* `log`
+* `log10`
+* `is_nan`
+
 ### String
 ##### Functions
+* `substr`
+* `strrev`
+* `substr_replace`
 * `str_replace`
 * `str_split`
 * `sscanf`
 * `strpos`
 * `strtr`
+
+* `ucfirst`
+* `ucwords`
+* `strtolower`
+* `strtoupper`
+
+* `trim`
+* `rtrim`
+* `ltrim`
+
+* `wordwrap`
+
 * `urlencode`
 * `urldecode`
 * `http_build_query`
@@ -43,6 +64,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `gettype`
 
 * `pack`
+* `unpack`
 ##### Patterns
 * `preg_match`
 * `preg_replace`
@@ -108,6 +130,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_fill_keys`
 * `array_column`
 * `array_change_key_case`
+* `array_pad`
+* `array_splice`
 
 ##### Sets
 * `array_unique`
@@ -135,6 +159,3 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)
-
-### TODO:
-* array_splice
