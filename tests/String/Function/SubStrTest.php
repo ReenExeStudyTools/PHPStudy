@@ -57,7 +57,7 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             'abc',
             3,
             [],
-            false
+            ''
         ];
 
         yield [
