@@ -20,7 +20,7 @@ class SubStrTest extends \PHPUnit_Framework_TestCase
             yield [
                 'word',
                 0,
-                [],
+                $length,
                 'word'
             ];
         }
