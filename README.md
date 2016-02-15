@@ -134,6 +134,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_splice`
 * `array_replace`
 * `array_replace_recursive`
+* `count`
 
 ##### Sets
 * `array_unique`

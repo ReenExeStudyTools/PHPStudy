@@ -22,6 +22,7 @@
  * array_splice
  * array_replace
  * array_replace_recursive
+ * count
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -849,5 +850,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
                 'b' => 2,
             ]
         ];
+    }
+
+    public function testCount()
+    {
+        $this->assertSame(count([]), 0);
+        $this->assertSame(count(['value']), 1);
+        $this->assertSame(count([[1, 2]]), 1);
+        $this->assertSame(count([[1, 2]], COUNT_NORMAL), 1);
+        $this->assertSame(count([[1, 2]], COUNT_RECURSIVE), 3);
     }
 }
