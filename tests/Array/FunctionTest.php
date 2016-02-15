@@ -713,5 +713,54 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             ],
             []
         ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], []
+            ],
+            ['a', 'b', 'c']
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], [1, 2, 3, 4, 5]
+            ],
+            [1, 2, 3, 4, 5]
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], [1 => 'x']
+            ],
+            ['a', 'x', 'c']
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c', 'd', 'e'], [1 => 'x', 2 => 'y'], [2 => 'z', 3 => 'i']
+            ],
+            ['a', 'x',  'z', 'i', 'e']
+        ];
+
+        $source = [
+            [
+                'a' => 1,
+                'b' => 2,
+            ],
+            [
+                'b' => 5,
+                'c' => 7,
+            ],
+            [
+                'x' => 8,
+                'y' => 9,
+            ],
+        ];
+
+        $expect = array_merge(...$source);
+        yield [
+            $source,
+            $expect
+        ];
     }
 }
