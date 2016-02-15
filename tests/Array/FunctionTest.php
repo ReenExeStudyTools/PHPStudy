@@ -20,6 +20,7 @@
  * array_change_key_case
  * array_pad
  * array_splice
+ * array_replace
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -691,6 +692,26 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             1,
             [],
             ['a']
+        ];
+    }
+
+    /**
+     * @dataProvider replaceDataProvider
+     * @param array $source
+     * @param array $expect
+     */
+    public function testReplace(array $source, array $expect)
+    {
+        $this->assertSame(array_replace(...$source), $expect);
+    }
+
+    public function replaceDataProvider()
+    {
+        yield [
+            [
+                [], []
+            ],
+            []
         ];
     }
 }
