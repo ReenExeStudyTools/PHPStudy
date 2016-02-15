@@ -122,5 +122,35 @@ class SortTest extends \PHPUnit_Framework_TestCase
             'max',
             []
         ];
+
+        yield [
+            [1, 2, 3],
+            function ($a, $b) {
+                return $a <=> $b;
+            },
+            [1, 2, 3]
+        ];
+
+        $length = function ($a, $b) {
+            return strlen($a) <=> strlen($b);
+        };
+
+        yield [
+            ['one', 'two', 'three'],
+            $length,
+            ['one', 'two', 'three']
+        ];
+
+        yield [
+            ['five', 'six'],
+            $length,
+            ['six', 'five']
+        ];
+
+        yield [
+            [['five'], ['six']],
+            'array_merge',
+            [['six'], ['five']]
+        ];
     }
 }
