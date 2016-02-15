@@ -162,3 +162,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### TODO:
 * array_replace_recursive
+* array_sort
