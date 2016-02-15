@@ -21,6 +21,7 @@
  * array_pad
  * array_splice
  * array_replace
+ * array_replace_recursive
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -703,6 +704,21 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     public function testReplace(array $source, array $expect)
     {
         $this->assertSame(array_replace(...$source), $expect);
+    }
+
+    /**
+     * @dataProvider replaceRecursiveDataProvider
+     * @param array $source
+     * @param array $expect
+     */
+    public function testReplaceRecursive(array $source, array $expect)
+    {
+        $this->assertSame(array_replace_recursive(...$source), $expect);
+    }
+
+    public function replaceRecursiveDataProvider()
+    {
+        yield from $this->replaceDataProvider();
     }
 
     public function replaceDataProvider()
