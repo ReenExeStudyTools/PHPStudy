@@ -719,11 +719,59 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     public function replaceRecursiveDataProvider()
     {
         yield from $this->commonReplaceDataProvider();
+
+        yield [
+            [
+                [
+                    'a' => [
+                        'b' => 1,
+                        'c' => 5,
+                    ],
+                    'r' => 7
+                ],
+                [
+                    'a' => [
+                        'e' => 2
+                    ]
+                ]
+            ],
+            [
+                'a' => [
+                    'b' => 1,
+                    'c' => 5,
+                    'e' => 2
+                ],
+                'r' => 7
+            ],
+        ];
     }
 
     public function replaceDataProvider()
     {
         yield from $this->commonReplaceDataProvider();
+
+        yield [
+            [
+                [
+                    'a' => [
+                        'b' => 1,
+                        'c' => 5,
+                    ],
+                    'r' => 7
+                ],
+                [
+                    'a' => [
+                        'e' => 2
+                    ]
+                ]
+            ],
+            [
+                'a' => [
+                    'e' => 2
+                ],
+                'r' => 7
+            ],
+        ];
     }
 
     public function commonReplaceDataProvider()
