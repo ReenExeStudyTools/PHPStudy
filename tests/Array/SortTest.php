@@ -102,4 +102,25 @@ class SortTest extends \PHPUnit_Framework_TestCase
             [null],
         ];
     }
+
+    /**
+     * @dataProvider userSortDataProvider
+     * @param array $array
+     * @param callable $callable
+     * @param array $expect
+     */
+    public function testUserSort(array $array, callable $callable, array $expect)
+    {
+        usort($array, $callable);
+        $this->assertSame($array, $expect);
+    }
+
+    public function userSortDataProvider()
+    {
+        yield [
+            [],
+            'max',
+            []
+        ];
+    }
 }
