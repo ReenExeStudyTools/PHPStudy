@@ -718,10 +718,15 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     public function replaceRecursiveDataProvider()
     {
-        yield from $this->replaceDataProvider();
+        yield from $this->commonReplaceDataProvider();
     }
 
     public function replaceDataProvider()
+    {
+        yield from $this->commonReplaceDataProvider();
+    }
+
+    public function commonReplaceDataProvider()
     {
         yield [
             [
