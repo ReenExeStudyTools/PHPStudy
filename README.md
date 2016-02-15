@@ -161,5 +161,6 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * http://www.quizful.net/ (need see new for tests)
 
 ### TODO:
+* array_replace
 * array_replace_recursive
 * array_sort
