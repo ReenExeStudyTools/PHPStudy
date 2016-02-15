@@ -132,6 +132,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_change_key_case`
 * `array_pad`
 * `array_splice`
+* `array_replace`
+* `array_replace_recursive`
 
 ##### Sets
 * `array_unique`
@@ -161,5 +163,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * http://www.quizful.net/ (need see new for tests)
 
 ### TODO:
-* array_replace_recursive
 * array_sort

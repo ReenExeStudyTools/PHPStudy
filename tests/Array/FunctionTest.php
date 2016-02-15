@@ -20,6 +20,8 @@
  * array_change_key_case
  * array_pad
  * array_splice
+ * array_replace
+ * array_replace_recursive
  */
 
 class FunctionTest extends \PHPUnit_Framework_TestCase
@@ -691,6 +693,161 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             1,
             [],
             ['a']
+        ];
+    }
+
+    /**
+     * @dataProvider replaceDataProvider
+     * @param array $source
+     * @param array $expect
+     */
+    public function testReplace(array $source, array $expect)
+    {
+        $this->assertSame(array_replace(...$source), $expect);
+    }
+
+    /**
+     * @dataProvider replaceRecursiveDataProvider
+     * @param array $source
+     * @param array $expect
+     */
+    public function testReplaceRecursive(array $source, array $expect)
+    {
+        $this->assertSame(array_replace_recursive(...$source), $expect);
+    }
+
+    public function replaceRecursiveDataProvider()
+    {
+        yield from $this->commonReplaceDataProvider();
+
+        yield [
+            [
+                [
+                    'a' => [
+                        'b' => 1,
+                        'c' => 5,
+                    ],
+                    'r' => 7
+                ],
+                [
+                    'a' => [
+                        'e' => 2
+                    ]
+                ]
+            ],
+            [
+                'a' => [
+                    'b' => 1,
+                    'c' => 5,
+                    'e' => 2
+                ],
+                'r' => 7
+            ],
+        ];
+    }
+
+    public function replaceDataProvider()
+    {
+        yield from $this->commonReplaceDataProvider();
+
+        yield [
+            [
+                [
+                    'a' => [
+                        'b' => 1,
+                        'c' => 5,
+                    ],
+                    'r' => 7
+                ],
+                [
+                    'a' => [
+                        'e' => 2
+                    ]
+                ]
+            ],
+            [
+                'a' => [
+                    'e' => 2
+                ],
+                'r' => 7
+            ],
+        ];
+    }
+
+    public function commonReplaceDataProvider()
+    {
+        yield [
+            [
+                [], []
+            ],
+            []
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], []
+            ],
+            ['a', 'b', 'c']
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], [1, 2, 3, 4, 5]
+            ],
+            [1, 2, 3, 4, 5]
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c'], [1 => 'x']
+            ],
+            ['a', 'x', 'c']
+        ];
+
+        yield [
+            [
+                ['a', 'b', 'c', 'd', 'e'], [1 => 'x', 2 => 'y'], [2 => 'z', 3 => 'i']
+            ],
+            ['a', 'x',  'z', 'i', 'e']
+        ];
+
+        $source = [
+            [
+                'a' => 1,
+                'b' => 2,
+            ],
+            [
+                'b' => 5,
+                'c' => 7,
+            ],
+            [
+                'x' => 8,
+                'y' => 9,
+            ],
+        ];
+
+        $expect = array_merge(...$source);
+        yield [
+            $source,
+            $expect
+        ];
+
+        yield [
+            [
+                [
+                    'value',
+                    'a' => 1,
+                    'b' => 2,
+                ],
+                [
+                    'rewrite'
+                ]
+            ],
+            [
+                'rewrite',
+                'a' => 1,
+                'b' => 2,
+            ]
         ];
     }
 }
