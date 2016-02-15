@@ -762,5 +762,23 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             $source,
             $expect
         ];
+
+        yield [
+            [
+                [
+                    'value',
+                    'a' => 1,
+                    'b' => 2,
+                ],
+                [
+                    'rewrite'
+                ]
+            ],
+            [
+                'rewrite',
+                'a' => 1,
+                'b' => 2,
+            ]
+        ];
     }
 }
