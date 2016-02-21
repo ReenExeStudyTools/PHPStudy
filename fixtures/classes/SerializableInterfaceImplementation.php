@@ -7,7 +7,6 @@ class SerializableInterfaceImplementation implements \Serializable
     private $data;
 
     /**
-     * SerializableInterfaceImplementation constructor.
      * @param $data
      */
     public function __construct($data)
@@ -22,6 +21,11 @@ class SerializableInterfaceImplementation implements \Serializable
 
     public function unserialize($serialized)
     {
-        // TODO: Implement unserialize() method.
+        $this->data = unserialize($serialized);
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 }

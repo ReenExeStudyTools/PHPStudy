@@ -1,5 +1,7 @@
 <?php
 
+use ReenExe\Study\SerializableInterfaceImplementation;
+
 class SerializableInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -9,9 +11,16 @@ class SerializableInterfaceTest extends \PHPUnit_Framework_TestCase
      */
     public function test($data, $serialize)
     {
-        $instance = new \ReenExe\Study\SerializableInterfaceImplementation($data);
+        $instance = new SerializableInterfaceImplementation($data);
 
         $this->assertSame($serialize, serialize($instance));
+
+        /* @var $unserializeInstance SerializableInterfaceImplementation */
+        $unserializeInstance = unserialize($serialize);
+
+        $this->assertInstanceOf(SerializableInterfaceImplementation::class, $unserializeInstance);
+
+        $this->assertSame($unserializeInstance->getData(), $data);
     }
 
     public function dataProvider()
