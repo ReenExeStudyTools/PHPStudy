@@ -11,7 +11,7 @@ class JsonSerializableTest extends \PHPUnit_Framework_TestCase
     {
         $instance = new \ReenExe\Study\JsonSerializableInstance($data);
 
-        $this->assertTrue($json === json_encode($instance));
+        $this->assertSame($json, json_encode($instance));
     }
 
     public function dataProvider()
