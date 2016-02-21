@@ -33,7 +33,31 @@ class ArrayAccessTest extends \PHPUnit_Framework_TestCase
 
     public function testOffsetSet()
     {
+        $mock = $this->getInstanceMock();
 
+        $mock->expects($this->once())->method('offsetSet')->with('key', 'value');
+
+        $mock['key'] = 'value';
+    }
+
+    public function testOffsetNativePush()
+    {
+        $mock = $this->getInstanceMock();
+
+        $mock->expects($this->once())->method('offsetSet')->with(null, 'value');
+
+        $mock[] = 'value';
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage array_push() expects parameter 1 to be array, object given
+     */
+    public function testOffsetArrayPush()
+    {
+        $mock = $this->getInstanceMock();
+
+        array_push($mock, 'value');
     }
 
     public function testOffsetUnset()
