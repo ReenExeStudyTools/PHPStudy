@@ -56,6 +56,10 @@ class SerializableInterfaceTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('serialize');
 
+        $mock
+            ->expects($this->never())
+            ->method('__sleep');
+
         serialize($mock);
     }
 }
