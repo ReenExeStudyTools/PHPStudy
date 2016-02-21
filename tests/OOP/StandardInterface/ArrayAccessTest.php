@@ -2,7 +2,12 @@
 
 class ArrayAccessTest extends \PHPUnit_Framework_TestCase
 {
-    public function test()
+    public function testOffsetExists()
+    {
+
+    }
+
+    public function testOffsetGet()
     {
         /* @var $mock ArrayAccess|PHPUnit_Framework_MockObject_MockObject */
         $mock = $this->getMockBuilder('ArrayAccess')->getMock();
@@ -11,5 +16,15 @@ class ArrayAccessTest extends \PHPUnit_Framework_TestCase
         $mock->expects($this->never())->method('offsetExists');
 
         $mock[1];
+    }
+
+    public function testOffsetSet()
+    {
+
+    }
+
+    public function testOffsetUnset()
+    {
+
     }
 }
