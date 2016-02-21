@@ -1,6 +1,7 @@
 <?php
 
 use ReenExe\Study\SerializableInterfaceImplementation;
+use ReenExe\Study\SleepSerialize;
 
 class SerializableInterfaceTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,5 +38,24 @@ class SerializableInterfaceTest extends \PHPUnit_Framework_TestCase
                 'C:49:"ReenExe\Study\SerializableInterfaceImplementation":28:{a:1:{s:3:"key";s:5:"value";}}'
             ],
         ];
+    }
+
+    public function testInterfacePriority()
+    {
+        $data = [
+            'key' => 'value'
+        ];
+
+        /* @var $mock SleepSerialize|PHPUnit_Framework_MockObject_MockObject */
+        $mock = $this
+            ->getMockBuilder(SleepSerialize::class)
+            ->setConstructorArgs([$data])
+            ->getMock();
+
+        $mock
+            ->expects($this->once())
+            ->method('serialize');
+
+        serialize($mock);
     }
 }
