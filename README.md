@@ -37,6 +37,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `substr`
 * `strrev`
 * `substr_replace`
+* `substr_count`
 * `str_replace`
 * `str_split`
 * `sscanf`
@@ -163,6 +164,3 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)
-
-### TODO:
-* [ArrayAccess](http://php.net/manual/ru/class.arrayaccess.php)
