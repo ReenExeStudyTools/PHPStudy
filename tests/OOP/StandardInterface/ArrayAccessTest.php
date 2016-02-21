@@ -17,6 +17,8 @@ class ArrayAccessTest extends \PHPUnit_Framework_TestCase
 
         $mock->expects($this->never())->method('offsetGet');
         $mock->expects($this->never())->method('offsetExists');
+        $mock->expects($this->never())->method('offsetSet');
+        $mock->expects($this->never())->method('offsetUnset');
 
         array_key_exists('key', $mock);
     }
