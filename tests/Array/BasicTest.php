@@ -37,7 +37,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    public function testPush()
+    public function testNextKey()
     {
         $array = [];
 
@@ -49,6 +49,24 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $array[] = 'next';
 
         $this->assertSame($array[8], 'next');
+
+        unset($array[0], $array[7], $array[8]);
+
+        $this->assertEmpty($array);
+
+        $array[] = 'one';
+        $this->assertSame($array[9], 'one');
+    }
+
+    public function testNextKeyAfterMinus()
+    {
+        $array = [
+            -5 => 'first'
+        ];
+
+        $array[] = 'value';
+
+        $this->assertSame($array[0], 'value');
     }
 
     public function testStack()
