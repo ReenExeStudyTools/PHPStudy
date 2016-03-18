@@ -20,6 +20,36 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
             'a',
             0
         ];
+
+        yield [
+            'a',
+            'b',
+            -1
+        ];
+
+        yield [
+            'b',
+            'a',
+            1
+        ];
+
+        yield [
+            'aaa',
+            'aaa',
+            0
+        ];
+
+        yield [
+            'abcd',
+            'abce',
+            -1
+        ];
+
+        yield [
+            'abce',
+            'abcd',
+            1
+        ];
     }
 }
 
