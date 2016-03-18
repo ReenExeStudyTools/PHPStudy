@@ -2,8 +2,20 @@
 
 class StringCompareTest extends PHPUnit_Framework_TestCase
 {
+
     /**
-     * @dataProvider caseDataProvider
+     * @dataProvider caseSensitiveDataProvider
+     * @param $left
+     * @param $right
+     * @param $expected
+     */
+    public function test($left, $right, $expected)
+    {
+        $this->assertSame($expected, strcmp($left, $right));
+    }
+
+    /**
+     * @dataProvider caseInsensitiveDataProvider
      * @param $left
      * @param $right
      * @param $expected
@@ -13,7 +25,29 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
         $this->assertSame($expected, strcasecmp($left, $right));
     }
 
-    public function caseDataProvider()
+    public function caseSensitiveDataProvider()
+    {
+        yield from $this->dataProvider();
+
+        yield [
+            'a',
+            'A',
+            1
+        ];
+    }
+
+    public function caseInsensitiveDataProvider()
+    {
+        yield from $this->dataProvider();
+
+        yield [
+            'a',
+            'A',
+            0
+        ];
+    }
+
+    private function dataProvider()
     {
         yield [
             'a',
