@@ -50,7 +50,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `strtoupper`
 
 * `strcmp`
+* `strncmp`
 * `strcasecmp`
+* `strncasecmp`
 
 * `trim`
 * `rtrim`

@@ -47,6 +47,68 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * @dataProvider limitedDataProvider
+     * @param $left
+     * @param $right
+     * @param $length
+     * @param $expected
+     */
+    public function testFirstLimited($left, $right, $length, $expected)
+    {
+        $this->assertSame($expected, strncmp($left, $right, $length));
+    }
+
+    /**
+     * @dataProvider limitedDataProvider
+     * @param $left
+     * @param $right
+     * @param $length
+     * @param $expected
+     */
+    public function testCaseFirstLimited($left, $right, $length, $expected)
+    {
+        $this->assertSame($expected, strncasecmp($left, $right, $length));
+    }
+
+    public function limitedDataProvider()
+    {
+        yield [
+            'a',
+            'b',
+            0,
+            0
+        ];
+
+        yield [
+            'a',
+            'b',
+            1,
+            -1
+        ];
+
+        yield [
+            'ac',
+            'ab',
+            1,
+            0
+        ];
+
+        yield [
+            'abc',
+            'abd',
+            2,
+            0
+        ];
+
+        yield [
+            'abd',
+            'abc',
+            3,
+            1
+        ];
+    }
+
     private function dataProvider()
     {
         yield [
@@ -86,5 +148,3 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
         ];
     }
 }
-
- 
