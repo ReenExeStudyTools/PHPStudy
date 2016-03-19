@@ -29,6 +29,27 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             1,
             0
         ];
+
+        yield [
+            'bcd',
+            'bcd',
+            0,
+            0
+        ];
+
+        yield [
+            'bcd',
+            'c',
+            0,
+            -1
+        ];
+
+        yield [
+            'bcd',
+            'a',
+            0,
+            1
+        ];
     }
 
     /**
