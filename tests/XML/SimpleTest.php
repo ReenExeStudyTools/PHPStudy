@@ -21,6 +21,7 @@ XML;
 
         $this->assertSame($data, $fromFunction->asXML());
 
+        $this->assertInstanceOf(SimpleXMLElement::class, $xml->text);
         $this->assertSame((string)$xml->text, 'Reen');
     }
 }
