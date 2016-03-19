@@ -70,6 +70,12 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
         ];
 
         yield [
+            '\\',
+            '',
+            '\\'
+        ];
+
+        yield [
             'a',
             'a',
             '\a'
