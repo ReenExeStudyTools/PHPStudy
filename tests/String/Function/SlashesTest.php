@@ -52,11 +52,11 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider cSplashesDataProvider
-     * @param $expect
      * @param $string
      * @param $charList
+     * @param $expect
      */
-    public function testAddCSlashes($expect, $string, $charList)
+    public function testAddCSlashes($string, $charList, $expect)
     {
         $this->assertSame($expect, addcslashes($string, $charList));
     }
@@ -67,6 +67,12 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
             '',
             '',
             ''
+        ];
+
+        yield [
+            'a',
+            'a',
+            '\a'
         ];
     }
 }
