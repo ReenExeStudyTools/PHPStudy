@@ -3,7 +3,7 @@
 class SlashesTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider addSplashesDataProvider
+     * @dataProvider splashesDataProvider
      * @param $string
      * @param $expect
      */
@@ -13,7 +13,7 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider addSplashesDataProvider
+     * @dataProvider splashesDataProvider
      * @param $expect
      * @param $string
      */
@@ -22,7 +22,7 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(stripslashes($string), $expect);
     }
 
-    public function addSplashesDataProvider()
+    public function splashesDataProvider()
     {
         yield [
             '',
@@ -47,6 +47,26 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
         yield [
             '"',
             '\"'
+        ];
+    }
+
+    /**
+     * @dataProvider cSplashesDataProvider
+     * @param $expect
+     * @param $string
+     * @param $charList
+     */
+    public function testAddCSlashes($expect, $string, $charList)
+    {
+        $this->assertSame($expect, addcslashes($string, $charList));
+    }
+
+    public function cSplashesDataProvider()
+    {
+        yield [
+            '',
+            '',
+            ''
         ];
     }
 }

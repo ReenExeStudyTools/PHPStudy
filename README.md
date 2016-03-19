@@ -67,6 +67,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `addslashes`
 * `stripslashes`
 
+* `addcslashes`
+
 * `pack`
 * `unpack`
 ##### Patterns
