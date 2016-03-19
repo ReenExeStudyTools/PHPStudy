@@ -41,6 +41,12 @@ class HTMLEntitiesTest extends \PHPUnit_Framework_TestCase
         ];
 
         yield [
+            "<b>Name</b> 'Reen'",
+            "&lt;b&gt;Name&lt;/b&gt; 'Reen'",
+            ENT_COMPAT
+        ];
+
+        yield [
             '<b>Name</b> "Reen"',
             '&lt;b&gt;Name&lt;/b&gt; "Reen"',
         ];
@@ -48,6 +54,12 @@ class HTMLEntitiesTest extends \PHPUnit_Framework_TestCase
         yield [
             '<b>Name</b> "Reen"',
             '&lt;b&gt;Name&lt;/b&gt; &quot;Reen&quot;',
+            ENT_COMPAT
+        ];
+
+        yield [
+            '<b>Name</b> "Reen"' . "'Exe'",
+            '&lt;b&gt;Name&lt;/b&gt; &quot;Reen&quot;'. "'Exe'",
             ENT_COMPAT
         ];
 
