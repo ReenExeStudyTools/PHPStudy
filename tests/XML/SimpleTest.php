@@ -7,9 +7,7 @@ class SimpleTest extends \PHPUnit_Framework_TestCase
         $data = <<<XML
 <?xml version="1.0"?>
 <document>
-    <text>
-        Reen
-    </text>
+    <text>Reen</text>
 </document>
 
 XML;
@@ -22,5 +20,7 @@ XML;
         $this->assertInstanceOf(SimpleXMLElement::class, $fromFunction);
 
         $this->assertSame($data, $fromFunction->asXML());
+
+        $this->assertSame((string)$xml->text, 'Reen');
     }
 }
