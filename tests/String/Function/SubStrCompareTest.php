@@ -53,6 +53,62 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider lengthDataProvider
+     * @param $mainString
+     * @param $string
+     * @param $offset
+     * @param $length
+     * @param $expected
+     */
+    public function testLength($mainString, $string, $offset, $length, $expected)
+    {
+        $this->assertSame($expected, substr_compare($mainString, $string, $offset, $length));
+    }
+
+    public function lengthDataProvider()
+    {
+        yield [
+            'ac',
+            'ab',
+            0,
+            1,
+            0
+        ];
+
+        yield [
+            'ac',
+            'ab',
+            0,
+            2,
+            1
+        ];
+
+        yield [
+            'ab',
+            'ac',
+            0,
+            2,
+            -1
+        ];
+
+        yield [
+            'some text ab',
+            'ac',
+            10,
+            2,
+            -1
+        ];
+
+        yield [
+            'some text ab',
+            'ac',
+            10,
+            1,
+            0
+        ];
+    }
+
+    /**
      * @dataProvider dataProvider
      * @param $mainString
      * @param $string
@@ -102,6 +158,15 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             3,
             false,
             1,
+        ];
+
+        yield [
+            'ABC',
+            'abc',
+            0,
+            3,
+            false,
+            -1,
         ];
     }
 }
