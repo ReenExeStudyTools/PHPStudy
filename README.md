@@ -175,6 +175,10 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `double`
 * `real`
 
+### XML
+* `SimpleXMLElement`
+* `simplexml_load_string`
+
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)
