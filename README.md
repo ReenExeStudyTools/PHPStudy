@@ -70,6 +70,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `addcslashes`
 
 * `htmlentities`
+* `htmlspecialchars`
+
+* `strip_tags`
 
 * `pack`
 * `unpack`
