@@ -33,5 +33,10 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
             "We\'re",
             "We\\\\\\'re"
         ];
+
+        yield [
+            '"',
+            '\"'
+        ];
     }
 }
