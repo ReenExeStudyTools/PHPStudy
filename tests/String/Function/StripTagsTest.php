@@ -93,5 +93,39 @@ class StripTagsTest extends \PHPUnit_Framework_TestCase
             '<b>text',
             '<b></b>',
         ];
+
+
+        yield [
+            '<input type="hidden" value="time" />',
+            '',
+            '',
+        ];
+
+        // tag without start
+        yield [
+            '<input type="hidden" value="time" />',
+            '',
+            'input',
+        ];
+
+        yield [
+            '<input type="hidden" value="time" />',
+            '<input type="hidden" value="time" />',
+            '<input>',
+        ];
+
+        // closed instead open
+        yield [
+            '<input type="hidden" value="time" />',
+            '',
+            '</input>',
+        ];
+
+        // instead open
+        yield [
+            '<input type="hidden" value="time" />',
+            '',
+            '<input/>',
+        ];
     }
 }
