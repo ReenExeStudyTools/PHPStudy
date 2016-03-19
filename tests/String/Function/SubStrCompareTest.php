@@ -52,8 +52,35 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             'abc',
             0,
             3,
-            null,
+            false,
             0,
+        ];
+
+        yield [
+            'abc',
+            'abc',
+            0,
+            3,
+            true,
+            0,
+        ];
+
+        yield [
+            'abc',
+            'ABC',
+            0,
+            3,
+            true,
+            0,
+        ];
+
+        yield [
+            'abc',
+            'ABC',
+            0,
+            3,
+            false,
+            1,
         ];
     }
 }
