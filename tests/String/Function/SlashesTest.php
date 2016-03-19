@@ -80,5 +80,17 @@ class SlashesTest extends \PHPUnit_Framework_TestCase
             'a',
             '\a'
         ];
+
+        yield [
+            'abc',
+            'abc',
+            '\a\b\c'
+        ];
+
+        yield [
+            'abc',
+            'ac',
+            '\ab\c'
+        ];
     }
 }
