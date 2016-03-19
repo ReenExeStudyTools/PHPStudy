@@ -18,5 +18,15 @@ class StripTagsTest extends \PHPUnit_Framework_TestCase
             '',
             ''
         ];
+
+        yield [
+            '<b>value</b>',
+            'value'
+        ];
+
+        yield [
+            ' <span>value</span> ',
+            ' value '
+        ];
     }
 }
