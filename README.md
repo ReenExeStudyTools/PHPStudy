@@ -74,6 +74,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `strip_tags`
 
+* `str_word_count`
+
 * `pack`
 * `unpack`
 ##### Patterns
