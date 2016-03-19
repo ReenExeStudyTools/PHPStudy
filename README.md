@@ -69,6 +69,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `addcslashes`
 
+* `htmlentities`
+
 * `pack`
 * `unpack`
 ##### Patterns
@@ -169,3 +171,6 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)
+
+### TODO:
+* stripcslashes
