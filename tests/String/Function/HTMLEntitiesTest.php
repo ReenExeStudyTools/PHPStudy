@@ -15,6 +15,19 @@ class HTMLEntitiesTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expected, htmlentities($string, $quoteStyle, $charset, $doubleEncode));
     }
 
+    /**
+     * @dataProvider revertDataProvider
+     * @param $string
+     * @param $expected
+     * @param null $quoteStyle
+     * @param null $charset
+     * @param null $doubleEncode
+     */
+    public function testSpecialChars($string, $expected, $quoteStyle = null, $charset = null, $doubleEncode = null)
+    {
+        $this->assertSame($expected, htmlspecialchars($string, $quoteStyle, $charset, $doubleEncode));
+    }
+
     public function dataProvider()
     {
         yield [
@@ -31,6 +44,14 @@ class HTMLEntitiesTest extends \PHPUnit_Framework_TestCase
             "<b>Name</b> 'Reen'",
             "&lt;b&gt;Name&lt;/b&gt; &#039;Reen&#039;",
             ENT_QUOTES
+        ];
+    }
+
+    public function revertDataProvider()
+    {
+        yield [
+            '<b>Title</b>',
+            '&lt;b&gt;Title&lt;/b&gt;',
         ];
     }
 }
