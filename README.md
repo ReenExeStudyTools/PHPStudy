@@ -76,6 +76,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `str_word_count`
 
+* `substr_compare`
+
 * `pack`
 * `unpack`
 ##### Patterns
