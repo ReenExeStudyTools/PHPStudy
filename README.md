@@ -44,7 +44,12 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `str_split`
 * `sscanf`
 * `strpos`
+* `strrpos`
+* `stripos`
 * `strtr`
+
+* `strstr`
+* `stristr`
 
 * `ucfirst`
 * `ucwords`

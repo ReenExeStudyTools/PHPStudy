@@ -3,14 +3,14 @@
 class SearchTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider strposProvider
+     * @dataProvider stringPositionProvider
      */
-    public function testStrpos($haystack, $needle, $offset, $pos)
+    public function testStringPosition($haystack, $needle, $offset, $expected)
     {
-        $this->assertSame(strpos($haystack, $needle, $offset), $pos);
+        $this->assertSame(strpos($haystack, $needle, $offset), $expected);
     }
 
-    public function strposProvider()
+    public function stringPositionProvider()
     {
         return [
             ['California', 'for', null, 4],
@@ -18,6 +18,97 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             ['California', 'calif', null, false],
             ['California', 'while', null, false],
             ['California', 'for', 5, false],
+        ];
+    }
+
+    /**
+     * @dataProvider stringReversePositionProvider
+     */
+    public function testStringReversePosition($haystack, $needle, $offset, $expected)
+    {
+        $this->assertSame(strrpos($haystack, $needle, $offset), $expected);
+    }
+
+    public function stringReversePositionProvider()
+    {
+        yield from $this->stringPositionProvider();
+
+        yield [
+            'for to for',
+            'for',
+            null,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            5,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            7,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            8,
+            false
+        ];
+    }
+
+    /**
+     * @dataProvider stringInsensitivePositionProvider
+     * @param $haystack
+     * @param $needle
+     * @param $offset
+     * @param $expected
+     */
+    public function testStringInsensitivePosition($haystack, $needle, $offset, $expected)
+    {
+        $this->assertSame(stripos($haystack, $needle, $offset), $expected);
+    }
+
+    public function stringInsensitivePositionProvider()
+    {
+        yield [
+            'a',
+            'a',
+            0,
+            0
+        ];
+
+        yield [
+            'a',
+            'A',
+            0,
+            0
+        ];
+
+        yield [
+            'B',
+            'A',
+            0,
+            false
+        ];
+
+        yield [
+            'ABC',
+            'c',
+            0,
+            2
+        ];
+
+        yield [
+            'ABC',
+            'c',
+            1,
+            2
         ];
     }
 
@@ -87,6 +178,102 @@ class SearchTest extends \PHPUnit_Framework_TestCase
                 'bc' => 'cd',
             ],
             'bcc'
+        ];
+    }
+
+    /**
+     * @dataProvider strStrDataDefaultProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrStrDefault($haystack, $needle, $expect)
+    {
+        $this->assertSame(strstr($haystack, $needle), $expect);
+    }
+
+    public function strStrDataDefaultProvider()
+    {
+        yield [
+            'this is some find me',
+            'f',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            false
+        ];
+    }
+
+    /**
+     * @dataProvider strStrDataBeforeProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrStrBefore($haystack, $needle, $expect)
+    {
+        $this->assertSame(strstr($haystack, $needle, true), $expect);
+    }
+
+    public function strStrDataBeforeProvider()
+    {
+        yield [
+            'this is some find me',
+            'f',
+            'this is some '
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'this is some '
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            false
+        ];
+    }
+
+    /**
+     * @dataProvider strStrDataInsensitiveProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrInsensitiveStr($haystack, $needle, $expect)
+    {
+        $this->assertSame(stristr($haystack, $needle), $expect);
+    }
+
+    public function strStrDataInsensitiveProvider()
+    {
+        yield [
+            'this is some find me',
+            'f',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            'find me'
         ];
     }
 }
