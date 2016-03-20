@@ -15,6 +15,7 @@ class MatchTest extends \PHPUnit_Framework_TestCase
         return [
             ['3 7', '%d %d', [3, 7]],
             ['123', '%1d%1d%1d', [1, 2, 3]],
+            ['123', '%1s%1s%1s', ['1', '2', '3']],
         ];
     }
 }
