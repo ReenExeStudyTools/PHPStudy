@@ -63,10 +63,13 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
                     return 'first';
                 case in_array($value, [5, 6, 7]):
                     return 'second';
+                case $value > 7 && $value < 10:
+                    return 'third';
             }
         };
 
         $this->assertSame($callable(1), 'first');
         $this->assertSame($callable(7), 'second');
+        $this->assertSame($callable(8), 'third');
     }
 }
