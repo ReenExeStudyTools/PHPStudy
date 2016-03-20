@@ -180,4 +180,14 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             'bcc'
         ];
     }
+
+    public function testStrStr()
+    {
+
+    }
+
+    public function testStrInsensitiveStr()
+    {
+        
+    }
 }
