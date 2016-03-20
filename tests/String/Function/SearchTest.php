@@ -3,14 +3,14 @@
 class SearchTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider strposProvider
+     * @dataProvider stringPositionProvider
      */
-    public function testStrpos($haystack, $needle, $offset, $pos)
+    public function testStringPosition($haystack, $needle, $offset, $pos)
     {
         $this->assertSame(strpos($haystack, $needle, $offset), $pos);
     }
 
-    public function strposProvider()
+    public function stringPositionProvider()
     {
         return [
             ['California', 'for', null, 4],
@@ -18,6 +18,47 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             ['California', 'calif', null, false],
             ['California', 'while', null, false],
             ['California', 'for', 5, false],
+        ];
+    }
+
+    /**
+     * @dataProvider stringReversePositionProvider
+     */
+    public function testStringReversePosition($haystack, $needle, $offset, $pos)
+    {
+        $this->assertSame(strrpos($haystack, $needle, $offset), $pos);
+    }
+
+    public function stringReversePositionProvider()
+    {
+        yield from $this->stringPositionProvider();
+
+        yield [
+            'for to for',
+            'for',
+            null,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            5,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            7,
+            7
+        ];
+
+        yield [
+            'for to for',
+            'for',
+            8,
+            false
         ];
     }
 

@@ -44,6 +44,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `str_split`
 * `sscanf`
 * `strpos`
+* `strrpos`
 * `strtr`
 
 * `ucfirst`
