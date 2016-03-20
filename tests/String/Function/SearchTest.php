@@ -5,9 +5,9 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider stringPositionProvider
      */
-    public function testStringPosition($haystack, $needle, $offset, $pos)
+    public function testStringPosition($haystack, $needle, $offset, $expected)
     {
-        $this->assertSame(strpos($haystack, $needle, $offset), $pos);
+        $this->assertSame(strpos($haystack, $needle, $offset), $expected);
     }
 
     public function stringPositionProvider()
@@ -24,9 +24,9 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider stringReversePositionProvider
      */
-    public function testStringReversePosition($haystack, $needle, $offset, $pos)
+    public function testStringReversePosition($haystack, $needle, $offset, $expected)
     {
-        $this->assertSame(strrpos($haystack, $needle, $offset), $pos);
+        $this->assertSame(strrpos($haystack, $needle, $offset), $expected);
     }
 
     public function stringReversePositionProvider()
@@ -59,6 +59,56 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             'for',
             8,
             false
+        ];
+    }
+
+    /**
+     * @dataProvider stringInsensitivePositionProvider
+     * @param $haystack
+     * @param $needle
+     * @param $offset
+     * @param $expected
+     */
+    public function testStringInsensitivePosition($haystack, $needle, $offset, $expected)
+    {
+        $this->assertSame(stripos($haystack, $needle, $offset), $expected);
+    }
+
+    public function stringInsensitivePositionProvider()
+    {
+        yield [
+            'a',
+            'a',
+            0,
+            0
+        ];
+
+        yield [
+            'a',
+            'A',
+            0,
+            0
+        ];
+
+        yield [
+            'B',
+            'A',
+            0,
+            false
+        ];
+
+        yield [
+            'ABC',
+            'c',
+            0,
+            2
+        ];
+
+        yield [
+            'ABC',
+            'c',
+            1,
+            2
         ];
     }
 
