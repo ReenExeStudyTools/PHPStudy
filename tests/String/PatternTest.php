@@ -143,6 +143,25 @@ class PatternTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    public function testNameGroup()
+    {
+        $string = 'Reen Exe';
+
+        $pattern = '/(?<name>\w+)\s(?<alias>\w+)/';
+
+        $this->assertSame(preg_match($pattern, $string, $matches), 1);
+
+        $expected = [
+            0 => $string,
+            'name' => 'Reen',
+            1 => 'Reen',
+            'alias' => 'Exe',
+            2 => 'Exe',
+        ];
+
+        $this->assertSame($expected, $matches);
+    }
+
     /**
      * @dataProvider replaceDataProvider
      * @param $pattern
