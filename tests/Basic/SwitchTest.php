@@ -23,4 +23,15 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($callable('1'), 1);
         $this->assertSame($callable(true), 1);
     }
+
+    public function testArrayArgument()
+    {
+        $callable = function ($value) {
+            switch ($value) {
+                case ['1']: return [true];
+            }
+        };
+
+        $this->assertSame($callable([1]), [true]);
+    }
 }
