@@ -214,6 +214,38 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider strStrDataBeforeProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrStrBefore($haystack, $needle, $expect)
+    {
+        $this->assertSame(strstr($haystack, $needle, true), $expect);
+    }
+
+    public function strStrDataBeforeProvider()
+    {
+        yield [
+            'this is some find me',
+            'f',
+            'this is some '
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'this is some '
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            false
+        ];
+    }
+
+    /**
      * @dataProvider strStrDataInsensitiveProvider
      * @param $haystack
      * @param $needle
