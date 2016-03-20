@@ -6,7 +6,8 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
     {
         $callable = function ($value) {
             switch ($value) {
-                case 1: return 'first';
+                case 1:
+                    return 'first';
             }
         };
 
@@ -15,9 +16,12 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
 
         $callable = function ($value) {
             switch ($value) {
-                case 1: return 'first';
-                case '1': return 'second';
-                case '2': return 'third';
+                case 1:
+                    return 'first';
+                case '1':
+                    return 'second';
+                case '2':
+                    return 'third';
             }
         };
 
@@ -31,7 +35,8 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
     {
         $callable = function ($value) {
             switch ($value) {
-                case ['1']: return [true];
+                case ['1']:
+                    return [true];
             }
         };
 
@@ -42,8 +47,22 @@ class SwitchTest extends \PHPUnit_Framework_TestCase
     {
         $callable = function ($value) {
             switch (true) {
-                case in_array($value, [1, 2, 3]): return 'first';
-                case in_array($value, [5, 6, 7]): return 'second';
+                case in_array($value, [1, 2, 3]):
+                    return 'first';
+                case in_array($value, [5, 6, 7]):
+                    return 'second';
+            }
+        };
+
+        $this->assertSame($callable(1), 'first');
+        $this->assertSame($callable(7), 'second');
+
+        $callable = function ($value) {
+            switch ($value) {
+                case in_array($value, [1, 2, 3]):
+                    return 'first';
+                case in_array($value, [5, 6, 7]):
+                    return 'second';
             }
         };
 
