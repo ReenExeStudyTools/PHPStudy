@@ -49,6 +49,11 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `strtolower`
 * `strtoupper`
 
+* `strcmp`
+* `strncmp`
+* `strcasecmp`
+* `strncasecmp`
+
 * `trim`
 * `rtrim`
 * `ltrim`
