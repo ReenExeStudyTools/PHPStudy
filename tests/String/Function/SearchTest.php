@@ -181,13 +181,67 @@ class SearchTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testStrStr()
+    /**
+     * @dataProvider strStrDataDefaultProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrStrDefault($haystack, $needle, $expect)
     {
-
+        $this->assertSame(strstr($haystack, $needle), $expect);
     }
 
-    public function testStrInsensitiveStr()
+    public function strStrDataDefaultProvider()
     {
-        
+        yield [
+            'this is some find me',
+            'f',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            false
+        ];
+    }
+
+    /**
+     * @dataProvider strStrDataInsensitiveProvider
+     * @param $haystack
+     * @param $needle
+     * @param $expect
+     */
+    public function testStrInsensitiveStr($haystack, $needle, $expect)
+    {
+        $this->assertSame(stristr($haystack, $needle), $expect);
+    }
+
+    public function strStrDataInsensitiveProvider()
+    {
+        yield [
+            'this is some find me',
+            'f',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'find',
+            'find me'
+        ];
+
+        yield [
+            'this is some find me',
+            'F',
+            'find me'
+        ];
     }
 }
