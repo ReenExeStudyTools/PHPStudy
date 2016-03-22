@@ -23,15 +23,38 @@ class Test extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testInterval()
+    /**
+     * @dataProvider intervalDataProvider
+     * @param $string
+     * @param $y
+     * @param $m
+     * @param $d
+     * @param $h
+     * @param $i
+     * @param $s
+     */
+    public function testInterval($string, $y, $m, $d, $h, $i, $s)
     {
-        $interval = new \DateInterval('P8Y7M5DT1H9M32S');
+        $interval = new \DateInterval($string);
 
-        $this->assertSame($interval->y, 8);
-        $this->assertSame($interval->m, 7);
-        $this->assertSame($interval->d, 5);
-        $this->assertSame($interval->h, 1);
-        $this->assertSame($interval->i, 9);
-        $this->assertSame($interval->s, 32);
+        $this->assertSame($interval->y, $y);
+        $this->assertSame($interval->m, $m);
+        $this->assertSame($interval->d, $d);
+        $this->assertSame($interval->h, $h);
+        $this->assertSame($interval->i, $i);
+        $this->assertSame($interval->s, $s);
+    }
+
+    public function intervalDataProvider()
+    {
+        yield [
+            'P8Y7M5DT1H9M32S',
+            $y = 8,
+            $m = 7,
+            $d = 5,
+            $h = 1,
+            $i = 9,
+            $s = 32,
+        ];
     }
 }
