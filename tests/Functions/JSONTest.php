@@ -3,16 +3,27 @@
 class JSONTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider dataProvider
+     * @dataProvider defaultDataProvider
      * @param $value
      * @param $expect
      */
-    public function test($value, $expect)
+    public function testDefault($value, $expect)
     {
-        $this->assertSame(json_encode($value), $expect);
+        $this->assertSame($expect, json_encode($value));
     }
 
-    public function dataProvider()
+    /**
+     * @dataProvider dataProvider
+     * @param $value
+     * @param $options
+     * @param $expect
+     */
+    public function testOption($value, $options, $expect)
+    {
+        $this->assertSame($expect, json_encode($value, $options));
+    }
+
+    public function defaultDataProvider()
     {
         yield [[], '[]'];
 
@@ -26,5 +37,20 @@ class JSONTest extends \PHPUnit_Framework_TestCase
         }
 
         yield [$tryIntAssoc, '[0,1,2]'];
+    }
+
+    public function dataProvider()
+    {
+        yield [
+            [],
+            0,
+            '[]',
+        ];
+
+        yield [
+            [],
+            JSON_FORCE_OBJECT,
+            '{}',
+        ];
     }
 }
