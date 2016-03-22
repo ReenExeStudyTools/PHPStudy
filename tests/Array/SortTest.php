@@ -62,6 +62,37 @@ class SortTest extends \PHPUnit_Framework_TestCase
             null,
             [2, 11]
         ];
+
+        yield [
+            [11, 2],
+            SORT_REGULAR,
+            [2, 11]
+        ];
+
+        yield [
+            ['11', '2'],
+            SORT_REGULAR,
+            ['2', '11']
+        ];
+
+        yield [
+            ['11', '2'],
+            SORT_STRING,
+            ['11', '2']
+        ];
+
+        yield [
+            ['11', '2'],
+            SORT_NUMERIC,
+            ['2', '11']
+        ];
+
+        // drop keys
+        yield [
+            ['a' => '11', 'b' => '2'],
+            SORT_NUMERIC,
+            ['2', '11']
+        ];
     }
 
     /**
