@@ -74,6 +74,19 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($array, $expect);
     }
 
+    public function testForeachKeyReference()
+    {
+        /**
+         * Fatal error:  Key element cannot be a reference
+            $array = [1, 2, 3];
+
+            foreach ($array as &$key => &$value) {
+                $key += 1;
+                $value += 1;
+            }
+         */
+    }
+
     public function testForeachList()
     {
         $array = ['a' => ['x', 'y', 'z']];
