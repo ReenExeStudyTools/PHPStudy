@@ -56,5 +56,34 @@ class Test extends \PHPUnit_Framework_TestCase
             $i = 9,
             $s = 32,
         ];
+
+        yield [
+            'P1Y',
+            $y = 1,
+            $m = 0,
+            $d = 0,
+            $h = 0,
+            $i = 0,
+            $s = 0,
+        ];
+
+        yield [
+            'P32M',
+            $y = 0,
+            $m = 32,
+            $d = 0,
+            $h = 0,
+            $i = 0,
+            $s = 0,
+        ];
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage DateInterval::__construct(): Unknown or bad format (P62S)
+     */
+    public function testBadIntervalFormat()
+    {
+        new \DateInterval('P62S');
     }
 }
