@@ -191,6 +191,11 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `SimpleXMLElement`
 * `simplexml_load_string`
 
+### Data Format
+* `DateTime::createFromFormat`
+* `date_create_from_format`
+* `DateInterval`
+
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)

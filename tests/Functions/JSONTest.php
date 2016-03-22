@@ -25,9 +25,17 @@ class JSONTest extends \PHPUnit_Framework_TestCase
 
     public function defaultDataProvider()
     {
+        yield [1, '1'];
+
+        yield ['1', '"1"'];
+
+        yield ['some text', '"some text"'];
+
         yield [[], '[]'];
 
         yield [[1], '[1]'];
+
+        yield [[1, 2, 3], '[1,2,3]'];
 
         yield [[0 => 1], '[1]'];
 
@@ -37,6 +45,10 @@ class JSONTest extends \PHPUnit_Framework_TestCase
         }
 
         yield [$tryIntAssoc, '[0,1,2]'];
+
+        yield [['key' => 'value'], '{"key":"value"}'];
+
+        yield [null, 'null'];
     }
 
     public function dataProvider()
@@ -51,6 +63,32 @@ class JSONTest extends \PHPUnit_Framework_TestCase
             [],
             JSON_FORCE_OBJECT,
             '{}',
+        ];
+
+        yield [
+            '1',
+            0,
+            '"1"',
+        ];
+
+        yield [
+            '1',
+            JSON_NUMERIC_CHECK,
+            '1',
+        ];
+
+        $json = <<<'JSON'
+{
+    "key": "value"
+}
+JSON;
+
+        yield [
+            [
+                "key" => "value"
+            ],
+            JSON_PRETTY_PRINT,
+            $json,
         ];
     }
 }
