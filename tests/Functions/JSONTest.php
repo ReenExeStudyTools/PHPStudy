@@ -76,5 +76,19 @@ class JSONTest extends \PHPUnit_Framework_TestCase
             JSON_NUMERIC_CHECK,
             '1',
         ];
+
+        $json = <<<'JSON'
+{
+    "key": "value"
+}
+JSON;
+
+        yield [
+            [
+                "key" => "value"
+            ],
+            JSON_PRETTY_PRINT,
+            $json,
+        ];
     }
 }
