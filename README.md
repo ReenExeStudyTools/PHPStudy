@@ -194,6 +194,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Data Format
 * `DateTime::createFromFormat`
 * `date_create_from_format`
+* `DateInterval`
 
 ### Link
 * http://php-guide.evercodelab.com/
