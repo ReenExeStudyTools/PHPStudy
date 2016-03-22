@@ -22,4 +22,13 @@ class Test extends \PHPUnit_Framework_TestCase
             date_create_from_format($format, $string)
         );
     }
+
+    public function testInterval()
+    {
+        $interval = new \DateInterval('P8Y7M5D');
+
+        $this->assertSame($interval->y, 8);
+        $this->assertSame($interval->m, 7);
+        $this->assertSame($interval->d, 5);
+    }
 }
