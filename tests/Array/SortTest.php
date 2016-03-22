@@ -4,6 +4,9 @@ class SortTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider sortProvider
+     * @param array $array
+     * @param array $expect
+     * @param array $reverse
      */
     public function testSort(array $array, array $expect, array $reverse)
     {
@@ -25,6 +28,39 @@ class SortTest extends \PHPUnit_Framework_TestCase
             [
                 ['x' => 3, 'y' => 1, 'z' => 2], [1, 2, 3], [3, 2, 1]
             ],
+        ];
+    }
+
+    /**
+     * @dataProvider sortOptionDataProvider
+     * @param array $array
+     * @param $options
+     * @param array $expect
+     */
+    public function testSortOption(array $array, $options, array $expect)
+    {
+        sort($array, $options);
+        $this->assertSame($array, $expect);
+    }
+
+    public function sortOptionDataProvider()
+    {
+        yield [
+            [11, 2],
+            SORT_STRING,
+            [11, 2]
+        ];
+
+        yield [
+            [11, 2],
+            SORT_NUMERIC,
+            [2, 11]
+        ];
+
+        yield [
+            [11, 2],
+            null,
+            [2, 11]
         ];
     }
 
