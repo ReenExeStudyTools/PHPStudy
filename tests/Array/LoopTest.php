@@ -24,6 +24,56 @@ class LoopTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testForeachReference()
+    {
+        $array = [1, 2, 3];
+
+        foreach ($array as &$value) {
+            $value += 1;
+        }
+
+        $this->assertSame($array, [2, 3, 4]);
+
+        foreach ($array as $value) {
+            break;
+        }
+
+        $this->assertSame($array, [2, 3, 2]);
+
+        foreach ($array as $value) {
+            if ($value === 3) break;;
+        }
+
+        $this->assertSame($array, [2, 3, 3]);
+    }
+
+    public function testForeachSaveReference()
+    {
+        $array = [1, 2, 3];
+
+        foreach ($array as &$value) {
+            $value += 1;
+        }
+        // remove reference
+        unset($value);
+
+        $expect = [2, 3, 4];
+
+        $this->assertSame($array, $expect);
+
+        foreach ($array as $value) {
+            break;
+        }
+
+        $this->assertSame($array, $expect);
+
+        foreach ($array as $value) {
+            if ($value === 3) break;;
+        }
+
+        $this->assertSame($array, $expect);
+    }
+
     public function testForeachList()
     {
         $array = ['a' => ['x', 'y', 'z']];
