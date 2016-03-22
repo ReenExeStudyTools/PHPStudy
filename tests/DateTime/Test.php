@@ -8,8 +8,18 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $string = '2016-12-17 00:00:00';
 
-        $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $string);
+        $format = 'Y-m-d H:i:s';
 
-        $this->assertEquals($dateTime , new \DateTime($string));
+        $dateTime = new \DateTime($string);
+
+        $this->assertEquals(
+            $dateTime,
+            \DateTime::createFromFormat($format, $string)
+        );
+
+        $this->assertEquals(
+            $dateTime,
+            date_create_from_format($format, $string)
+        );
     }
 }

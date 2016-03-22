@@ -192,7 +192,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `simplexml_load_string`
 
 ### Data Format
-* `DateTime`
+* `DateTime::createFromFormat`
+* `date_create_from_format`
 
 ### Link
 * http://php-guide.evercodelab.com/
