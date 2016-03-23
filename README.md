@@ -196,6 +196,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `date_create_from_format`
 * `DateInterval`
 
+### Standard interfaces
+* `Iterator`
+
 ### Link
 * http://php-guide.evercodelab.com/
 * http://www.quizful.net/ (need see new for tests)
