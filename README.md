@@ -204,6 +204,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Standard interfaces
 * `Iterator`
 * `IteratorAggregate`
+* `Traversable`
 
 ### Link
 * http://php-guide.evercodelab.com/

@@ -14,15 +14,7 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorInterface(array $source, array $expect)
     {
-        $iterator = new IteratorClass($source);
-
-        $accumulator = [];
-
-        foreach ($iterator as $k => $v) {
-            $accumulator[$k] = $v;
-        }
-
-        $this->assertSame($expect, $accumulator);
+        $this->assertIterate($expect, new IteratorClass($source));
     }
 
     /**
@@ -32,15 +24,7 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteratorAggregateInterface(array $source, array $expect)
     {
-        $iterator = new IteratorAggregateClass($source);
-
-        $accumulator = [];
-
-        foreach ($iterator as $k => $v) {
-            $accumulator[$k] = $v;
-        }
-
-        $this->assertSame($expect, $accumulator);
+        $this->assertIterate($expect, new IteratorAggregateClass($source));
     }
 
     public function testBrokenIteratorAggregate()
@@ -77,5 +61,16 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
             ['a' => 1, 'b' => 7],
             [1, 7]
         ];
+    }
+
+    private function assertIterate(array $expect, \Traversable $iterator)
+    {
+        $accumulator = [];
+
+        foreach ($iterator as $k => $v) {
+            $accumulator[$k] = $v;
+        }
+
+        $this->assertSame($expect, $accumulator);
     }
 }
