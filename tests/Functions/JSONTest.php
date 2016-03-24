@@ -91,4 +91,27 @@ JSON;
             $json,
         ];
     }
+
+    /**
+     * @dataProvider decodeAssocDataProvider
+     * @param $json
+     * @param $expect
+     */
+    public function testDecodeAssoc($json, $expect)
+    {
+        $this->assertSame($expect, json_decode($json, true));
+    }
+
+    public function decodeAssocDataProvider()
+    {
+        yield [
+            '1',
+            1
+        ];
+    }
+
+    public function testBadDecodeFormat()
+    {
+        $this->assertSame(null, json_decode('{', true));
+    }
 }

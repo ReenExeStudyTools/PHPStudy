@@ -196,6 +196,10 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `date_create_from_format`
 * `DateInterval`
 
+### JSON
+* `json_encode`
+* `json_decode`
+
 ### Standard interfaces
 * `Iterator`
 
