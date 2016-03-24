@@ -199,9 +199,11 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### JSON
 * `json_encode`
 * `json_decode`
+* `json_last_error_msg`
 
 ### Standard interfaces
 * `Iterator`
+* `IteratorAggregate`
 
 ### Link
 * http://php-guide.evercodelab.com/
@@ -210,4 +212,3 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### TODO:
 * stripcslashes
-* `IteratorAggregate`
