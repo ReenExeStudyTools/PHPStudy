@@ -50,6 +50,11 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
          */
     }
 
+    public function testEmptyIterator()
+    {
+        $this->assertIterate([], new \EmptyIterator());
+    }
+
     public function dataProvider()
     {
         yield [
