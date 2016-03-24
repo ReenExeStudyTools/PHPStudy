@@ -206,6 +206,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `IteratorAggregate`
 * `Traversable`
 * `EmptyIterator`
+* `ArrayIterator`
 
 ### Link
 * http://php-guide.evercodelab.com/
@@ -214,3 +215,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### TODO:
 * stripcslashes
+* `NoRewindIterator`

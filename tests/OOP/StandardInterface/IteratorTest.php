@@ -55,6 +55,18 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertIterate([], new \EmptyIterator());
     }
 
+    public function testArrayIterator()
+    {
+        $expect = [
+            'a' => 3,
+            'c' => 7,
+        ];
+        $iterator = new \ArrayIterator($expect);
+
+        $this->assertIterate($expect, $iterator);
+        $this->assertIterate($expect, $iterator);
+    }
+
     public function dataProvider()
     {
         yield [
