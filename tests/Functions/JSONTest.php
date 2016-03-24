@@ -113,5 +113,7 @@ JSON;
     public function testBadDecodeFormat()
     {
         $this->assertSame(null, json_decode('{', true));
+
+        $this->assertSame('Syntax error', json_last_error_msg());
     }
 }
