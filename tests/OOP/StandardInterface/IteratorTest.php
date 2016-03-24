@@ -2,6 +2,7 @@
 
 use ReenExe\Study\IteratorClass;
 use ReenExe\Study\IteratorAggregateClass;
+use ReenExe\Study\BrokenIteratorAggregateClass;
 
 class IteratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,6 +40,16 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertSame($expect, $accumulator);
+    }
+
+    public function testBrokenIteratorAggregate()
+    {
+        $iterator = new BrokenIteratorAggregateClass([]);
+
+        $this->setExpectedException(\Exception::class, 'Objects returned by ReenExe\Study\BrokenIteratorAggregateClass::getIterator() must be traversable or implement interface Iterator');
+        foreach ($iterator as $k => $v) {
+
+        }
     }
 
     public function dataProvider()
