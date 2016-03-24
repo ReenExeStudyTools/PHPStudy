@@ -65,6 +65,8 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertIterate($expect, $iterator);
         $this->assertIterate($expect, $iterator);
+
+        $this->assertSame($expect, $iterator->getArrayCopy());
     }
 
     public function dataProvider()
