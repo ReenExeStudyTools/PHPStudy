@@ -206,3 +206,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 ### TODO:
 * stripcslashes
+* `IteratorAggregate`
