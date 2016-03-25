@@ -69,6 +69,32 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expect, $iterator->getArrayCopy());
     }
 
+    /**
+     * TODO: why?
+     */
+    public function testNoRewindIterator()
+    {
+        $source = range(1, 11);
+        $iterator = new \NoRewindIterator(new \ArrayIterator($source));
+
+        $expect = [1];
+        $actual = [];
+        foreach ($iterator as $value) {
+            $actual[] = $value;
+            break;
+        }
+
+        $this->assertSame($expect, $actual);
+
+        $expect = [1];
+        $actual = [];
+        foreach ($iterator as $value) {
+            $actual[] = $value;
+            break;
+        }
+        $this->assertSame($expect, $actual);
+    }
+
     public function dataProvider()
     {
         yield [
