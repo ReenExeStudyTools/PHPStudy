@@ -26,6 +26,7 @@ class TraitTest extends \PHPUnit_Framework_TestCase
         $instance = new SimpleClass();
         $this->assertTrue($instance instanceof SimpleClass);
         $this->assertFalse($instance instanceof SimpleTrait);
+        $this->assertSame(class_uses($instance), [SimpleTrait::class => SimpleTrait::class]);
     }
 
     public function testTraitTypeArgument()

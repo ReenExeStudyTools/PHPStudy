@@ -125,6 +125,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * instanceof trait (false)
 * trait as function argument type (fail)
 * abstract trait (fail)
+* `class_uses`
 
 ##### Design Pattern
 * Decorator (from `Head First`)
