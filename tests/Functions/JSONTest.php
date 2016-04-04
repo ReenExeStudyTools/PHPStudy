@@ -108,6 +108,11 @@ JSON;
             '1',
             1
         ];
+
+        yield [
+            1,
+            1
+        ];
     }
 
     public function testBadDecodeFormat()
@@ -115,5 +120,14 @@ JSON;
         $this->assertSame(null, json_decode('{', true));
 
         $this->assertSame('Syntax error', json_last_error_msg());
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage expects parameter 1 to be string, array given
+     */
+    public function testWrongType()
+    {
+        $this->assertSame(null, json_decode([], true));
     }
 }
