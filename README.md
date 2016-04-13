@@ -29,6 +29,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `switch`
 
 ### Basic
+##### Operators
+* `Ternary`
 ##### Functions
 * `log`
 * `log10`
