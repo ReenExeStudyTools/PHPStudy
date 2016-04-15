@@ -217,6 +217,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * http://www.zend.com/en/services/certification/php-5-certification
 
 ### TODO:
-* stripcslashes
+* `stripcslashes`
 * `NoRewindIterator`
 * `array_reverse`
+* `SplObjectStorage`

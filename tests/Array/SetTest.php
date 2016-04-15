@@ -1,11 +1,12 @@
 <?php
 
 use ReenExe\Study\EntityClass;
+use ReenExe\Study\StringClass;
 
 class SetTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider uniqueScalarProviderSortString
+     * @dataProvider uniqueProviderSortString
      * @param array $source
      * @param array $expected
      */
@@ -39,7 +40,21 @@ class SetTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function uniqueScalarProviderSortString()
+    public function uniqueProviderSortString()
+    {
+        yield from $this->uniqueScalarProviderSortString();
+
+        $a = new StringClass('a');
+        $b = new StringClass('b');
+        $c = new StringClass('c');
+
+        yield [
+            [$a, $a, $b, $a, $b, $c],
+            [$a, 2 => $b, 5 => $c]
+        ];
+    }
+
+    private function uniqueScalarProviderSortString()
     {
         return [
             [
