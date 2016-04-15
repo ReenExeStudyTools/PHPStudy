@@ -1,9 +1,11 @@
 <?php
 
+use ReenExe\Study\EntityClass;
+
 class SetTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider uniqueProviderSortString
+     * @dataProvider uniqueScalarProviderSortString
      * @param array $source
      * @param array $expected
      */
@@ -13,7 +15,31 @@ class SetTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(array_unique($source, SORT_STRING) === $expected);
     }
 
-    public function uniqueProviderSortString()
+    /**
+     * @dataProvider uniqueObjectProvider
+     * @param array $source
+     * @param array $expected
+     */
+    public function testUniqueObject(array $source, array $expected)
+    {
+        /**
+         * Fatal error:  Object of class ReenExe\Study\EntityClass could not be converted to string
+            $this->assertTrue(array_unique($source) === $expected);
+         */
+    }
+
+    public function uniqueObjectProvider()
+    {
+        $a = new EntityClass();
+        $b = new EntityClass();
+
+        yield [
+            [$a, $a, $b, $a, $b],
+            [$a, $b]
+        ];
+    }
+
+    public function uniqueScalarProviderSortString()
     {
         return [
             [
