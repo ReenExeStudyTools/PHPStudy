@@ -89,6 +89,48 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
             'a',
             1
         ];
+
+        yield [
+            'a',
+            'ab',
+            1
+        ];
+
+        yield [
+            'ab',
+            'a',
+            1
+        ];
+
+        yield [
+            'yab',
+            'xa',
+            1
+        ];
+
+        yield [
+            'abcdef',
+            'cde',
+            3
+        ];
+
+        yield [
+            'abcdef',
+            'a cde f',
+            5
+        ];
+
+        yield [
+            'abcdef',
+            'acdef',
+            5
+        ];
+
+        yield [
+            'abcdef',
+            strrev('abcdef'),
+            1
+        ];
     }
 
     public function limitedDataProvider()
