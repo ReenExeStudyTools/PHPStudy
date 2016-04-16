@@ -22,7 +22,8 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
             ['1'],
             [1],
             // and
-            ['-0']
+            ['-0'],
+            [new \stdClass()]
         ];
     }
 
@@ -48,6 +49,7 @@ class BooleanTest extends \PHPUnit_Framework_TestCase
             [array()],
             [null],
             [false],
+            [(array)new \stdClass()],
         ];
     }
 }
