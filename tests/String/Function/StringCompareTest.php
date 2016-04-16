@@ -71,6 +71,26 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
         $this->assertSame($expected, strncasecmp($left, $right, $length));
     }
 
+    /**
+     * @dataProvider similarTextDefaultDataProvider
+     * @param $first
+     * @param $second
+     * @param $expect
+     */
+    public function testSimilarTextDefault($first, $second, $expect)
+    {
+        $this->assertSame($expect, similar_text($first, $second));
+    }
+
+    public function similarTextDefaultDataProvider()
+    {
+        yield [
+            'a',
+            'a',
+            1
+        ];
+    }
+
     public function limitedDataProvider()
     {
         yield [

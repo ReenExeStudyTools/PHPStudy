@@ -92,6 +92,8 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `substr_compare`
 
+* `similar_text`
+
 * `pack`
 * `unpack`
 ##### Patterns
