@@ -72,82 +72,103 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider similarTextDefaultDataProvider
+     * @dataProvider similarTextDataProvider
      * @param $first
      * @param $second
+     * @param $expectPercent
      * @param $expect
      */
-    public function testSimilarTextDefault($first, $second, $expect)
+    public function testSimilarText($first, $second, $expectPercent, $expect)
     {
         $this->assertSame($expect, similar_text($first, $second));
+        $this->assertSame($expect, similar_text($first, $second, $percent));
+        $this->assertSame($expectPercent, $percent);
     }
 
-    public function similarTextDefaultDataProvider()
+    public function similarTextDataProvider()
     {
         yield [
             'a',
             'a',
+            100.0,
             1
         ];
 
         yield [
             'a',
             'ab',
+            66.666666666666671,
             1
         ];
 
         yield [
             'ab',
             'a',
+            66.666666666666671,
             1
         ];
 
         yield [
             'yab',
             'xa',
+            40.0,
             1
         ];
 
         yield [
             'abcdef',
             'cde',
+            66.666666666666671,
             3
         ];
 
         yield [
             'abcdef',
             'a cde f',
+            76.92307692307692,
             5
         ];
 
         yield [
             'abcdef',
             'acdef',
+            90.909090909090907,
             5
         ];
 
         yield [
             'abcdef',
             strrev('abcdef'),
+            16.666666666666668,
             1
         ];
 
         yield [
             'hello world',
             'world is big',
+            43.478260869565219,
             5
         ];
 
         yield [
             'hello world',
             'world hello',
+            45.454545454545453,
             5
         ];
 
         yield [
             'hello world',
             'mini world hello',
+            44.444444444444443,
             6
+        ];
+
+        yield [
+            'hello world',
+            'hello mini world',
+            81.481481481481481,
+            11
         ];
     }
 
