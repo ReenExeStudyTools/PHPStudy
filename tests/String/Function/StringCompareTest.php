@@ -131,6 +131,24 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
             strrev('abcdef'),
             1
         ];
+
+        yield [
+            'hello world',
+            'world is big',
+            5
+        ];
+
+        yield [
+            'hello world',
+            'world hello',
+            5
+        ];
+
+        yield [
+            'hello world',
+            'mini world hello',
+            6
+        ];
     }
 
     public function limitedDataProvider()
