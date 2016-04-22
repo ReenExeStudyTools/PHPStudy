@@ -86,7 +86,7 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         yield ['is_numeric', 1, true];
         yield ['is_numeric', 1.0, true];
         yield ['is_numeric', '1', true];
-
+        yield ['is_numeric', '1.0', true];
 
         yield ['is_string', '', true];
         yield ['is_string', 1, false];
@@ -100,6 +100,7 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         yield ['is_array', [], true];
         yield ['is_array', [1], true];
         yield ['is_array', 'some', false];
+        yield ['is_array', new \ArrayObject(), false];
 
         $object = new \stdClass();
         yield ['is_object', $object, true];
