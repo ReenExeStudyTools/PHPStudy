@@ -75,12 +75,21 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         yield ['is_int', true, false];
 
         yield ['is_float', 1.0, true];
+        yield ['is_real', 1.0, true];
         yield ['is_float', 1, false];
+        yield ['is_real', 1, false];
+        yield ['is_float', 1, false];
+        yield ['is_float', '1', false];
+        yield ['is_float', '1.0', false];
+        yield ['is_real', 1, false];
 
-        yield ['is_float', 1, false];
+        yield ['is_numeric', 1, true];
+        yield ['is_numeric', 1.0, true];
+        yield ['is_numeric', '1', true];
+
 
         yield ['is_string', '', true];
-        yield ['is_float', 1, false];
+        yield ['is_string', 1, false];
 
         yield ['is_bool', true, true];
         yield ['is_bool', 1, false];
