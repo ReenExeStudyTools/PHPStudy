@@ -18,11 +18,7 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
 
     public function containsDataProvider()
     {
-        yield [true,    'SplObjectStorage::contains() expects parameter 1 to be object, boolean given'];
-        yield [false,   'SplObjectStorage::contains() expects parameter 1 to be object, boolean given'];
-        yield [1,       'SplObjectStorage::contains() expects parameter 1 to be object, integer given'];
-        yield ['1',     'SplObjectStorage::contains() expects parameter 1 to be object, string given'];
-        yield [[],      'SplObjectStorage::contains() expects parameter 1 to be object, array given'];
+        yield from $this->dataProviderMethodReplace('SplObjectStorage::contains()');
     }
 
     /**
@@ -41,11 +37,7 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
 
     public function attachDataProvider()
     {
-        yield [true,    'SplObjectStorage::attach() expects parameter 1 to be object, boolean given'];
-        yield [false,   'SplObjectStorage::attach() expects parameter 1 to be object, boolean given'];
-        yield [1,       'SplObjectStorage::attach() expects parameter 1 to be object, integer given'];
-        yield ['1',     'SplObjectStorage::attach() expects parameter 1 to be object, string given'];
-        yield [[],      'SplObjectStorage::attach() expects parameter 1 to be object, array given'];
+        yield from $this->dataProviderMethodReplace('SplObjectStorage::attach()');
     }
 
     /**
@@ -64,11 +56,23 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
 
     public function detachDataProvider()
     {
-        yield [true,    'SplObjectStorage::detach() expects parameter 1 to be object, boolean given'];
-        yield [false,   'SplObjectStorage::detach() expects parameter 1 to be object, boolean given'];
-        yield [1,       'SplObjectStorage::detach() expects parameter 1 to be object, integer given'];
-        yield ['1',     'SplObjectStorage::detach() expects parameter 1 to be object, string given'];
-        yield [[],      'SplObjectStorage::detach() expects parameter 1 to be object, array given'];
+        yield from $this->dataProviderMethodReplace('SplObjectStorage::detach()');
+    }
+
+    private function dataProviderMethodReplace($method)
+    {
+        foreach ($this->warningDataProvider() as $item) {
+            yield [$item[0], "$method $item[1]"];
+        }
+    }
+
+    private function warningDataProvider()
+    {
+        yield [true,    'expects parameter 1 to be object, boolean given'];
+        yield [false,   'expects parameter 1 to be object, boolean given'];
+        yield [1,       'expects parameter 1 to be object, integer given'];
+        yield ['1',     'expects parameter 1 to be object, string given'];
+        yield [[],      'expects parameter 1 to be object, array given'];
     }
 
     public function test()
