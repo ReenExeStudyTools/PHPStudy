@@ -29,6 +29,14 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `switch`
 
 ### Basic
+* `is_int`
+* `is_float`
+* `is_string`
+* `is_bool`
+* `is_null`
+* `is_array`
+* `is_object`
+
 ##### Operators
 * `Ternary`
 ##### Functions
