@@ -57,9 +57,15 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(floatval('1') === 1.0);
     }
 
-    public function testIs()
+    /**
+     * @dataProvider isDataProvider
+     * @param callable $callable
+     * @param $value
+     * @param bool $expect
+     */
+    public function testIs(callable $callable, $value, bool $expect)
     {
-        $this->assertTrue(is_int(1));
+        $this->assertSame($expect, $callable($value));
         $this->assertFalse(is_int(1.0));
         $this->assertFalse(is_int('1'));
         $this->assertFalse(is_int(true));
@@ -81,6 +87,13 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $object = new \stdClass();
         $this->assertTrue(is_object($object));
         $this->assertFalse(is_object([]));
+    }
+
+    public function isDataProvider()
+    {
+        yield [
+            'is_int', 1, true
+        ];
     }
 
     /**
