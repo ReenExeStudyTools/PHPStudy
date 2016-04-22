@@ -79,15 +79,17 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
     {
         $storage = new \SplObjectStorage();
 
+        $object = new \stdClass();
+
         $this->assertSame(false, $storage->contains($this));
 
-        $storage->attach($this);
+        $storage->attach($object);
 
-        $this->assertSame(true, $storage->contains($this));
+        $this->assertSame(true, $storage->contains($object));
         $this->assertSame(1, $storage->count());
 
         // attach again - success
-        $storage->attach($this);
+        $storage->attach($object);
         $this->assertSame(1, $storage->count());
 
         $result = [];
@@ -95,10 +97,10 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
             $result[] = $item;
         }
 
-        $this->assertSame([$this], $result);
+        $this->assertSame([$object], $result);
 
-        $storage->detach($this);
-        $this->assertSame(false, $storage->contains($this));
+        $storage->detach($object);
+        $this->assertSame(false, $storage->contains($object));
         $this->assertSame(0, $storage->count());
     }
 }
