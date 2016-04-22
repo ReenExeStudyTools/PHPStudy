@@ -25,7 +25,7 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
         yield [[],      'SplObjectStorage::contains() expects parameter 1 to be object, array given'];
     }
 
-    public function testAttach()
+    public function test()
     {
         $storage = new \SplObjectStorage();
 
@@ -39,5 +39,12 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
         // attach again - success
         $storage->attach($this);
         $this->assertSame(1, $storage->count());
+
+        $result = [];
+        foreach ($storage as $item) {
+            $result[] = $item;
+        }
+
+        $this->assertSame([$this], $result);
     }
 }
