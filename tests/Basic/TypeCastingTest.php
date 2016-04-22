@@ -66,34 +66,35 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
     public function testIs(callable $callable, $value, bool $expect)
     {
         $this->assertSame($expect, $callable($value));
-        $this->assertFalse(is_int(1.0));
-        $this->assertFalse(is_int('1'));
-        $this->assertFalse(is_int(true));
-
-        $this->assertTrue(is_float(1.0));
-        $this->assertFalse(is_float(1));
-
-        $this->assertTrue(is_string(''));
-        $this->assertFalse(is_string(1));
-
-        $this->assertTrue(is_bool(true));
-        $this->assertFalse(is_bool(1));
-
-        $this->assertTrue(is_null(null));
-        $this->assertFalse(is_null(false));
-
-        $this->assertTrue(is_array([]));
-
-        $object = new \stdClass();
-        $this->assertTrue(is_object($object));
-        $this->assertFalse(is_object([]));
     }
 
     public function isDataProvider()
     {
-        yield [
-            'is_int', 1, true
-        ];
+        yield ['is_int', 1, true];
+        yield ['is_int', 1.0, false];
+        yield ['is_int', true, false];
+
+        yield ['is_float', 1.0, true];
+        yield ['is_float', 1, false];
+
+        yield ['is_float', 1, false];
+
+        yield ['is_string', '', true];
+        yield ['is_float', 1, false];
+
+        yield ['is_bool', true, true];
+        yield ['is_bool', 1, false];
+
+        yield ['is_null', null, true];
+        yield ['is_null', false, false];
+
+        yield ['is_array', [], true];
+        yield ['is_array', [1], true];
+        yield ['is_array', 'some', false];
+
+        $object = new \stdClass();
+        yield ['is_object', $object, true];
+        yield ['is_object', [], false];
     }
 
     /**
