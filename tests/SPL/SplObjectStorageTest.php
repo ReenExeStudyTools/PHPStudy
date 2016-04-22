@@ -46,5 +46,9 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertSame([$this], $result);
+
+        $storage->detach($this);
+        $this->assertSame(false, $storage->contains($this));
+        $this->assertSame(0, $storage->count());
     }
 }
