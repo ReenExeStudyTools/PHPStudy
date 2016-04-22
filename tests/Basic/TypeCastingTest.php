@@ -95,6 +95,15 @@ class TypeCastingTest extends \PHPUnit_Framework_TestCase
         $object = new \stdClass();
         yield ['is_object', $object, true];
         yield ['is_object', [], false];
+
+        yield ['is_scalar', 1, true];
+        yield ['is_scalar', 1.0, true];
+        yield ['is_scalar', true, true];
+        yield ['is_scalar', 'text', true];
+
+        yield ['is_scalar', null, false];
+        yield ['is_scalar', [], false];
+        yield ['is_scalar', $object, false];
     }
 
     /**

@@ -36,6 +36,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `is_null`
 * `is_array`
 * `is_object`
+* `is_scalar`
 
 ##### Operators
 * `Ternary`
