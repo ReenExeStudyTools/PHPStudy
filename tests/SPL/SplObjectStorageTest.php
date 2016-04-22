@@ -25,6 +25,52 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
         yield [[],      'SplObjectStorage::contains() expects parameter 1 to be object, array given'];
     }
 
+    /**
+     * @dataProvider attachDataProvider
+     * @param $value
+     * @param $message
+     */
+    public function testAttach($value, $message)
+    {
+        $obj = new \SplObjectStorage();
+
+        $this->setExpectedException('PHPUnit_Framework_Error_Warning', $message);
+
+        $obj->attach($value);
+    }
+
+    public function attachDataProvider()
+    {
+        yield [true,    'SplObjectStorage::attach() expects parameter 1 to be object, boolean given'];
+        yield [false,   'SplObjectStorage::attach() expects parameter 1 to be object, boolean given'];
+        yield [1,       'SplObjectStorage::attach() expects parameter 1 to be object, integer given'];
+        yield ['1',     'SplObjectStorage::attach() expects parameter 1 to be object, string given'];
+        yield [[],      'SplObjectStorage::attach() expects parameter 1 to be object, array given'];
+    }
+
+    /**
+     * @dataProvider detachDataProvider
+     * @param $value
+     * @param $message
+     */
+    public function testDetach($value, $message)
+    {
+        $obj = new \SplObjectStorage();
+
+        $this->setExpectedException('PHPUnit_Framework_Error_Warning', $message);
+
+        $obj->detach($value);
+    }
+
+    public function detachDataProvider()
+    {
+        yield [true,    'SplObjectStorage::detach() expects parameter 1 to be object, boolean given'];
+        yield [false,   'SplObjectStorage::detach() expects parameter 1 to be object, boolean given'];
+        yield [1,       'SplObjectStorage::detach() expects parameter 1 to be object, integer given'];
+        yield ['1',     'SplObjectStorage::detach() expects parameter 1 to be object, string given'];
+        yield [[],      'SplObjectStorage::detach() expects parameter 1 to be object, array given'];
+    }
+
     public function test()
     {
         $storage = new \SplObjectStorage();
