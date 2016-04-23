@@ -3,7 +3,7 @@
 class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider containsDataProvider
+     * @dataProvider warningDataProvider
      * @param $value
      * @param $message
      */
@@ -11,18 +11,13 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new \SplObjectStorage();
 
-        $this->setExpectedException('PHPUnit_Framework_Error_Warning', $message);
+        $this->setExpectedException('PHPUnit_Framework_Error_Warning', "SplObjectStorage::contains() $message");
 
         $obj->contains($value);
     }
 
-    public function containsDataProvider()
-    {
-        yield from $this->dataProviderMethodReplace('SplObjectStorage::contains()');
-    }
-
     /**
-     * @dataProvider attachDataProvider
+     * @dataProvider warningDataProvider
      * @param $value
      * @param $message
      */
@@ -30,18 +25,13 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new \SplObjectStorage();
 
-        $this->setExpectedException('PHPUnit_Framework_Error_Warning', $message);
+        $this->setExpectedException('PHPUnit_Framework_Error_Warning', "SplObjectStorage::attach() $message");
 
         $obj->attach($value);
     }
 
-    public function attachDataProvider()
-    {
-        yield from $this->dataProviderMethodReplace('SplObjectStorage::attach()');
-    }
-
     /**
-     * @dataProvider detachDataProvider
+     * @dataProvider warningDataProvider
      * @param $value
      * @param $message
      */
@@ -49,24 +39,12 @@ class SplObjectStorageTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new \SplObjectStorage();
 
-        $this->setExpectedException('PHPUnit_Framework_Error_Warning', $message);
+        $this->setExpectedException('PHPUnit_Framework_Error_Warning', "SplObjectStorage::detach() $message");
 
         $obj->detach($value);
     }
 
-    public function detachDataProvider()
-    {
-        yield from $this->dataProviderMethodReplace('SplObjectStorage::detach()');
-    }
-
-    private function dataProviderMethodReplace($method)
-    {
-        foreach ($this->warningDataProvider() as $item) {
-            yield [$item[0], "$method $item[1]"];
-        }
-    }
-
-    private function warningDataProvider()
+    public function warningDataProvider()
     {
         yield [true,    'expects parameter 1 to be object, boolean given'];
         yield [false,   'expects parameter 1 to be object, boolean given'];
