@@ -862,7 +862,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider reverseDataProvider
+     * @dataProvider reverseDefaultDataProvider
      * @param array $array
      * @param array $expected
      */
@@ -871,7 +871,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expected, array_reverse($array));
     }
 
-    public function reverseDataProvider()
+    public function reverseDefaultDataProvider()
     {
         yield [
             [1, 2, 3],
@@ -881,6 +881,29 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         yield [
             ['a' => 1, 2, 3],
             [3, 2, 'a' => 1]
+        ];
+    }
+
+    /**
+     * @dataProvider reverseDataProvider
+     * @param array $array
+     * @param array $expected
+     */
+    public function testReverse(array $array, array $expected)
+    {
+        $this->assertSame($expected, array_reverse($array, true));
+    }
+
+    public function reverseDataProvider()
+    {
+        yield [
+            [1, 2, 3],
+            [2 => 3, 1 => 2, 0 => 1]
+        ];
+
+        yield [
+            ['a' => 1, 2, 3],
+            [1 => 3, 0 => 2, 'a' => 1]
         ];
     }
 }
