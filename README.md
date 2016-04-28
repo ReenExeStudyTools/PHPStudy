@@ -47,6 +47,11 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `log10`
 * `is_nan`
 
+##### Math
+* `min`
+* `max`
+* `abs`
+
 ### String
 ##### Functions
 * `substr`

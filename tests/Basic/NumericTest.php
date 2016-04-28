@@ -22,6 +22,9 @@ class NumericTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(0.1 === .1);
         $this->assertTrue(-0.1 === -.1);
+
+        $this->assertFalse(1.0 === 1);
+        $this->assertTrue(1.0 == 1);
     }
 
     public function testExponential()
