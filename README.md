@@ -182,6 +182,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_splice`
 * `array_replace`
 * `array_replace_recursive`
+* `array_reverse`
 * `count`
 
 ##### Sets
@@ -237,6 +238,5 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### TODO:
 * `stripcslashes`
 * `NoRewindIterator`
-* `array_reverse`
 * `version_compare`
 * `SplObjectStorage`

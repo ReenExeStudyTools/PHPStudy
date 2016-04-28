@@ -860,4 +860,27 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(count([[1, 2]], COUNT_NORMAL), 1);
         $this->assertSame(count([[1, 2]], COUNT_RECURSIVE), 3);
     }
+
+    /**
+     * @dataProvider reverseDataProvider
+     * @param array $array
+     * @param array $expected
+     */
+    public function testReverseDefault(array $array, array $expected)
+    {
+        $this->assertSame($expected, array_reverse($array));
+    }
+
+    public function reverseDataProvider()
+    {
+        yield [
+            [1, 2, 3],
+            [3, 2, 1]
+        ];
+
+        yield [
+            ['a' => 1, 2, 3],
+            [3, 2, 'a' => 1]
+        ];
+    }
 }
