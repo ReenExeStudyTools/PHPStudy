@@ -26,7 +26,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(empty($array['a']['b']['c']));
         $this->assertTrue(empty($array['a']['b']));
         $this->assertTrue(empty($array['a']));
-        
+
         $array['a']['b']['c'] = true;
         $this->assertTrue($array === [
             'a' => [
@@ -35,6 +35,46 @@ class BasicTest extends \PHPUnit_Framework_TestCase
                 ]
             ]    
         ]);
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Warning
+     * @expectedExceptionMessage Cannot use a scalar value as an array
+     */
+    public function testNumberSet()
+    {
+        $array = 1;
+        $array['key'] = 'value';
+    }
+
+    public function testNullSet()
+    {
+        $array = null;
+        $array['key'] = 'value';
+        $this->assertSame($array, ['key' => 'value']);
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage Undefined variable: array
+     */
+    public function testSetUndefinedOffset()
+    {
+        $array['key'] = $array['key'];
+    }
+
+    public function testNullSetUndefinedOffsetSameOffset()
+    {
+        $array = null;
+        $array['key'] = $array['key'];
+        $this->assertSame($array, ['key' => null]);
+    }
+
+    public function testNullSetUndefinedOffset()
+    {
+        $array = null;
+        $array['key'] = $array['value'];
+        $this->assertSame($array, ['key' => null]);
     }
 
     public function testNextKey()
