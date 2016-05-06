@@ -240,3 +240,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `NoRewindIterator`
 * `version_compare`
 * `SplObjectStorage`
+* `is_a`
