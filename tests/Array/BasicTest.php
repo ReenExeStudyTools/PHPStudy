@@ -206,4 +206,37 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         // exception
         [$stringObject => 1];
     }
+
+    public function testUnsetNested()
+    {
+        $array = ['key' => 'value'];
+
+        unset($array['a']['b']['c']);
+
+        $this->assertSame(['key' => 'value'], $array);
+    }
+
+    public function testUnsetMulti()
+    {
+        $array = [
+            'a' => 1,
+            'b' => 2,
+            'c' => 3,
+            'd' => 4,
+            'e' => 5,
+        ];
+
+        unset($array['b'], $array['d']);
+
+        $this->assertSame(
+            [
+                'a' => 1,
+
+                'c' => 3,
+
+                'e' => 5,
+            ],
+            $array
+        );
+    }
 }
