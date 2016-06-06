@@ -78,4 +78,64 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             'a=1+7'
         ];
     }
+
+    /**
+     * @dataProvider parseUrlDataProvider
+     * @param $url
+     * @param array $expected
+     */
+    public function testParseUrl($url, array $expected)
+    {
+        $this->assertSame($expected, parse_url($url));
+    }
+
+    public function parseUrlDataProvider()
+    {
+        yield [
+            '',
+            [
+                'path' => ''
+            ]
+        ];
+
+        yield [
+            '/',
+            [
+                'path' => '/'
+            ]
+        ];
+
+
+        yield [
+            '/catalog',
+            [
+                'path' => '/catalog'
+            ]
+        ];
+
+        yield [
+            '/catalog?key=value',
+            [
+                'path' => '/catalog',
+                'query' => 'key=value',
+            ]
+        ];
+
+        yield [
+            '/catalog?key=value&other=same',
+            [
+                'path' => '/catalog',
+                'query' => 'key=value&other=same',
+            ]
+        ];
+
+        yield [
+            '/catalog?key=value&other=same#container',
+            [
+                'path' => '/catalog',
+                'query' => 'key=value&other=same',
+                'fragment' => 'container'
+            ]
+        ];
+    }
 }

@@ -88,6 +88,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `urlencode`
 * `urldecode`
 * `http_build_query`
+* `parse_url`
 
 * `levenshtein`
 
