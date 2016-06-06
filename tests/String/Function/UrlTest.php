@@ -137,5 +137,49 @@ class UrlTest extends \PHPUnit_Framework_TestCase
                 'fragment' => 'container'
             ]
         ];
+
+        yield [
+            'example.com/catalog?key=value&other=same#container',
+            [
+                'path' => 'example.com/catalog',
+                'query' => 'key=value&other=same',
+                'fragment' => 'container'
+            ]
+        ];
+
+        yield [
+            'http://example.com/catalog?key=value&other=same#container',
+            [
+                'scheme' => 'http',
+                'host' => 'example.com',
+                'path' => '/catalog',
+                'query' => 'key=value&other=same',
+                'fragment' => 'container'
+            ]
+        ];
+
+        yield [
+            'https://example.com/catalog?key=value&other=same#container',
+            [
+                'scheme' => 'https',
+                'host' => 'example.com',
+                'path' => '/catalog',
+                'query' => 'key=value&other=same',
+                'fragment' => 'container'
+            ]
+        ];
+
+        /**
+         * broken url - but got result
+         */
+        yield [
+            'https://catalog?key=value&other=same#container',
+            [
+                'scheme' => 'https',
+                'host' => 'catalog',
+                'query' => 'key=value&other=same',
+                'fragment' => 'container'
+            ]
+        ];
     }
 }
