@@ -71,4 +71,20 @@ class YieldTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($accumulator, range(1, 9));
     }
+
+    public function testSameKey()
+    {
+        $from = function () {
+            yield 'key' => 1;
+            yield 'key' => 2;
+            yield 'key' => 3;
+        };
+
+        $result = [];
+        foreach ($from() as $key => $value) {
+            $result[] = [$key, $value];
+        }
+
+        $this->assertSame([['key', 1], ['key', 2], ['key', 3]], $result);
+    }
 }
