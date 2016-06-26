@@ -223,6 +223,9 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `json_decode`
 * `json_last_error_msg`
 
+### Reflection
+* `get_class`
+
 ### Standard interfaces
 * `Iterator`
 * `IteratorAggregate`
