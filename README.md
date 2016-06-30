@@ -244,3 +244,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `SplObjectStorage`
 * `is_a`
 * `is_subclass_of`
+* `token_get_all`
