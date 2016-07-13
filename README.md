@@ -227,6 +227,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 ### Reflection
 * `get_class`
 * `is_subclass_of`
+* `get_parent_class`
 
 ### Standard interfaces
 * `Iterator`

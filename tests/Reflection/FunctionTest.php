@@ -22,4 +22,9 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse(is_subclass_of(Simple::class, SubSimple::class));
     }
+
+    public function testGetParentClass()
+    {
+        $this->assertSame(Simple::class, get_parent_class(SubSimple::class));
+    }
 }
