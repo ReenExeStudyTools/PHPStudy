@@ -2,6 +2,9 @@
 
 namespace Tests;
 
+use ReenExe\Study\OOP\Override\SubSimple;
+use ReenExe\Study\OOP\Override\Simple;
+
 class FunctionTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetClass()
@@ -9,5 +12,14 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(FunctionTest::class, get_class());
 
         $this->assertSame(FunctionTest::class, get_class($this));
+    }
+
+    public function testIsSubClassOf()
+    {
+        $this->assertTrue(is_subclass_of(SubSimple::class, Simple::class));
+        $subClass = new SubSimple();
+        $this->assertTrue(is_subclass_of($subClass, Simple::class));
+
+        $this->assertFalse(is_subclass_of(Simple::class, SubSimple::class));
     }
 }
