@@ -945,5 +945,13 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $array = [];
 
         $this->assertSame(false, next($array));
+
+        $array = [1];
+
+        $this->assertSame(false, next($array));
+
+        $array = [1, 2];
+
+        $this->assertSame(2, next($array));
     }
 }
