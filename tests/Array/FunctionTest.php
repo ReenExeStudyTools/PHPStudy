@@ -940,18 +940,30 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testNext()
+    public function textNext()
     {
         $array = [];
-
         $this->assertSame(false, next($array));
 
         $array = [1];
-
         $this->assertSame(false, next($array));
+    }
 
-        $array = [1, 2];
-
+    public function testNextCurrentReset()
+    {
+        $array = [1, 2, 3, 4, 5];
         $this->assertSame(2, next($array));
+        $this->assertSame(2, current($array));
+        $this->assertSame(3, next($array));
+        $this->assertSame(3, current($array));
+        $this->assertSame(4, next($array));
+        $this->assertSame(4, current($array));
+        $this->assertSame(5, next($array));
+        $this->assertSame(5, current($array));
+        $this->assertSame(false, next($array));
+        $this->assertSame(false, current($array));
+
+        $this->assertSame(1, reset($array));
+        $this->assertSame(1, current($array));
     }
 }
