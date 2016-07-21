@@ -907,27 +907,36 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function testCurrent()
+    /**
+     * @dataProvider currentDataProvider
+     * @param $expect
+     * @param array $array
+     */
+    public function testCurrent($expect, array $array)
     {
-        $array = [];
-        $this->assertSame(false, current($array));
-
-        $array = [false];
-        $this->assertSame(false, current($array));
-
-        $array = [1];
-        $this->assertSame(1, current($array));
+        $this->assertSame($expect, current($array));
     }
 
-    public function testReset()
+    /**
+     * @dataProvider currentDataProvider
+     * @param $expect
+     * @param array $array
+     */
+    public function testReset($expect, array $array)
     {
-        $array = [];
-        $this->assertSame(false, reset($array));
+        $this->assertSame($expect, reset($array));
+    }
 
-        $array = [false];
-        $this->assertSame(false, reset($array));
+    public function currentDataProvider()
+    {
+        $object = new \stdClass();
 
-        $array = [1];
-        $this->assertSame(1, reset($array));
+        return [
+            [false, []],
+            [false, [false]],
+            [1, [1]],
+            [true, [true]],
+            [$object, [$object]],
+        ];
     }
 }
