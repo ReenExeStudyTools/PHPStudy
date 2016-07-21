@@ -906,4 +906,16 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             [1 => 3, 0 => 2, 'a' => 1]
         ];
     }
+
+    public function testCurrent()
+    {
+        $array = [];
+        $this->assertSame(false, current($array));
+
+        $array = [false];
+        $this->assertSame(false, current($array));
+
+        $array = [1];
+        $this->assertSame(1, current($array));
+    }
 }

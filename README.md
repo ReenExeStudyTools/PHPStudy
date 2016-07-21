@@ -162,6 +162,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `array_filter`
 
 ##### Common
+* `current`
 * `array_key_exists`
 * `array_values`
 * `array_keys`
