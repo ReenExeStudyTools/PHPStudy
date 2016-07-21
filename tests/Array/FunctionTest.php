@@ -940,6 +940,18 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    public function testKey()
+    {
+        $array = [];
+        $this->assertSame(null, key($array));
+
+        $array = [1];
+        $this->assertSame(0, key($array));
+
+        $array = ['a' => 1];
+        $this->assertSame('a', key($array));
+    }
+
     public function textNext()
     {
         $array = [];
@@ -949,21 +961,49 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, next($array));
     }
 
-    public function testNextCurrentReset()
+    public function testNextKeyCurrentReset()
     {
-        $array = [1, 2, 3, 4, 5];
+        $array = [
+            'a' => 1,
+            'b' => 2,
+            'c' => 3,
+            'd' => 4,
+            'e' => 5,
+        ];
+
         $this->assertSame(2, next($array));
         $this->assertSame(2, current($array));
+        $this->assertSame('b', key($array));
         $this->assertSame(3, next($array));
         $this->assertSame(3, current($array));
+        $this->assertSame('c', key($array));
         $this->assertSame(4, next($array));
         $this->assertSame(4, current($array));
+        $this->assertSame('d', key($array));
         $this->assertSame(5, next($array));
         $this->assertSame(5, current($array));
+        $this->assertSame('e', key($array));
         $this->assertSame(false, next($array));
         $this->assertSame(false, current($array));
+        $this->assertSame(null, key($array));
 
         $this->assertSame(1, reset($array));
         $this->assertSame(1, current($array));
+        $this->assertSame('a', key($array));
+    }
+
+    public function testStateAfterReturn()
+    {
+        $callback = function () {
+            $array = [1, 2, 3];
+
+            next($array);
+
+            return $array;
+        };
+
+        $array = $callback();
+
+        $this->assertSame(2, current($array));
     }
 }

@@ -165,6 +165,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `current`
 * `reset`
 * `next`
+* `key`
 * `array_key_exists`
 * `array_values`
 * `array_keys`
