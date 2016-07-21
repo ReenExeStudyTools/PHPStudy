@@ -939,4 +939,11 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
             [$object, [$object]],
         ];
     }
+
+    public function testNext()
+    {
+        $array = [];
+
+        $this->assertSame(false, next($array));
+    }
 }
