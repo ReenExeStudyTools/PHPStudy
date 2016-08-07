@@ -102,6 +102,18 @@ class MathTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    public function testBindec()
+    {
+        $this->assertSame(7, bindec('111'));
+        $this->assertSame(7, bindec('-111'));
+    }
+
+    public function testDecbin()
+    {
+        $this->assertSame('111', decbin('7'));
+        $this->assertSame(str_repeat(1, 63), decbin(PHP_INT_MAX));
+    }
+
     /**
      * @dataProvider ceilDataProvider
      * @param $source
