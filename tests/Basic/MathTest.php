@@ -101,4 +101,29 @@ class MathTest extends \PHPUnit_Framework_TestCase
             ['Z', 36, 10, '35'],
         ];
     }
+
+    /**
+     * @dataProvider ceilDataProvider
+     * @param $source
+     * @param $expect
+     */
+    public function testCeil($source, $expect)
+    {
+        $this->assertSame($expect, ceil($source));
+    }
+
+    public function ceilDataProvider()
+    {
+        return [
+            [1, 1.0],
+            [1.000001, 2.0],
+
+            /**
+             * play
+             */
+            [1e-500, 0.0],
+            [1e-400, 0.0],
+            [1e-300, 1.0],
+        ];
+    }
 }
