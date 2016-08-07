@@ -131,4 +131,11 @@ class MathTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame(1.0, floor(1.99));
     }
+
+    public function testRound()
+    {
+        $this->assertSame(1.0, round(1));
+        $this->assertSame(1.0, round(1.49));
+        $this->assertSame(2.0, round(1.50));
+    }
 }
