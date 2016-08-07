@@ -117,6 +117,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `pack`
 * `unpack`
+* `version_compare`
 ##### Patterns
 * `preg_match`
 * `preg_replace`
@@ -253,7 +254,6 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `SplFixedArray`
 * `stripcslashes`
 * `NoRewindIterator`
-* `version_compare`
 * `SplObjectStorage`
 * `is_a`
 * `token_get_all`
