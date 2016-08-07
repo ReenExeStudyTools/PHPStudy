@@ -126,4 +126,9 @@ class MathTest extends \PHPUnit_Framework_TestCase
             [1e-300, 1.0],
         ];
     }
+
+    public function testFloor()
+    {
+        $this->assertSame(1.0, floor(1.99));
+    }
 }
