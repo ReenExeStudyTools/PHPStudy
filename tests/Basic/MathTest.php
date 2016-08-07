@@ -78,8 +78,22 @@ class MathTest extends \PHPUnit_Framework_TestCase
         yield ['-1.0', 1.0];
     }
 
-    public function testBaseConvert()
+    /**
+     * @dataProvider baseConvertDataProvider
+     * @param $number
+     * @param $from
+     * @param $to
+     * @param $expect
+     */
+    public function testBaseConvert($number, $from, $to, $expect)
     {
-        $this->assertSame('1', base_convert(1, 2, 2));
+        $this->assertSame($expect, base_convert($number, $from, $to));
+    }
+
+    public function baseConvertDataProvider()
+    {
+        return [
+            [1, 2, 2, '1'],
+        ];
     }
 }
