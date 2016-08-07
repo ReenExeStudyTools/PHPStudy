@@ -77,4 +77,9 @@ class MathTest extends \PHPUnit_Framework_TestCase
         yield ['-1', 1];
         yield ['-1.0', 1.0];
     }
+
+    public function testBaseConvert()
+    {
+        $this->assertSame('1', base_convert(1, 2, 2));
+    }
 }

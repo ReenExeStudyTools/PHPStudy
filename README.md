@@ -51,6 +51,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `min`
 * `max`
 * `abs`
+* `base_convert`
 
 ### String
 ##### Functions
@@ -253,4 +254,3 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `SplObjectStorage`
 * `is_a`
 * `token_get_all`
-* `base_convert`
