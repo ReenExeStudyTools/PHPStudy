@@ -854,6 +854,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     public function testCount()
     {
+        $this->assertSame(count(null), 0);
         $this->assertSame(count([]), 0);
         $this->assertSame(count(['value']), 1);
         $this->assertSame(count([[1, 2]]), 1);
