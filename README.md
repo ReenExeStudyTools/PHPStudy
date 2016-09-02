@@ -259,3 +259,4 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 * `SplObjectStorage`
 * `is_a`
 * `token_get_all`
+* `crc32`
