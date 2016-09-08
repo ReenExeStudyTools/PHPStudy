@@ -17,4 +17,19 @@ class HashTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('795f3202b17cb6bc3d4b771d8c6c9eaf', md5('other'));
     }
+
+    /**
+     * @expectedException \PHPUnit_Framework_Error_Notice
+     * @expectedExceptionMessage No salt parameter was specified. You must use a randomly generated salt and a strong hash function to produce a secure hash.
+     */
+    public function testCryptSaltAbsent()
+    {
+        crypt('some source string');
+    }
+
+    public function testCrypt()
+    {
+        $this->assertSame('101nIroBCuF1E', crypt('some source string', 10));
+        $this->assertSame('12oZhTljyd2dI', crypt('some source string', 1234567));
+    }
 }

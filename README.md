@@ -49,6 +49,7 @@ For use PHP 7 - https://github.com/rlerdorf/php7dev
 
 * `crc32`
 * `md5`
+* `crypt`
 
 ##### Math
 * `min`
