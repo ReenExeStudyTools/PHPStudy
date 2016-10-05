@@ -49,6 +49,9 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array_keys(['a' => 1, 'b' => 2], '2'), ['b']);
         $this->assertSame(array_keys(['a' => 1, 'b' => 2], '2', true), []);
+
+        $this->assertSame(array_keys(['a' => 1, 'b' => ['search']], ['search']), ['b']);
+        $this->assertSame(array_keys(['a' => 1, 'b' => ['x' => 'search']], ['y' => 'search']), []);
     }
 
     public function testInArray()
