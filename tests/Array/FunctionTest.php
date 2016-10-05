@@ -35,10 +35,20 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
 
     public function testKeys()
     {
-        $this->assertTrue(array_keys([]) === []);
-        $this->assertTrue(array_keys([1 => 'a', 2 => 'b' ]) === [1, 2]);
-        $this->assertTrue(array_keys(['1' => 'a', '2' => 'b' ]) === [1, 2]);
-        $this->assertTrue(array_keys(['a' => 1, 'b' => 2]) === ['a', 'b']);
+        $this->assertSame(array_keys([]), []);
+        $this->assertSame(array_keys([1 => 'a', 2 => 'b' ]), [1, 2]);
+        $this->assertSame(array_keys(['1' => 'a', '2' => 'b' ]), [1, 2]);
+        $this->assertSame(array_keys(['a' => 1, 'b' => 2]), ['a', 'b']);
+    }
+
+    public function testSearchKeys()
+    {
+        $this->assertSame(array_keys([1], 1), [0]);
+        $this->assertSame(array_keys(['a' => 1, 'b' => 2], 2), ['b']);
+        $this->assertSame(array_keys(['a' => 1, 'b' => 2], 2, true), ['b']);
+
+        $this->assertSame(array_keys(['a' => 1, 'b' => 2], '2'), ['b']);
+        $this->assertSame(array_keys(['a' => 1, 'b' => 2], '2', true), []);
     }
 
     public function testInArray()
