@@ -344,6 +344,7 @@ class FunctionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(array_fill(0, 3, 'value') === ['value', 'value', 'value']);
         $this->assertTrue(array_fill(1, 2, []) === [1 => [], 2 => []]);
+        $this->assertTrue(array_fill(3, 3, []) === [3 => [], 4 => [], 5 => []]);
     }
 
     /**
