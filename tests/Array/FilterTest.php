@@ -49,4 +49,16 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             ];
         }
     }
+
+    public function testUseKey()
+    {
+        $callable = function ($key) {
+            return $key % 2 === 1;
+        };
+
+        $this->assertSame(
+            array_filter([1 => false, 2 => '', 7 => null, 8 => true, 11 => 15], $callable, \ARRAY_FILTER_USE_KEY),
+            [1 => false, 7 => null, 11 => 15]
+        );
+    }
 }
