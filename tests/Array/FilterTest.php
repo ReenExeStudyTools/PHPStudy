@@ -61,4 +61,16 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             [1 => false, 7 => null, 11 => 15]
         );
     }
+
+    public function testUseBoth()
+    {
+        $callable = function ($value, $key) {
+            return $value && $key % 2 === 1;
+        };
+
+        $this->assertSame(
+            array_filter([1 => false, 2 => '', 7 => null, 8 => true, 11 => 15], $callable, \ARRAY_FILTER_USE_BOTH),
+            [11 => 15]
+        );
+    }
 }
