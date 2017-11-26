@@ -80,7 +80,7 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             'ab',
             0,
             2,
-            1
+            256
         ];
 
         yield [
@@ -88,7 +88,7 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             'ac',
             0,
             2,
-            -1
+            -256
         ];
 
         yield [
@@ -96,7 +96,7 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             'ac',
             10,
             2,
-            -1
+            -256
         ];
 
         yield [
@@ -157,7 +157,7 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             0,
             3,
             false,
-            1,
+            32,
         ];
 
         yield [
@@ -166,7 +166,7 @@ class SubStrCompareTest extends \PHPUnit_Framework_TestCase
             0,
             3,
             false,
-            -1,
+            -32,
         ];
     }
 }

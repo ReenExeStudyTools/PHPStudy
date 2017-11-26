@@ -32,7 +32,20 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
         yield [
             'a',
             'A',
-            1
+            32
+        ];
+
+
+        yield [
+            'abcd',
+            'abce',
+            -256
+        ];
+
+        yield [
+            'abce',
+            'abcd',
+            256
         ];
     }
 
@@ -44,6 +57,19 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
             'a',
             'A',
             0
+        ];
+
+
+        yield [
+            'abcd',
+            'abce',
+            -1
+        ];
+
+        yield [
+            'abce',
+            'abcd',
+            1
         ];
     }
 
@@ -234,18 +260,6 @@ class StringCompareTest extends PHPUnit_Framework_TestCase
             'aaa',
             'aaa',
             0
-        ];
-
-        yield [
-            'abcd',
-            'abce',
-            -1
-        ];
-
-        yield [
-            'abce',
-            'abcd',
-            1
         ];
     }
 }
